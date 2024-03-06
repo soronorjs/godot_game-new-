@@ -1,11 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=11 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="1_hwgim"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="2_3yub1"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="2_koqby"]
+[ext_resource type="Shader" uid="uid://c05e871j6jr8p" path="res://GameObjects/Shaders/TestShader.tres" id="4_v1r1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbsl"]
 size = Vector2(105, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mruxq"]
+shader = ExtResource("4_v1r1w")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qfxqa"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kf8m8"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 720.0
+angular_velocity_min = 25.0
+angular_velocity_max = 150.0
+directional_velocity_min = -10.0
+directional_velocity_max = 10.0
+directional_velocity_curve = SubResource("CurveXYZTexture_qfxqa")
+gravity = Vector3(0, 98, 0)
+turbulence_noise_strength = 11.54
+turbulence_noise_scale = 10.0
+turbulence_noise_speed = Vector3(1.65, 0, 0)
+turbulence_noise_speed_random = 1.0
+turbulence_influence_max = 1.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sto4l"]
+size = Vector2(105, 14)
+
+[sub_resource type="Environment" id="Environment_j2oe4"]
+background_mode = 3
+glow_enabled = true
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,6 +56,7 @@ script = ExtResource("2_3yub1")
 polygon = PackedVector2Array(-2, -7, -3, -7, -4, -6, -5, -5, -5, -3, -5, -1, -4, 0, -5, 1, -5, 3, -5, 5, -5, 6, -6, 5, -8, 5, -9, 5, -10, 10, -9, 11, -8, 13, -6, 16, -3, 18, -1, 16, 2, 12, 3, 9, 4, 8, 5, 6, 5, 4, 5, 1, 4, 0, 5, -1, 5, -4, 5, -5, 4, -6, 3, -7)
 
 [node name="Placeholder" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(7.7486e-07, 4.76837e-07)
 texture = ExtResource("1_hwgim")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -27,7 +67,23 @@ polygon = PackedVector2Array(-52, -13, 53, -13, 53, 1, -52, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/StaticBody2D"]
 position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_ggbsl")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5.555, 5.555)
 script = ExtResource("2_koqby")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_mruxq")
+position = Vector2(-8, -58)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_kf8m8")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="GPUParticles2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GPUParticles2D/RigidBody2D"]
+position = Vector2(8.5, 52)
+shape = SubResource("RectangleShape2D_sto4l")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j2oe4")
