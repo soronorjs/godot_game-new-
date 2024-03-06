@@ -20,7 +20,7 @@ polygon = PackedVector2Array(-2, -7, -3, -7, -4, -6, -5, -5, -5, -3, -5, -1, -4,
 texture = ExtResource("1_hwgim")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-52, -13, 53, -13, 53, 1, -51, 1)
+polygon = PackedVector2Array(-52, -13, 53, -13, 53, 1, -52, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
 

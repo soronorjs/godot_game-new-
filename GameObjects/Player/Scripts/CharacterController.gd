@@ -7,7 +7,6 @@ const JUMP_VELOCITY = -200.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 func _physics_process(delta):
 	# Add the gravity.
 	print(is_on_floor())
@@ -23,6 +22,10 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
+		if direction == -1:
+			$Placeholder.flip_h = true
+		else:
+			$Placeholder.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
