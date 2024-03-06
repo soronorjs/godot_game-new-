@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://psu3mc3itic5"]
+
+[ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="1_hwgim"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Placeholder" type="Sprite2D" parent="."]
+position = Vector2(16, -36)
+texture = ExtResource("1_hwgim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
