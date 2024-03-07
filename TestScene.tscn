@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dh5iiuymxj31m"]
 
 [ext_resource type="Shader" uid="uid://c05e871j6jr8p" path="res://GameObjects/Shaders/TestShader.tres" id="1_lqxhh"]
-[ext_resource type="PackedScene" path="res://TestScene.tscn" id="2_gsrbq"]
+[ext_resource type="PackedScene" uid="uid://dh5iiuymxj31m" path="res://TestScene.tscn" id="2_gsrbq"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p438k"]
 polygon = PackedVector2Array(-56, 30, 57, 30, 57, 34, -56, 34)
