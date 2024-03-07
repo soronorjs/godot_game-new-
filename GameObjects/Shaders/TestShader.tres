@@ -1,14 +1,49 @@
-[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://c05e871j6jr8p"]
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://c05e871j6jr8p"]
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_8ts3m"]
 constant = Color(0.86422, 0.731303, 0.244269, 1)
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_u1d8d"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8xbg8"]
+input_name = "model_matrix"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_bqmu2"]
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_3i6dy"]
+varying_name = "Pos"
+varying_type = 4
 
 [resource]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
 
+// Varyings
+varying vec3 Pos;
 
+
+
+
+void vertex() {
+// Input:3
+	mat4 n_out3p0 = MODEL_MATRIX;
+
+
+// Input:2
+	vec2 n_out2p0 = VERTEX;
+
+
+// TransformVectorMult:4
+	vec3 n_out4p0 = (n_out3p0 * vec4(vec3(n_out2p0, 0.0), 1.0)).xyz;
+
+
+// VaryingSetter:5
+	Pos = n_out4p0;
+
+
+}
 
 void fragment() {
 // ColorConstant:2
@@ -21,9 +56,19 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-261.702, 40.0909)
+graph_offset = Vector2(-239.101, -1.13992)
 mode = 1
 flags/light_only = false
+varyings/Pos = "0,4"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_u1d8d")
+nodes/vertex/2/position = Vector2(-260, 500)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_8xbg8")
+nodes/vertex/3/position = Vector2(-240, 400)
+nodes/vertex/4/node = SubResource("VisualShaderNodeTransformVecMult_bqmu2")
+nodes/vertex/4/position = Vector2(160, 320)
+nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_3i6dy")
+nodes/vertex/5/position = Vector2(380, 340)
+nodes/vertex/connections = PackedInt32Array(2, 0, 4, 1, 3, 0, 4, 0, 4, 0, 5, 0)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_8ts3m")
-nodes/fragment/2/position = Vector2(220, 140)
+nodes/fragment/2/position = Vector2(-80, 140)
 nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)

@@ -1,42 +1,113 @@
-[gd_scene load_steps=6 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=17 format=3 uid="uid://dh5iiuymxj31m"]
 
-[ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="1_hwgim"]
-[ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="2_3yub1"]
-[ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="2_koqby"]
+[ext_resource type="Shader" uid="uid://c05e871j6jr8p" path="res://GameObjects/Shaders/TestShader.tres" id="1_lqxhh"]
+[ext_resource type="PackedScene" path="res://TestScene.tscn" id="2_gsrbq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggbsl"]
-size = Vector2(105, 14)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p438k"]
+polygon = PackedVector2Array(-56, 30, 57, 30, 57, 34, -56, 34)
 
-[sub_resource type="Environment" id="Environment_j2oe4"]
-background_mode = 3
-glow_enabled = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xt4w"]
+shader = ExtResource("1_lqxhh")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve" id="Curve_bmxos"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(16, -36)
-script = ExtResource("2_3yub1")
+[sub_resource type="CurveTexture" id="CurveTexture_agnp8"]
+curve = SubResource("Curve_bmxos")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
-polygon = PackedVector2Array(-2, -7, -3, -7, -4, -6, -5, -5, -5, -3, -5, -1, -4, 0, -5, 1, -5, 3, -5, 5, -5, 6, -6, 5, -8, 5, -9, 5, -10, 10, -9, 11, -8, 13, -6, 16, -3, 18, -1, 16, 2, 12, 3, 9, 4, 8, 5, 6, 5, 4, 5, 1, 4, 0, 5, -1, 5, -4, 5, -5, 4, -6, 3, -7)
+[sub_resource type="Curve" id="Curve_5mmkt"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, -34.1704, 0, 0, Vector2(1e-05, 41.7582), 47.4751, 47.4751, 0, 0, Vector2(0.978836, 28.5714), -276.923, 0.0, 0, 0]
+point_count = 3
 
-[node name="Placeholder" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(7.7486e-07, 4.76837e-07)
-texture = ExtResource("1_hwgim")
+[sub_resource type="CurveTexture" id="CurveTexture_wdjk7"]
+curve = SubResource("Curve_5mmkt")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-52, -13, 53, -13, 53, 1, -52, 1)
+[sub_resource type="Curve" id="Curve_kg7yb"]
+max_value = 3.0
+_data = [Vector2(0, 1.54945), 0.0, 0.0, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Polygon2D"]
+[sub_resource type="Curve" id="Curve_e3p5e"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/StaticBody2D"]
-position = Vector2(0.5, -6)
-shape = SubResource("RectangleShape2D_ggbsl")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+[sub_resource type="Curve" id="Curve_sjc8e"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.555, 5.555)
-script = ExtResource("2_koqby")
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_8o311"]
+curve_x = SubResource("Curve_kg7yb")
+curve_y = SubResource("Curve_e3p5e")
+curve_z = SubResource("Curve_sjc8e")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_j2oe4")
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1nh0p"]
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = 90.0
+angle_curve = SubResource("CurveTexture_agnp8")
+direction = Vector3(1, 0.25, 0)
+spread = 8.333
+initial_velocity_min = 27.78
+initial_velocity_max = 64.82
+gravity = Vector3(0, 98, 0)
+linear_accel_min = 1.0
+linear_accel_max = 1.5
+linear_accel_curve = SubResource("CurveTexture_wdjk7")
+scale_over_velocity_min = 333.34
+scale_over_velocity_max = 592.6
+scale_over_velocity_curve = SubResource("CurveXYZTexture_8o311")
+turbulence_noise_strength = 0.05
+turbulence_noise_scale = 8.474
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.013
+collision_mode = 1
+collision_friction = 0.11
+collision_bounce = 0.05
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5rhk"]
+shader = ExtResource("1_lqxhh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctkrj"]
+shader = ExtResource("1_lqxhh")
+
+[sub_resource type="SphereMesh" id="SphereMesh_p4vr7"]
+
+[node name="Node2D" instance=ExtResource("2_gsrbq")]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="0"]
+position = Vector2(48, -57)
+occluder = SubResource("OccluderPolygon2D_p438k")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_1xt4w")
+position = Vector2(0, -52)
+amount = 100
+sub_emitter = NodePath("../GPUParticles2D2")
+process_material = SubResource("ParticleProcessMaterial_1nh0p")
+lifetime = 0.48
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 2
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_r5rhk")
+position = Vector2(0, -52)
+amount = 100
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_1nh0p")
+collision_base_size = 0.5
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." index="7"]
+material = SubResource("ShaderMaterial_ctkrj")
+position = Vector2(5.25028, -15.2582)
+scale = Vector2(11.5125, 11.4836)
+mesh = SubResource("SphereMesh_p4vr7")
