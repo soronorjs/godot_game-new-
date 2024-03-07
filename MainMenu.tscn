@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx8ctmdav6454"]
+[gd_scene load_steps=6 format=3 uid="uid://dx8ctmdav6454"]
 
+[ext_resource type="Script" path="res://GameObjects/Main Menu/LoadMenu.gd" id="1_isw51"]
 [ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/FontSettings/MenuButton.tres" id="1_od24c"]
+[ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="2_jkwin"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
 
@@ -15,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_isw51")
 
 [node name="MainFrame" type="Control" parent="."]
 anchors_preset = 0
@@ -37,6 +40,7 @@ offset_right = -242.0
 offset_bottom = -366.0
 theme = ExtResource("1_od24c")
 text = "Play"
+script = ExtResource("2_jkwin")
 
 [node name="Settings" type="Button" parent="MainFrame/Background"]
 layout_mode = 2
