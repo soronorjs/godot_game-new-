@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx8ctmdav6454"]
+
+[ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/FontSettings/MenuButton.tres" id="1_od24c"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrdm4"]
+font_size = 101
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainFrame" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="MainFrame"]
+layout_mode = 2
+offset_right = 1158.0
+offset_bottom = 648.0
+texture = SubResource("CanvasTexture_7mscs")
+
+[node name="Play" type="Button" parent="MainFrame/Background"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 257.0
+offset_top = 191.0
+offset_right = -242.0
+offset_bottom = -366.0
+theme = ExtResource("1_od24c")
+text = "Play"
+
+[node name="Settings" type="Button" parent="MainFrame/Background"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 257.0
+offset_top = 302.0
+offset_right = -242.0
+offset_bottom = -253.0
+theme = ExtResource("1_od24c")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainFrame/Background"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 419.0
+offset_right = -244.0
+offset_bottom = -138.0
+theme = ExtResource("1_od24c")
+text = "Credits"
+
+[node name="Credits2" type="Button" parent="MainFrame/Background"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 532.0
+offset_right = -244.0
+offset_bottom = -25.0
+theme = ExtResource("1_od24c")
+text = "Exit
+"
+
+[node name="Label" type="Label" parent="MainFrame/Background"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 37.0
+offset_right = 950.0
+offset_bottom = 162.0
+theme = ExtResource("1_od24c")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Game Title"
+label_settings = SubResource("LabelSettings_mrdm4")
+horizontal_alignment = 1
