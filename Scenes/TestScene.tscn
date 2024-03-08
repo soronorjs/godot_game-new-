@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -2, -145, -115, 145, -119, 144, -1)])
+vertices = PackedVector2Array(134, -11, -135, -11, -135, -105, 135, -105)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -2, -145, -115, 146, -116, 144, -1)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
