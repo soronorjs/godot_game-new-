@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=12 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="2_qu086"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
+[ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
+[ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -2, -145, -115, 145, -119, 144, -1)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -15,6 +21,9 @@ size = Vector2(1.00348, 1.09091)
 size = Vector2(603, 171)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_35wcp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(18, -39)
@@ -53,3 +62,16 @@ shape = SubResource("RectangleShape2D_p3anb")
 
 [node name="Checkpoint" type="Marker2D" parent="."]
 position = Vector2(0, -22)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+script = ExtResource("6_n0hcj")
+
+[node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(101, -27)
+texture = ExtResource("6_i6u8o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
+polygon = PackedVector2Array(92, -55, 90, -49, 87, -44, 82, -39, 81, -33, 82, -28, 86, -26, 86, -21, 86, -14, 87, -13, 86, -11, 85, -7, 89, -6, 94, -6, 103, -6, 108, -7, 107, -10, 105, -12, 107, -14, 106, -17, 108, -19, 111, -19, 113, -22, 112, -25, 109, -28, 111, -30, 111, -34, 113, -36, 111, -43, 108, -46, 105, -46, 107, -49, 105, -51, 102, -54, 98, -55)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D2"]
+debug_enabled = true
