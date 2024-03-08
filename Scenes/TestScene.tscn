@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=8 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="2_qu086"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
+[ext_resource type="Script" path="res://GameObjects/Player/Scripts/Respawn.gd" id="4_1spmo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -24,6 +25,9 @@ texture = ExtResource("2_qu086")
 
 [node name="MenuControl" type="Node" parent="CharacterBody2D"]
 script = ExtResource("3_4w0vg")
+
+[node name="Respawn" type="Node" parent="CharacterBody2D"]
+script = ExtResource("4_1spmo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
