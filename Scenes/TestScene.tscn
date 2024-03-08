@@ -51,5 +51,5 @@ script = ExtResource("5_jx7um")
 position = Vector2(-7, 140.5)
 shape = SubResource("RectangleShape2D_p3anb")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Checkpoint" type="Marker2D" parent="."]
 position = Vector2(0, -22)
