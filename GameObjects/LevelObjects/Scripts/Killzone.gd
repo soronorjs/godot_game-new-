@@ -4,4 +4,4 @@ func _ready():
 	$".".body_entered.connect(_body_entered)
 	
 func _body_entered(body):
-	body.transform = $"../Marker2D".transform
+	body.transform = $"../Checkpoint".transform
