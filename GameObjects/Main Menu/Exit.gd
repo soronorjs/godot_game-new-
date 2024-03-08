@@ -1,7 +1,7 @@
 extends Button
 
 
-func _process(delta):
+func _ready():
 	$".".pressed.connect(self._button_pressed)
 
 func _button_pressed():
