@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx8ctmdav6454"]
+[gd_scene load_steps=7 format=3 uid="uid://dsdnvu7s3k1t3"]
 
 [ext_resource type="Script" path="res://GameObjects/Main Menu/LoadMenu.gd" id="1_isw51"]
-[ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/FontSettings/MenuButton.tres" id="1_od24c"]
+[ext_resource type="Theme" path="res://GameObjects/FontSettings/MenuButton.tres" id="1_od24c"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="2_jkwin"]
+[ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="4_1x6be"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
 
@@ -64,7 +65,7 @@ offset_bottom = -138.0
 theme = ExtResource("1_od24c")
 text = "Credits"
 
-[node name="Credits2" type="Button" parent="MainFrame/Background"]
+[node name="Exit" type="Button" parent="MainFrame/Background"]
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,6 +76,7 @@ offset_bottom = -25.0
 theme = ExtResource("1_od24c")
 text = "Exit
 "
+script = ExtResource("4_1x6be")
 
 [node name="Label" type="Label" parent="MainFrame/Background"]
 layout_mode = 0

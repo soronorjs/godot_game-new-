@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh5iiuymxj31m"]
+[gd_scene load_steps=7 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_274j7"]
+[ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="1_bl7nk"]
 [ext_resource type="Texture2D" uid="uid://c3p8jedpv4w7l" path="res://art/placeholder.png" id="2_je08u"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="3_5e7og"]
 
@@ -20,6 +21,9 @@ polygon = PackedVector2Array(-3, -7, -5, -5, -5, -2, -4, 0, -5, 1, -5, 5, -4, 6,
 
 [node name="Placeholder" type="Sprite2D" parent="CharacterBody2D"]
 texture = ExtResource("2_je08u")
+
+[node name="MenuControl" type="Node" parent="CharacterBody2D"]
+script = ExtResource("1_bl7nk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
