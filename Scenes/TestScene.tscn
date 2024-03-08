@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=15 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -7,12 +7,17 @@
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
+[ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
 vertices = PackedVector2Array(134, -11, -135, -11, -135, -105, 135, -105)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-145, -2, -145, -115, 146, -116, 144, -1)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
+radius = 12.0
+height = 40.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -24,6 +29,7 @@ size = Vector2(603, 171)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bhaho"]
 diffuse_texture = ExtResource("6_i6u8o")
+normal_texture = ExtResource("8_huonh")
 
 [node name="Node2D" type="Node2D"]
 
@@ -41,6 +47,10 @@ script = ExtResource("3_4w0vg")
 position = Vector2(-70, 7)
 scale = Vector2(0.193333, 0.193333)
 texture = ExtResource("3_7tc64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-62, 5)
+shape = SubResource("CapsuleShape2D_fum7p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
@@ -71,18 +81,23 @@ position = Vector2(0, -22)
 script = ExtResource("6_n0hcj")
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
-position = Vector2(101, -27)
+position = Vector2(101, -28)
 texture = SubResource("CanvasTexture_bhaho")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
+visible = false
 polygon = PackedVector2Array(92, -55, 90, -49, 87, -44, 82, -39, 81, -33, 82, -28, 86, -26, 86, -21, 86, -14, 87, -13, 86, -11, 85, -7, 89, -6, 94, -6, 103, -6, 108, -7, 107, -10, 105, -12, 107, -14, 106, -17, 108, -19, 111, -19, 113, -22, 112, -25, 109, -28, 111, -30, 111, -34, 113, -36, 111, -43, 108, -46, 105, -46, 107, -49, 105, -51, 102, -54, 98, -55)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D2"]
+path_desired_distance = 0.2
+target_desired_distance = 0.1
+path_postprocessing = 1
 debug_enabled = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
 color = Color(0.952941, 0.831373, 0.439216, 1)
+energy = 0.25
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.419608)
 max_distance = 100.0

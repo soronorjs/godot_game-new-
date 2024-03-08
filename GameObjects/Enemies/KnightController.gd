@@ -18,10 +18,10 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	print(global_position)
 	
-	velocity = velocity.lerp(direction*SPEED, 7*delta)
+	velocity = direction*SPEED
 	
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
+	if not is_on_floor():
+		velocity.y += gravity * delta
 	
 	
 

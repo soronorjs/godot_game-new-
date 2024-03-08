@@ -23,9 +23,9 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 		if direction == -1:
-			$Placeholder.flip_h = true
+			$Player.flip_h = true
 		else:
-			$Placeholder.flip_h = false
+			$Player.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
