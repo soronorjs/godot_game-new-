@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=16 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -18,6 +18,9 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
 radius = 12.0
 height = 40.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tvp6o"]
+polygon = PackedVector2Array(-65, -12, -66, -12, -67, -11, -68, -10, -68, -5, -67, -2, -70, 1, -74, 7, -74, 12, -72, 16, -70, 15, -70, 10, -69, 6, -68, 5, -67, 9, -65, 10, -67, 12, -68, 16, -68, 19, -68, 20, -70, 20, -70, 18, -73, 18, -75, 20, -76, 22, -78, 20, -82, 19, -82, 22, -80, 25, -77, 27, -74, 28, -73, 27, -72, 25, -71, 26, -69, 28, -67, 28, -64, 26, -62, 25, -58, 25, -57, 23, -56, 21, -55, 19, -55, 16, -56, 13, -57, 10, -57, 8, -55, 5, -54, 7, -54, 10, -53, 14, -52, 16, -49, 13, -49, 8, -51, 4, -53, 1, -56, -2, -57, -2, -55, -3, -55, -8, -55, -11, -57, -13, -60, -13)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -49,8 +52,12 @@ scale = Vector2(0.193333, 0.193333)
 texture = ExtResource("3_7tc64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(-62, 5)
 shape = SubResource("CapsuleShape2D_fum7p")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
+occluder = SubResource("OccluderPolygon2D_tvp6o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
@@ -96,7 +103,7 @@ debug_enabled = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
-color = Color(0.952941, 0.831373, 0.439216, 1)
+color = Color(0.693468, 0.57891, 0.176025, 1)
 energy = 0.25
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.419608)
