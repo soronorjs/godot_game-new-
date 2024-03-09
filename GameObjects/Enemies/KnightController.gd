@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 30.0
 const JUMP_VELOCITY = -400.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -9,7 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Player: CharacterBody2D = $"../CharacterBody2D"
 
 func _physics_process(delta):
-	
+	#if not is_on_floor():
+		#velocity.y += gravity * delta
+		
 	var direction = Vector2()
 	
 	nav.target_position = Player.position
@@ -18,10 +20,7 @@ func _physics_process(delta):
 	direction = direction.normalized()
 	print(global_position)
 	
-	velocity = direction*SPEED
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	velocity = velocity.lerp(direction*SPEED, 7*delta)
 	
 	
 
