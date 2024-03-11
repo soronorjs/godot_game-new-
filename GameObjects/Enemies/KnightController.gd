@@ -10,8 +10,24 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var safeVelocity
 
 func _physics_process(delta):
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
+	
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create($".".position, Player.position)
+	var result = space_state.intersect_ray(query)
+	
+	$"../Line2D".Points[1] = $".".position
+	$"../Line2D".Points[2] = Player.position
+	$"../Line2D".draw()
+	
+	if result:
+		if (result.collider is StaticBody2D):
+			velocity.y = JUMP_VELOCITY
+			$"../Line2D".Points[0] = $".".position
+			$"../Line2D".Points[1] = Player.position
+			$"../Line2D".draw()
+	
+	if not is_on_floor():
+		velocity.y += gravity * delta
 		
 	print(nav.is_navigation_finished())
 		
