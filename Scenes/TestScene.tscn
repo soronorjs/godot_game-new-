@@ -13,7 +13,7 @@
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
 vertices = PackedVector2Array(134, -130, 134, 19, -136, 19, -136, -143)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-146, 29, -147, -154, 144, -140, 145, 30)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-146, 29, -147, -154, 144, -140, 145, 30), PackedVector2Array(-38, -41, 36, -40, 35, -19, -38, -19)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
@@ -47,6 +47,9 @@ polygon = PackedVector2Array(-6, -26, -8, -26, -8, -24, -9, -24, -9, -23, -9, -2
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_35wcp")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(-36, -39, 34, -38, 33, -21, -36, -21)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-94, -53)
