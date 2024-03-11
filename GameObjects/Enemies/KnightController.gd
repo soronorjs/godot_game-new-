@@ -15,16 +15,17 @@ func _physics_process(delta):
 	var query = PhysicsRayQueryParameters2D.create($".".position, Player.position)
 	var result = space_state.intersect_ray(query)
 	
-	$"../Line2D".Points[1] = $".".position
-	$"../Line2D".Points[2] = Player.position
-	$"../Line2D".draw()
+	
+	$"../Line2D".set_point_position(1, $".".position)
+	$"../Line2D".set_point_position(0, Player.position)
+	$"../Camera2D".position = $"../Line2D".get_point_position(0)
+	print($"../Line2D".width)
 	
 	if result:
 		if (result.collider is StaticBody2D):
 			velocity.y = JUMP_VELOCITY
-			$"../Line2D".Points[0] = $".".position
-			$"../Line2D".Points[1] = Player.position
-			$"../Line2D".draw()
+		$"../Line2D".set_point_position(0, $".".position)
+		$"../Line2D".set_point_position(1, result.position)
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
