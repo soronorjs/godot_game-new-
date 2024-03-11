@@ -29,7 +29,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/com.timoschwarzer.polygonizer/plugin.cfg")
 
 [input]
 
