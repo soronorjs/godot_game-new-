@@ -42,7 +42,7 @@ diffuse_texture = ExtResource("6_i6u8o")
 normal_texture = ExtResource("8_huonh")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ew6hu"]
-cull_mode = 1
+cull_mode = 2
 polygon = PackedVector2Array(-6, -26, -8, -26, -8, -24, -9, -24, -9, -23, -9, -21, -10, -21, -11, -21, -11, -18, -12, -18, -12, -20, -13, -20, -13, -18, -14, -20, -16, -22, -18, -24, -21, -22, -20, -19, -18, -18, -17, -17, -18, -16, -19, -12, -19, -3, -16, 1, -14, 1, -16, 4, -15, 10, -15, 15, -16, 19, -11, 21, -6, 19, -5, 12, -3, 19, -1, 22, 5, 20, 5, 15, 5, 10, 8, 8, 12, 6, 10, 1, 7, -2, 9, -5, 11, -9, 13, -11, 10, -15, 6, -19, 5, -22, 2, -26, -3, -28)
 
 [node name="Node2D" type="Node2D"]
@@ -140,7 +140,10 @@ debug_enabled = true
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
 energy = 0.45
-shadow_color = Color(0, 0, 0, 0.419608)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.0352941)
+shadow_filter = 2
+shadow_filter_smooth = 2.1
 max_distance = 28705.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -149,7 +152,7 @@ max_distance = 28705.0
 position = Vector2(6, -77)
 color = Color(0.92549, 0.4, 0.215686, 1)
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.0941176)
+shadow_color = Color(0, 0, 0, 0.0823529)
 shadow_filter = 2
 shadow_filter_smooth = 0.3
 texture = ExtResource("9_hxmwk")
