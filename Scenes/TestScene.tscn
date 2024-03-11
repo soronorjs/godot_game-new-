@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=19 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
 [ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
+[ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
 vertices = PackedVector2Array(134, -130, 134, 19, -136, 19, -136, -143)
@@ -27,6 +28,10 @@ size = Vector2(1.00348, 1.09091)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3em7x"]
 size = Vector2(1.00348, 0.969697)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wtajc"]
+cull_mode = 2
+polygon = PackedVector2Array(-0.507246, -0.499394, 0.492754, -0.499394, 0.492754, 0.530909, -0.507246, 0.530909)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3anb"]
 size = Vector2(603, 171)
 
@@ -35,6 +40,7 @@ diffuse_texture = ExtResource("6_i6u8o")
 normal_texture = ExtResource("8_huonh")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ew6hu"]
+cull_mode = 2
 polygon = PackedVector2Array(-7, -27, -9, -25, -10, -22, -10, -19, -11, -19, -11, -21, -12, -21, -14, -21, -14, -20, -16, -21, -16, -23, -17, -24, -20, -24, -21, -21, -21, -20, -19, -19, -17, -17, -16, -17, -18, -16, -18, -14, -17, -13, -19, -11, -19, -8, -17, -7, -19, -6, -19, -3, -17, 0, -14, 0, -14, 2, -15, 5, -15, 10, -14, 13, -13, 14, -14, 15, -16, 18, -15, 21, -12, 21, -8, 21, -6, 19, -6, 17, -6, 14, -5, 11, -6, 10, -5, 12, -3, 12, -3, 11, -3, 14, -4, 17, -3, 20, -1, 21, 6, 21, 6, 18, 5, 16, 3, 15, 5, 13, 5, 10, 7, 8, 11, 8, 11, 4, 9, 1, 7, -1, 9, -3, 9, -7, 12, -8, 12, -12, 10, -15, 8, -17, 5, -19, 4, -19, 5, -21, 4, -24, 2, -25, 0, -26, -2, -27, -5, -28, -7, -28)
 
 [node name="Node2D" type="Node2D"]
@@ -85,6 +91,10 @@ mesh = SubResource("BoxMesh_jir4g")
 position = Vector2(-0.0034839, 0)
 shape = SubResource("RectangleShape2D_3em7x")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MeshInstance2D2"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_wtajc")
+
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_jx7um")
 
@@ -102,6 +112,10 @@ script = ExtResource("6_n0hcj")
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
 texture = SubResource("CanvasTexture_bhaho")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_ew6hu")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
 visible = false
 position = Vector2(-101, 27)
@@ -112,16 +126,27 @@ path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2"]
-show_behind_parent = true
-occluder = SubResource("OccluderPolygon2D_ew6hu")
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
-color = Color(0.693468, 0.57891, 0.176025, 1)
-energy = 0.25
-shadow_enabled = true
+energy = 0.45
 shadow_color = Color(0, 0, 0, 0.419608)
 max_distance = 28705.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6, -77)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.0941176)
+shadow_filter = 2
+shadow_filter_smooth = 0.3
+texture = ExtResource("9_hxmwk")
+texture_scale = 0.2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -169.0
+offset_top = -136.0
+offset_right = 167.0
+offset_bottom = 109.0
+color = Color(0.658824, 0.396078, 0.278431, 1)
