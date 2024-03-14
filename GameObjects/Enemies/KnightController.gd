@@ -13,11 +13,7 @@ var safeVelocity
 var rayDirections = []
 
 func _ready():
-	for i in range(20):
-		var angle = i * 1
-		var direction = Vector2.LEFT.rotated(deg_to_rad(angle))
-		
-		rayDirections.append(direction)
+	pass
 
 func _physics_process(delta):
 	
@@ -30,16 +26,15 @@ func _physics_process(delta):
 		
 	for i in range(20):
 		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(global_position, rayDirections[i])
+		var query = PhysicsRayQueryParameters2D.create(global_position, Vector2(20,0).rotated(deg_to_rad(360*i)))
 		query.exclude = [$"."]
-		
 		var result = space_state.intersect_ray(query)
-		var lineCopy = line.duplicate()
-		add_child(lineCopy)
 		
 		if result:
-			lineCopy.set_point_position(0, global_position)
-			lineCopy.set_point_position(1, result.position)
+			var lineClone = line.duplicate()
+			lineClone.set_point_position(0, Vector2(0,0))
+			lineClone.set_point_position(1, result.position)
+			add_child(lineClone)
 
 	move_and_slide()
 	
