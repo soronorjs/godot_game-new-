@@ -11,9 +11,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var safeVelocity
 
 var rayDirections = []
+var lines = []
 
 func _ready():
-	pass
+	for i in range(20):
+		var lineClone = line.duplicate()
+		lines.append(lineClone)
+		add_child(lineClone)
 
 func _physics_process(delta):
 	
@@ -31,10 +35,12 @@ func _physics_process(delta):
 		var result = space_state.intersect_ray(query)
 		
 		if result:
-			var lineClone = line.duplicate()
+			var lineClone = lines[i]
 			lineClone.set_point_position(0, Vector2(0,0))
 			lineClone.set_point_position(1, result.position)
 			add_child(lineClone)
+			
+	
 
 	move_and_slide()
 	
