@@ -17,7 +17,7 @@ func _ready():
 	for i in range(20):
 		var lineClone = line.duplicate()
 		lines.append(lineClone)
-		add_child(lineClone)
+		add_sibling(lineClone)
 
 func _physics_process(delta):
 	
@@ -29,16 +29,19 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		
 	for i in range(20):
+		
 		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(global_position, Vector2(20,0).rotated(deg_to_rad(360*i)))
+		var query = PhysicsRayQueryParameters2D.create($".".position, $".".position.rotated(deg_to_rad(18.0*i)))
 		query.exclude = [$"."]
 		var result = space_state.intersect_ray(query)
 		
+		print(Vector2.RIGHT.rotated(deg_to_rad(18.0*i)))
+		
 		if result:
 			var lineClone = lines[i]
-			lineClone.set_point_position(0, Vector2(0,0))
+			lineClone.set_point_position(0, $".".position)
 			lineClone.set_point_position(1, result.position)
-			add_child(lineClone)
+			add_sibling(lineClone)
 			
 	
 
