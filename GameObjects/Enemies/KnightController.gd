@@ -15,15 +15,14 @@ var lines = []
 
 func _physics_process(delta):
 
-	var target_velocity = Vector2(30, 0) * global_position.direction_to(Player.position)
-	velocity.x = target_velocity.x
-
-	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 	var space_state = get_world_2d().direct_space_state
 	var shapeCast = $ShapeCast2D
+	
+	while not shapeCast.is_colliding():
+		print("Patrol")
 	
 	if(shapeCast.is_colliding()):
 		var collisionAmount = shapeCast.get_collision_count()
