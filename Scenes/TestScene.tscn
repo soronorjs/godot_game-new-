@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=23 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -10,13 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
-vertices = PackedVector2Array(134, -130, 134, 19, -136, 19, -136, -143)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-146, 29, -147, -154, 144, -140, 145, 30), PackedVector2Array(-38, -41, 36, -40, 35, -19, -38, -19)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="TileSet" id="TileSet_xdjw8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
+size = Vector2(226, 137)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
 radius = 12.0
@@ -59,17 +54,12 @@ diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_35wcp")
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, -51)
 
-[node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
-tile_set = SubResource("TileSet_xdjw8")
-format = 2
-layer_0/navigation_enabled = false
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
-position = Vector2(-1, -30)
-vertices = PackedVector2Array(-34, -7, 34, -8, 34, 7, -34, 9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(5, -17.5)
+shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-94, -53)
@@ -190,5 +180,6 @@ width = 2.0
 default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
+[connection signal="body_exited" from="Area2D2" to="CharacterBody2D2" method="_on_area_2d_2_body_exited"]
 [connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D2" method="_on_navigation_agent_2d_velocity_computed"]
