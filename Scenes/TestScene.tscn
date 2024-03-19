@@ -123,11 +123,28 @@ position = Vector2(99, -42)
 script = ExtResource("6_n0hcj")
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
+rotation = 6.28319
 texture = SubResource("CanvasTexture_bhaho")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_ew6hu")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+position = Vector2(-46, -17)
+shape = SubResource("ConvexPolygonShape2D_7xp6a")
+target_position = Vector2(-1, -1)
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+position = Vector2(33, 0)
+target_position = Vector2(0, 80)
+
+[node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+position = Vector2(-99, 42)
+points = PackedVector2Array(0, 0, -40, 0)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
 visible = false
@@ -139,11 +156,6 @@ one_way_collision = true
 path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2"]
-position = Vector2(-46, -17)
-shape = SubResource("ConvexPolygonShape2D_7xp6a")
-target_position = Vector2(-1, -1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
@@ -173,12 +185,6 @@ offset_top = -137.0
 offset_right = 167.0
 offset_bottom = 108.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, -40, 0)
-width = 2.0
-default_color = Color(1, 0, 0, 1)
-texture = SubResource("CanvasTexture_1ow8i")
 
 [connection signal="body_exited" from="Area2D2" to="CharacterBody2D2" method="_on_area_2d_2_body_exited"]
 [connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
