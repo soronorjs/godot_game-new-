@@ -41,7 +41,7 @@ cull_mode = 2
 polygon = PackedVector2Array(-6, -26, -8, -26, -8, -24, -9, -24, -9, -23, -9, -21, -10, -21, -11, -21, -11, -18, -12, -18, -12, -20, -13, -20, -13, -18, -14, -20, -16, -22, -18, -24, -21, -22, -20, -19, -18, -18, -17, -17, -18, -16, -19, -12, -19, -3, -16, 1, -14, 1, -16, 4, -15, 10, -15, 15, -16, 19, -11, 21, -6, 19, -5, 12, -3, 19, -1, 22, 5, 20, 5, 15, 5, 10, 8, 8, 12, 6, 10, 1, 7, -2, 9, -5, 11, -9, 13, -11, 10, -15, 6, -19, 5, -22, 2, -26, -3, -28)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7xp6a"]
-points = PackedVector2Array(-2.125, 41.52, 46.27, -2.885, -1.62, 2.24)
+points = PackedVector2Array(-2.78, 82.35, 65.18, -3.07, -43.39, -2.1)
 
 [sub_resource type="Gradient" id="Gradient_jbv6s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -131,9 +131,9 @@ show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_ew6hu")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
-position = Vector2(-46, -17)
+position = Vector2(-44.42, -18.475)
 shape = SubResource("ConvexPolygonShape2D_7xp6a")
-target_position = Vector2(-1, -1)
+target_position = Vector2(41.55, -1)
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 position = Vector2(33, 0)

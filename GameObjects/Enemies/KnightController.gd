@@ -17,10 +17,14 @@ var rayDirections = []
 var lines = []
 var Direction = Vector2.LEFT.x
 var cooldown = false
+var Patrol = true
 
 func _physics_process(delta):
 	
-	velocity.x = Direction * SPEED
+	if Patrol:
+		velocity.x = Direction * SPEED
+	elif not Patrol:
+		velocity.x = global_position.direction_to(Player.position).x * SPEED
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -33,26 +37,32 @@ func _physics_process(delta):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
 				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).position.y >= $".".position.y):
 					_jump()
+			elif(shapeCast.get_collider(i) == Player):
+				Patrol = false
+				print(Patrol)
+			elif(shapeCast.get_collider(i) != Player):
+				Patrol = true
 
 	if not rayCast.is_colliding():
-		if not cooldown:
-			Direction *= -1
-			print(Direction)
-	
-			line.set_point_position(0, rayCast.position)
-			line.set_point_position(1, rayCast.target_position)
-			
-			if Direction == -1:
-				$PlaceholderEnemy.flip_h = true
-				rayCast.position.x = -33
-			elif Direction == 1:
-				$PlaceholderEnemy.flip_h = false
-				rayCast.position.x = 33
-			
-			cooldown = true
-		elif cooldown:
-			wait(1)
-			cooldown = false
+		if Patrol:
+			if not cooldown:
+				Direction *= -1
+				print(Direction)
+		
+				line.set_point_position(0, rayCast.position)
+				line.set_point_position(1, rayCast.target_position)
+				
+				if Direction == -1:
+					$PlaceholderEnemy.flip_h = true
+					rayCast.position.x = -33
+				elif Direction == 1:
+					$PlaceholderEnemy.flip_h = false
+					rayCast.position.x = 33
+				
+				cooldown = true
+			elif cooldown:
+				wait(1)
+				cooldown = false
 	
 
 	move_and_slide()
