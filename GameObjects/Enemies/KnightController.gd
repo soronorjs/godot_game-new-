@@ -1,38 +1,36 @@
 extends CharacterBody2D
 
-
-const SPEED = 30.0
-const JUMP_VELOCITY = -300.0
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var Player: CharacterBody2D = $"../CharacterBody2D"
 @onready var line: Line2D = $PlaceholderEnemy/Line2D
 @onready var shapeCast: ShapeCast2D = $PlaceholderEnemy/ShapeCast2D
 @onready var rayCast: RayCast2D = $PlaceholderEnemy/RayCast2D
 
-var safeVelocity
-
-var rayDirections = []
-var lines = []
 var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
+const SPEED = 30.0
+const JUMP_VELOCITY = -300.0
+
 func _physics_process(delta):
 	
-	printerr("HELP ME PLEASE! qwq")
-	
+	# Walking
 	if Patrol:
 		velocity.x = Direction * SPEED
 	elif not Patrol:
-		velocity.x = global_position.direction_to(Player.position).x * SPEED
+		var directionPlayer = global_position.direction_to(Player.position).x
+		velocity.x = directionPlayer * SPEED
 
+	# Jumping
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 	var space_state = get_world_2d().direct_space_state
 	
+	# Obstacle avoidance and player targeting
 	if(shapeCast.is_colliding()):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
@@ -45,6 +43,7 @@ func _physics_process(delta):
 			elif(shapeCast.get_collider(i) != Player):
 				Patrol = true
 
+	# Edge avoidance
 	if not rayCast.is_colliding():
 		if Patrol:
 			if not cooldown:
@@ -76,8 +75,3 @@ func _jump():
 		
 func wait(seconds):
 	get_tree().create_timer(seconds)
-	
-#func _on_navigation_agent_2d_velocity_computed(safe_velocity):
-	#velocity = safe_velocity
-	#print(safe_velocity)
-	move_and_slide()
