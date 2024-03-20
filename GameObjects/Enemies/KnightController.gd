@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var nav: NavigationAgent2D = $NavigationAgent2D
-@onready var Player: CharacterBody2D = $"../CharacterBody2D"
-@onready var line: Line2D = $PlaceholderEnemy/Line2D
-@onready var shapeCast: ShapeCast2D = $PlaceholderEnemy/ShapeCast2D
-@onready var rayCast: RayCast2D = $PlaceholderEnemy/RayCast2D
+@onready var Nav: NavigationAgent2D = get_node("NavigationAgent2D")
+@onready var Player: CharacterBody2D = get_node("../CharacterBody2D")
+@onready var line: Line2D = get_node("PlaceholderEnemy/Line2D")
+@onready var shapeCast: ShapeCast2D = get_node("PlaceholderEnemy/ShapeCast2D")
+@onready var rayCast: RayCast2D = get_node("PlaceholderEnemy/RayCast2D")
 
 var Direction = Vector2.LEFT.x
 var cooldown = false
