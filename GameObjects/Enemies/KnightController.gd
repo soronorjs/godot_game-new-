@@ -17,25 +17,24 @@ const JUMP_VELOCITY = -300.0
 
 func _physics_process(delta):
 	
-	# Walking
+	# Walking Logic
 	if Patrol:
 		velocity.x = Direction * SPEED
 	elif not Patrol:
 		var directionPlayer = global_position.direction_to(Player.position).x
 		velocity.x = directionPlayer * SPEED
 
-	# Jumping
+	# Jumping Logic
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
-	var space_state = get_world_2d().direct_space_state
 	
 	# Obstacle avoidance and player targeting
 	if(shapeCast.is_colliding()):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).position.y >= $".".position.y):
+				print(sign(global_position.direction_to(shapeCast.get_collider(i).position).y))
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
 			elif(shapeCast.get_collider(i) == Player):
 				Patrol = false

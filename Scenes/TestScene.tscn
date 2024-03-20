@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
 [ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
-[ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
+[ext_resource type="Texture2D" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
