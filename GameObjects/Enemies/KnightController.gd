@@ -16,6 +16,7 @@ var safeVelocity
 var rayDirections = []
 var lines = []
 var Direction = Vector2.LEFT.x
+var cooldown = false
 
 func _physics_process(delta):
 	
@@ -32,15 +33,26 @@ func _physics_process(delta):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
 				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).position.y >= $".".position.y):
 					_jump()
-					
-	print(rayCast.is_colliding())
+
 	if not rayCast.is_colliding():
-		Direction *= -1
-		
-		rayCast.position.x *= Direction
-		$PlaceholderEnemy.scale *= Direction
-		line.set_point_position(0, rayCast.position)
-		line.set_point_position(1, rayCast.target_position)
+		if not cooldown:
+			Direction *= -1
+			print(Direction)
+	
+			line.set_point_position(0, rayCast.position)
+			line.set_point_position(1, rayCast.target_position)
+			
+			if Direction == -1:
+				$PlaceholderEnemy.flip_h = true
+				rayCast.position.x = -33
+			elif Direction == 1:
+				$PlaceholderEnemy.flip_h = false
+				rayCast.position.x = 33
+			
+			cooldown = true
+		elif cooldown:
+			wait(1)
+			cooldown = false
 	
 
 	move_and_slide()
@@ -49,6 +61,9 @@ func _jump():
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		move_and_slide()
+		
+func wait(seconds):
+	get_tree().create_timer(seconds)
 	
 #func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	#velocity = safe_velocity
