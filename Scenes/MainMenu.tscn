@@ -9,6 +9,7 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
 diffuse_texture = ExtResource("2_tfgst")
+texture_filter = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_mrdm4"]
 font_size = 101
