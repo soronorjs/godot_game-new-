@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://dsdnvu7s3k1t3"]
 
 [ext_resource type="Script" path="res://GameObjects/Main Menu/LoadMenu.gd" id="1_m3qy2"]
-[ext_resource type="Texture2D" uid="uid://blwrufyyb6tdm" path="res://art/favorite_cat_pic.jpg" id="2_13q0j"]
+[ext_resource type="Texture2D" uid="uid://nssfsfoc4jrd" path="res://art/image.png" id="2_emsvq"]
 [ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/Themes/MenuButton.tres" id="2_pwwc4"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="3_nv5pk"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="4_5241x"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Settings.gd" id="4_ctg0d"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
-diffuse_texture = ExtResource("2_13q0j")
-texture_filter = 1
+diffuse_texture = ExtResource("2_emsvq")
+texture_filter = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_mrdm4"]
 font_size = 101
