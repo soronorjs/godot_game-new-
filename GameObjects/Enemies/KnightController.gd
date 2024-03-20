@@ -21,6 +21,8 @@ var Patrol = true
 
 func _physics_process(delta):
 	
+	printerr("HELP ME PLEASE! qwq")
+	
 	if Patrol:
 		velocity.x = Direction * SPEED
 	elif not Patrol:
