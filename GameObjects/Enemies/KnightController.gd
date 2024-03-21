@@ -62,7 +62,6 @@ func _physics_process(delta):
 		elif cooldown:
 			wait(1)
 			cooldown = false
-	
 
 	move_and_slide()
 	

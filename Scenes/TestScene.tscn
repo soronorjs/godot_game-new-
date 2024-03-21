@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=24 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://cj5mk4pdhngno" path="res://art/Player.png" id="3_7tc64"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
+[ext_resource type="Script" path="res://GameObjects/Player/Scripts/Health System.gd" id="4_fq5vo"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
@@ -77,6 +78,9 @@ offset = Vector2(50.862, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_fum7p")
+
+[node name="Health System" type="Node" parent="CharacterBody2D"]
+script = ExtResource("4_fq5vo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
