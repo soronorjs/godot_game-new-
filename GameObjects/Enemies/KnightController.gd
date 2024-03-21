@@ -43,26 +43,25 @@ func _physics_process(delta):
 				Patrol = true
 
 	# Edge avoidance
-	if not rayCast.is_colliding():
-		if Patrol:
-			if not cooldown:
-				Direction *= -1
-				print(Direction)
-		
-				line.set_point_position(0, rayCast.position)
-				line.set_point_position(1, rayCast.target_position)
-				
-				if Direction == -1:
-					$PlaceholderEnemy.flip_h = true
-					rayCast.position.x = -33
-				elif Direction == 1:
-					$PlaceholderEnemy.flip_h = false
-					rayCast.position.x = 33
-				
-				cooldown = true
-			elif cooldown:
-				wait(1)
-				cooldown = false
+	if not rayCast.is_colliding() and Patrol:
+		if not cooldown:
+			Direction *= -1
+			print(Direction)
+	
+			line.set_point_position(0, rayCast.position)
+			line.set_point_position(1, rayCast.target_position)
+			
+			if Direction == -1:
+				$PlaceholderEnemy.flip_h = true
+				rayCast.position.x = -33
+			elif Direction == 1:
+				$PlaceholderEnemy.flip_h = false
+				rayCast.position.x = 33
+			
+			cooldown = true
+		elif cooldown:
+			wait(1)
+			cooldown = false
 	
 
 	move_and_slide()
