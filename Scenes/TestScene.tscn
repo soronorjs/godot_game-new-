@@ -63,6 +63,7 @@ shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-94, -53)
+collision_mask = 5
 script = ExtResource("1_kvma6")
 
 [node name="MenuControl" type="Node" parent="CharacterBody2D"]
@@ -77,6 +78,7 @@ offset = Vector2(50.862, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_fum7p")
+one_way_collision = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
@@ -88,6 +90,8 @@ scale = Vector2(287, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 position = Vector2(0.00174219, 0.0151514)
@@ -99,6 +103,8 @@ scale = Vector2(69, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
 position = Vector2(-0.0034839, 0)
@@ -120,6 +126,8 @@ position = Vector2(-1, -65)
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(99, -42)
+collision_layer = 2
+collision_mask = 6
 script = ExtResource("6_n0hcj")
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
@@ -134,10 +142,12 @@ occluder = SubResource("OccluderPolygon2D_ew6hu")
 position = Vector2(-44.42, -18.475)
 shape = SubResource("ConvexPolygonShape2D_7xp6a")
 target_position = Vector2(41.55, -1)
+collision_mask = 7
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 position = Vector2(17, -7.73111e-05)
 target_position = Vector2(0.000656128, 147)
+collision_mask = 7
 
 [node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 position = Vector2(-99, 42)
@@ -147,7 +157,6 @@ default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
-visible = false
 position = Vector2(-101, 27)
 polygon = PackedVector2Array(92, -55, 90, -49, 87, -44, 82, -39, 81, -33, 82, -28, 86, -26, 86, -21, 86, -14, 87, -13, 86, -11, 85, -7, 89, -6, 94, -6, 103, -6, 108, -7, 107, -10, 105, -12, 107, -14, 106, -17, 108, -19, 111, -19, 113, -22, 112, -25, 109, -28, 111, -30, 111, -34, 113, -36, 111, -43, 108, -46, 105, -46, 107, -49, 105, -51, 102, -54, 98, -55)
 one_way_collision = true

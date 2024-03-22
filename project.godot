@@ -59,6 +59,12 @@ ui_right={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_render/layer_2="Enemy"
+2d_render/layer_3="Environment"
+
 [rendering]
 
 viewport/hdr_2d=true
