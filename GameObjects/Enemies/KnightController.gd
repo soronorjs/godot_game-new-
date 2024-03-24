@@ -22,7 +22,10 @@ func _physics_process(delta):
 		velocity.x = Direction * SPEED
 	elif not Patrol:
 		var directionPlayer = global_position.direction_to(Player.position).x
-		velocity.x = directionPlayer * SPEED
+		if global_position.distance_to(Player.position) > 34.0:
+			velocity.x = directionPlayer * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	# Gravity
 	if not is_on_floor():
