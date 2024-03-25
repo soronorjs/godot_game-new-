@@ -1,13 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=22 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://cj5mk4pdhngno" path="res://art/Player.png" id="3_7tc64"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
-[ext_resource type="Texture2D" uid="uid://c6digei8o6dds" path="res://art/placeholder_enemy.png" id="6_i6u8o"]
 [ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
-[ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
+[ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
@@ -32,16 +31,12 @@ polygon = PackedVector2Array(-0.507246, -0.499394, 0.492754, -0.499394, 0.492754
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3anb"]
 size = Vector2(603, 171)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_bhaho"]
-diffuse_texture = ExtResource("6_i6u8o")
-normal_texture = ExtResource("8_huonh")
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ew6hu"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1b3q4"]
 cull_mode = 2
-polygon = PackedVector2Array(-6, -26, -8, -26, -8, -24, -9, -24, -9, -23, -9, -21, -10, -21, -11, -21, -11, -18, -12, -18, -12, -20, -13, -20, -13, -18, -14, -20, -16, -22, -18, -24, -21, -22, -20, -19, -18, -18, -17, -17, -18, -16, -19, -12, -19, -3, -16, 1, -14, 1, -16, 4, -15, 10, -15, 15, -16, 19, -11, 21, -6, 19, -5, 12, -3, 19, -1, 22, 5, 20, 5, 15, 5, 10, 8, 8, 12, 6, 10, 1, 7, -2, 9, -5, 11, -9, 13, -11, 10, -15, 6, -19, 5, -22, 2, -26, -3, -28)
+polygon = PackedVector2Array(-196, -41.9991, -191, -31.9991, -186, -16.9991, -171, -1.99922, -151, 3.00069, -121, 13.0006, -80.9999, 13.0004, -45.9999, 8.00022, -16, -1.99991, 3.99994, -12, 8.99985, -32, 13.9998, -47, 18.9998, -32.0001, 23.9999, -12.0001, 29, 7.99989, 34, -2.00013, 33.9999, -22.0001, 33.9999, -32.0001, 33.9998, -57.0001, 28.9997, -72.0001, 38.9998, -52.0001, 38.9999, -32.0002, 43.9999, -17.0002, 48.9999, -12.0002, 48.9999, -32.0002, 53.9998, -57.0002, 43.9997, -72.0002, 38.9996, -87.0002, 23.9996, -97.0001, 13.9996, -97, 13.9995, -107, 13.9995, -117, -1.00055, -122, -11.0005, -127, -11.0006, -137, -21.0006, -137, -26.0006, -137, -26.0006, -147, -41.0006, -147, -51.0006, -142, -51.0007, -157, -56.0007, -162, -61.0007, -157, -71.0006, -152, -76.0006, -152, -76.0007, -162, -81.0007, -162, -86.0007, -167, -91.0007, -162, -101.001, -157, -106.001, -146.999, -111.001, -141.999, -121.001, -146.999, -131.001, -156.999, -136.001, -161.999, -141.001, -156.999, -151.001, -141.999, -151.001, -136.999, -156.001, -136.999, -166.001, -141.999, -171.001, -136.999, -176.001, -131.999, -181.001, -131.999, -186.001, -131.999, -191.001, -126.999, -186, -116.999, -196, -111.999, -201, -91.9991, -211, -91.999, -221, -86.999, -226, -76.999, -231, -61.9989, -236, -46.9989, -231, -31.9989, -231, -16.999, -226, -11.999, -226, -26.999, -221, -41.999, -211, -61.999, -216, -71.999, -206, -71.9991, -206, -66.9991, -216, -51.999, -221, -31.999, -221, -16.999, -216, 3.00098, -211, 8.00096, -206, -6.99906, -206, -26.9991, -201, -36.9991, -196, -46.9991)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7xp6a"]
-points = PackedVector2Array(-2.78, 82.35, 65.18, -3.07, -43.39, -2.1)
+points = PackedVector2Array(-3.29, 82.35, 138.955, -82.735, -167.82, -84.56)
 
 [sub_resource type="Gradient" id="Gradient_jbv6s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -52,9 +47,8 @@ gradient = SubResource("Gradient_jbv6s")
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ow8i"]
 diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3f1v"]
-radius = 16.0
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
+size = Vector2(25, 15)
 
 [node name="Node2D" type="Node2D"]
 
@@ -102,7 +96,7 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(-1, -29.76)
+position = Vector2(1, -10)
 scale = Vector2(69, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
@@ -129,33 +123,35 @@ shape = SubResource("RectangleShape2D_p3anb")
 position = Vector2(-1, -65)
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
-position = Vector2(99, -42)
+position = Vector2(76, -5)
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("6_n0hcj")
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
-rotation = 6.28319
-texture = SubResource("CanvasTexture_bhaho")
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("7_hiiv7")
+region_enabled = true
+region_rect = Rect2(158, 0, 289.768, 600)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 show_behind_parent = true
-occluder = SubResource("OccluderPolygon2D_ew6hu")
+position = Vector2(91, -3)
+occluder = SubResource("OccluderPolygon2D_1b3q4")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
-visible = false
-position = Vector2(-44.42, -18.475)
+position = Vector2(-60, -80)
 shape = SubResource("ConvexPolygonShape2D_7xp6a")
-target_position = Vector2(41.55, -1)
+target_position = Vector2(135, -0.000617981)
 collision_mask = 7
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
-position = Vector2(17, -7.73111e-05)
-target_position = Vector2(0.000656128, 147)
+position = Vector2(135, -70)
+target_position = Vector2(0.001, 900)
 collision_mask = 7
 
 [node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
-position = Vector2(-99, 42)
+position = Vector2(-8.00019, 38.9996)
 points = PackedVector2Array(0, 0, -40, 0)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
@@ -167,8 +163,8 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
-position = Vector2(-3, -3)
-shape = SubResource("CapsuleShape2D_c3f1v")
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_dawp4")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
