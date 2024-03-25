@@ -10,13 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cgj51m2ggmwje" path="res://art/Normal Maps/KnightNormal.png" id="8_huonh"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_35wcp"]
-vertices = PackedVector2Array(134, -130, 134, 19, -136, 19, -136, -143)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-146, 29, -147, -154, 144, -140, 145, 30), PackedVector2Array(-38, -41, 36, -40, 35, -19, -38, -19)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="TileSet" id="TileSet_xdjw8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
+size = Vector2(226, 137)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
 radius = 12.0
@@ -46,7 +41,7 @@ cull_mode = 2
 polygon = PackedVector2Array(-6, -26, -8, -26, -8, -24, -9, -24, -9, -23, -9, -21, -10, -21, -11, -21, -11, -18, -12, -18, -12, -20, -13, -20, -13, -18, -14, -20, -16, -22, -18, -24, -21, -22, -20, -19, -18, -18, -17, -17, -18, -16, -19, -12, -19, -3, -16, 1, -14, 1, -16, 4, -15, 10, -15, 15, -16, 19, -11, 21, -6, 19, -5, 12, -3, 19, -1, 22, 5, 20, 5, 15, 5, 10, 8, 8, 12, 6, 10, 1, 7, -2, 9, -5, 11, -9, 13, -11, 10, -15, 6, -19, 5, -22, 2, -26, -3, -28)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7xp6a"]
-points = PackedVector2Array(-2.125, 41.52, 46.27, -2.885, -1.62, 2.24)
+points = PackedVector2Array(-2.78, 82.35, 65.18, -3.07, -43.39, -2.1)
 
 [sub_resource type="Gradient" id="Gradient_jbv6s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -57,22 +52,22 @@ gradient = SubResource("Gradient_jbv6s")
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ow8i"]
 diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3f1v"]
+radius = 16.0
+height = 48.0
+
 [node name="Node2D" type="Node2D"]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_35wcp")
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, -51)
 
-[node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
-tile_set = SubResource("TileSet_xdjw8")
-format = 2
-layer_0/navigation_enabled = false
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
-position = Vector2(-1, -30)
-vertices = PackedVector2Array(-34, -7, 34, -8, 34, 7, -34, 9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(5, -17.5)
+shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-94, -53)
+collision_mask = 5
 script = ExtResource("1_kvma6")
 
 [node name="MenuControl" type="Node" parent="CharacterBody2D"]
@@ -87,6 +82,7 @@ offset = Vector2(50.862, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_fum7p")
+one_way_collision = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
@@ -98,6 +94,8 @@ scale = Vector2(287, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
 position = Vector2(0.00174219, 0.0151514)
@@ -109,6 +107,8 @@ scale = Vector2(69, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
 position = Vector2(-0.0034839, 0)
@@ -130,30 +130,45 @@ position = Vector2(-1, -65)
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(99, -42)
+collision_layer = 2
+collision_mask = 6
 script = ExtResource("6_n0hcj")
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
+rotation = 6.28319
 texture = SubResource("CanvasTexture_bhaho")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_ew6hu")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
 visible = false
-position = Vector2(-101, 27)
-polygon = PackedVector2Array(92, -55, 90, -49, 87, -44, 82, -39, 81, -33, 82, -28, 86, -26, 86, -21, 86, -14, 87, -13, 86, -11, 85, -7, 89, -6, 94, -6, 103, -6, 108, -7, 107, -10, 105, -12, 107, -14, 106, -17, 108, -19, 111, -19, 113, -22, 112, -25, 109, -28, 111, -30, 111, -34, 113, -36, 111, -43, 108, -46, 105, -46, 107, -49, 105, -51, 102, -54, 98, -55)
-one_way_collision = true
+position = Vector2(-44.42, -18.475)
+shape = SubResource("ConvexPolygonShape2D_7xp6a")
+target_position = Vector2(41.55, -1)
+collision_mask = 7
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+position = Vector2(17, -7.73111e-05)
+target_position = Vector2(0.000656128, 147)
+collision_mask = 7
+
+[node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+position = Vector2(-99, 42)
+points = PackedVector2Array(0, 0, -40, 0)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D2"]
 path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2"]
-position = Vector2(-46, -17)
-shape = SubResource("ConvexPolygonShape2D_7xp6a")
-target_position = Vector2(-1, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-3, -3)
+shape = SubResource("CapsuleShape2D_c3f1v")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
@@ -184,11 +199,6 @@ offset_right = 167.0
 offset_bottom = 108.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, -40, 0)
-width = 2.0
-default_color = Color(1, 0, 0, 1)
-texture = SubResource("CanvasTexture_1ow8i")
-
+[connection signal="body_exited" from="Area2D2" to="CharacterBody2D2" method="_on_area_2d_2_body_exited"]
 [connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D2" method="_on_navigation_agent_2d_velocity_computed"]
