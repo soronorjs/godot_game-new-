@@ -13,7 +13,7 @@ var cooldown = false
 var Patrol = true
 
 const SPEED = 30.0
-const JUMP_VELOCITY = -300.0
+var JUMP_VELOCITY = 0.0
 
 func _physics_process(delta):
 	
@@ -37,7 +37,7 @@ func _physics_process(delta):
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
 				print(global_position.distance_to(shapeCast.get_collider(i).position))
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 100.0) and (shapeCast.get_collider(i).global_position.y >= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 50.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
 					print("JUMP!")
 			while shapeCast.get_collider(i) == Player:
