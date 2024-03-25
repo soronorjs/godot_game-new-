@@ -145,8 +145,8 @@ target_position = Vector2(135, -0.000617981)
 collision_mask = 7
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
-position = Vector2(108, -3)
-target_position = Vector2(0.000656128, 147)
+position = Vector2(135, -70)
+target_position = Vector2(0.001, 400.58)
 collision_mask = 7
 
 [node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
