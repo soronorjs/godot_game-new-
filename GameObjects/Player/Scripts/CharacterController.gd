@@ -29,5 +29,6 @@ func _physics_process(delta):
 			$Player.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$Player.play("Idle")
 
 	move_and_slide()
