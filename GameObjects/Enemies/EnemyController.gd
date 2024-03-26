@@ -12,8 +12,8 @@ var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
-const SPEED = 30.0
-const JUMP_VELOCITY = -300.0
+const SPEED = "metadata/Speed"
+const JUMP_VELOCITY = "metadata/Jump Velocity"
 
 func _physics_process(delta):
 	
