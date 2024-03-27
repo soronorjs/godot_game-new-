@@ -12,8 +12,8 @@ var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
-const SPEED = "metadata/Speed"
-const JUMP_VELOCITY = "metadata/Jump Velocity"
+var SPEED = $".".get_meta("Speed")
+var JUMP_VELOCITY = $".".get_meta("Jump Velocity")
 
 func _physics_process(delta):
 	
@@ -36,10 +36,8 @@ func _physics_process(delta):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
-				print(global_position.distance_to(shapeCast.get_collider(i).position))
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 50.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
-					print("JUMP!")
 			while shapeCast.get_collider(i) == Player:
 				Patrol = false
 				break
@@ -63,7 +61,6 @@ func _physics_process(delta):
 		elif cooldown:
 			wait(1)
 			cooldown = false
-
 	elif not Patrol:
 		Direction *= signf(global_position.direction_to(Player.position).y)
 		print(Direction)
@@ -77,6 +74,7 @@ func _physics_process(delta):
 		elif $".".velocity.x > 0:
 			$PlaceholderEnemy.flip_h = false
 			rayCast.position.x = 33
+	
 
 	move_and_slide()
 	
