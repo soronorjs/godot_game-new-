@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-[gd_scene load_steps=24 format=3 uid="uid://psu3mc3itic5"]
-=======
-[gd_scene load_steps=22 format=3 uid="uid://psu3mc3itic5"]
->>>>>>> main
-=======
 [gd_scene load_steps=35 format=3 uid="uid://psu3mc3itic5"]
->>>>>>> 65cf7f1e3af19b74eaf2bee5f65037edde82cef8
-
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
