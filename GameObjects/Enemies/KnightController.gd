@@ -63,7 +63,6 @@ func _physics_process(delta):
 		elif cooldown:
 			wait(1)
 			cooldown = false
-
 	elif not Patrol:
 		Direction *= signf(global_position.direction_to(Player.position).y)
 		print(Direction)
@@ -77,6 +76,7 @@ func _physics_process(delta):
 		elif $".".velocity.x > 0:
 			$PlaceholderEnemy.flip_h = false
 			rayCast.position.x = 33
+	
 
 	move_and_slide()
 	
