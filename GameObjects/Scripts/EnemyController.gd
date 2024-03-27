@@ -1,25 +1,29 @@
 extends CharacterBody2D
 
+# The Player
+@onready var Player: CharacterBody2D = get_node("%Player")
+
+# Enemy Object
+@onready var Enemy_Base: CharacterBody2D = $"."
+@onready var Enemy_Sprite: Sprite2D = get_node("Enemy_Sprite")
+@onready var line: Line2D = get_node("Enemy_Sprite/Line2D")
+@onready var shapeCast: ShapeCast2D = get_node("Enemy_Sprite/ShapeCast2D")
+@onready var rayCast: RayCast2D = get_node("Enemy_Sprite/RayCast2D")
+
+# Metadata
+@onready var SPEED = Enemy_Base.get_meta(&"Speed")
+@onready var JUMP_VELOCITY = Enemy_Base.get_meta(&"Jump_Velocity")
+@onready var trackPlayer = Enemy_Base.get_meta(&"Track_Player")
+@onready var jumpRange = Enemy_Base.get_meta(&"Jump_Range")
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-@onready var Nav: NavigationAgent2D = get_node("NavigationAgent2D")
-@onready var Player: CharacterBody2D = get_node("../CharacterBody2D")
-@onready var line: Line2D = get_node("PlaceholderEnemy/Line2D")
-@onready var shapeCast: ShapeCast2D = get_node("PlaceholderEnemy/ShapeCast2D")
-@onready var rayCast: RayCast2D = get_node("PlaceholderEnemy/RayCast2D")
-
 var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
-@onready var SPEED = $".".get_meta(&"Speed")
-@onready var JUMP_VELOCITY = $".".get_meta(&"Jump_Velocity")
-@onready var trackPlayer = $".".get_meta(&"Track_Player")
-@onready var jumpRange = $".".get_meta(&"Jump_Range")
-
 func _physics_process(delta):
 	
-	print(trackPlayer)
+	print(shapeCast)
 	
 	# Walking Logic
 	if Patrol:
@@ -40,7 +44,7 @@ func _physics_process(delta):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= jumpRange) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= jumpRange) and (shapeCast.get_collider(i).global_position.y <= Enemy_Base.position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
 					print("Jump!")
 			if trackPlayer:
@@ -60,10 +64,10 @@ func _physics_process(delta):
 			line.set_point_position(1, rayCast.target_position)
 			
 			if Direction == -1:
-				$PlaceholderEnemy.flip_h = true
+				Enemy_Sprite.flip_h = true
 				rayCast.position.x = -33
 			elif Direction == 1:
-				$PlaceholderEnemy.flip_h = false
+				Enemy_Sprite.flip_h = false
 				rayCast.position.x = 33
 			
 			cooldown = true
@@ -77,11 +81,11 @@ func _physics_process(delta):
 		line.set_point_position(0, rayCast.position)
 		line.set_point_position(1, rayCast.target_position)
 		
-		if $".".velocity.x < 0:
-			$PlaceholderEnemy.flip_h = true
+		if Enemy_Base.velocity.x < 0:
+			Enemy_Sprite.flip_h = true
 			rayCast.position.x = -33
-		elif $".".velocity.x > 0:
-			$PlaceholderEnemy.flip_h = false
+		elif Enemy_Base.velocity.x > 0:
+			Enemy_Sprite.flip_h = false
 			rayCast.position.x = 33
 	
 
