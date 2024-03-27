@@ -1,11 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=22 format=3 uid="uid://ce8ye425e7ve"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
-[ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
+[ext_resource type="Script" path="res://GameObjects/Scripts/KnightController.gd" id="6_82ys4"]
 [ext_resource type="Texture2D" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
@@ -220,8 +220,12 @@ position = Vector2(-1, -65)
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(76, -5)
 collision_layer = 2
-collision_mask = 6
-script = ExtResource("6_n0hcj")
+collision_mask = 14
+script = ExtResource("6_82ys4")
+metadata/Jump_Velocity = 0.0
+metadata/Speed = 30.0
+metadata/Track_Player = false
+metadata/Jump_Range = 59.0
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
 scale = Vector2(0.08, 0.08)
