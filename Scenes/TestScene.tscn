@@ -130,6 +130,7 @@ script = ExtResource("6_82ys4")
 metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
 metadata/Track_Player = true
+metadata/Jump_Range = 59.0
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
 scale = Vector2(0.08, 0.08)
