@@ -12,10 +12,12 @@ var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
-var SPEED = $".".get_meta("Speed")
-var JUMP_VELOCITY = $".".get_meta("Jump Velocity")
+@onready var SPEED = $".".get_meta(&"Speed")
+@onready var JUMP_VELOCITY = $".".get_meta(&"Jump_Velocity")
 
 func _physics_process(delta):
+	
+	print(SPEED)
 	
 	# Walking Logic
 	if Patrol:
