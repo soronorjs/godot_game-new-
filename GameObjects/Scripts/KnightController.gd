@@ -14,10 +14,12 @@ var Patrol = true
 
 @onready var SPEED = $".".get_meta(&"Speed")
 @onready var JUMP_VELOCITY = $".".get_meta(&"Jump_Velocity")
+@onready var trackPlayer = $".".get_meta(&"Track_Player")
+@onready var jumpRange = $".".get_meta(&"Jump_Range")
 
 func _physics_process(delta):
 	
-	print(SPEED)
+	print(trackPlayer)
 	
 	# Walking Logic
 	if Patrol:
@@ -38,14 +40,19 @@ func _physics_process(delta):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= jumpRange) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
-			while shapeCast.get_collider(i) == Player:
-				Patrol = false
-				break
+					print("Jump!")
+			if trackPlayer:
+				while shapeCast.get_collider(i) == Player:
+					if rayCast.is_colliding():
+						Patrol = false
+					elif not rayCast.is_colliding():
+						Patrol = true
+					break
 
 	# Edge avoidance
-	if not rayCast.is_colliding() and Patrol:
+	if not rayCast.is_colliding() and Patrol or is_on_wall() and JUMP_VELOCITY >= 0:
 		if not cooldown:
 			Direction *= -1
 	
@@ -63,12 +70,6 @@ func _physics_process(delta):
 		elif cooldown:
 			wait(1)
 			cooldown = false
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 65cf7f1e3af19b74eaf2bee5f65037edde82cef8
 	elif not Patrol:
 		Direction *= signf(global_position.direction_to(Player.position).y)
 		print(Direction)
@@ -82,11 +83,7 @@ func _physics_process(delta):
 		elif $".".velocity.x > 0:
 			$PlaceholderEnemy.flip_h = false
 			rayCast.position.x = 33
-<<<<<<< HEAD
 	
->>>>>>> main
-=======
->>>>>>> 65cf7f1e3af19b74eaf2bee5f65037edde82cef8
 
 	move_and_slide()
 	
