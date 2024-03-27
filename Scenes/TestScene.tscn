@@ -125,10 +125,11 @@ position = Vector2(-1, -65)
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(76, -5)
 collision_layer = 2
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("6_82ys4")
-metadata/Jump_Velocity = -300.0
+metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
+metadata/Track_Player = true
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
 scale = Vector2(0.08, 0.08)

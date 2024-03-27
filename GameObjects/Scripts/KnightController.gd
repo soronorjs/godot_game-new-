@@ -14,10 +14,11 @@ var Patrol = true
 
 @onready var SPEED = $".".get_meta(&"Speed")
 @onready var JUMP_VELOCITY = $".".get_meta(&"Jump_Velocity")
+@onready var trackPlayer = $".".get_meta(&"Track_Player")
 
 func _physics_process(delta):
 	
-	print(SPEED)
+	print(trackPlayer)
 	
 	# Walking Logic
 	if Patrol:
@@ -40,12 +41,16 @@ func _physics_process(delta):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
 				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
-			while shapeCast.get_collider(i) == Player:
-				Patrol = false
-				break
+			if trackPlayer:
+				while shapeCast.get_collider(i) == Player:
+					if rayCast.is_colliding():
+						Patrol = false
+					elif not rayCast.is_colliding():
+						Patrol = true
+					break
 
 	# Edge avoidance
-	if not rayCast.is_colliding() and Patrol:
+	if not rayCast.is_colliding() and Patrol or is_on_wall():
 		if not cooldown:
 			Direction *= -1
 	
