@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=22 format=3 uid="uid://ce8ye425e7ve"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
