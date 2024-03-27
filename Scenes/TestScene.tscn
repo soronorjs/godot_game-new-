@@ -1,12 +1,13 @@
-[gd_scene load_steps=35 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=36 format=3 uid="uid://psu3mc3itic5"]
+
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
-[ext_resource type="Texture2D" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
+[ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/Health System.gd" id="4_fq5vo"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/KnightController.gd" id="6_82ys4"]
-[ext_resource type="Texture2D" path="res://art/daddel_crab3.png" id="7_hiiv7"]
+[ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
@@ -259,11 +260,6 @@ width = 2.0
 default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D2"]
-position = Vector2(-101, 27)
-polygon = PackedVector2Array(92, -55, 90, -49, 87, -44, 82, -39, 81, -33, 82, -28, 86, -26, 86, -21, 86, -14, 87, -13, 86, -11, 85, -7, 89, -6, 94, -6, 103, -6, 108, -7, 107, -10, 105, -12, 107, -14, 106, -17, 108, -19, 111, -19, 113, -22, 112, -25, 109, -28, 111, -30, 111, -34, 113, -36, 111, -43, 108, -46, 105, -46, 107, -49, 105, -51, 102, -54, 98, -55)
-one_way_collision = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_dawp4")
@@ -298,5 +294,3 @@ offset_bottom = 108.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
 
 [connection signal="body_exited" from="Area2D2" to="CharacterBody2D2" method="_on_area_2d_2_body_exited"]
-[connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D2" method="_on_navigation_agent_2d_velocity_computed"]
