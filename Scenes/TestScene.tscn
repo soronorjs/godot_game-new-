@@ -1,22 +1,113 @@
-[gd_scene load_steps=24 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=35 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
-[ext_resource type="Texture2D" uid="uid://cj5mk4pdhngno" path="res://art/Player.png" id="3_7tc64"]
+[ext_resource type="Texture2D" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/Health System.gd" id="4_fq5vo"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/KnightController.gd" id="6_82ys4"]
-[ext_resource type="Script" path="res://GameObjects/Enemies/KnightController.gd" id="6_n0hcj"]
-[ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
+[ext_resource type="Texture2D" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3kns"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(0, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ibll"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(39, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arw07"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(78, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngx6f"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(117, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knrl7"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(156, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjsel"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(195, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t848q"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(234, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84bw1"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(273, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqcfx"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(312, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyxgw"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(351, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dcc8"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(390, 0, 39, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbv0o"]
+atlas = ExtResource("3_xawkg")
+region = Rect2(429, 0, 39, 77)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6t77s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3kns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ibll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arw07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngx6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knrl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjsel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t848q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84bw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqcfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyxgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dcc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbv0o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 60.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
 radius = 12.0
-height = 40.0
+height = 44.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -69,10 +160,13 @@ script = ExtResource("1_kvma6")
 [node name="MenuControl" type="Node" parent="CharacterBody2D"]
 script = ExtResource("3_4w0vg")
 
-[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-8.00001, 1)
-scale = Vector2(0.193333, 0.193333)
-texture = ExtResource("3_7tc64")
+[node name="Player" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-24, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_6t77s")
+animation = &"Idle"
+frame = 1
+speed_scale = 0.5
 offset = Vector2(50.862, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -130,10 +224,12 @@ position = Vector2(-1, -65)
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(76, -5)
 collision_layer = 2
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("6_82ys4")
-metadata/Jump_Velocity = -300.0
+metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
+metadata/Track_Player = false
+metadata/Jump_Range = 59.0
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
 scale = Vector2(0.08, 0.08)

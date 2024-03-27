@@ -12,10 +12,12 @@ var Direction = Vector2.LEFT.x
 var cooldown = false
 var Patrol = true
 
-const SPEED = "metadata/Speed"
-const JUMP_VELOCITY = "metadata/Jump Velocity"
+@onready var SPEED = $".".get_meta(&"Speed")
+@onready var JUMP_VELOCITY = $".".get_meta(&"Jump_Velocity")
 
 func _physics_process(delta):
+	
+	print(SPEED)
 	
 	# Walking Logic
 	if Patrol:
@@ -36,10 +38,8 @@ func _physics_process(delta):
 		var collisionAmount = shapeCast.get_collision_count()
 		for i in range(collisionAmount):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
-				print(global_position.distance_to(shapeCast.get_collider(i).position))
-				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 50.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
+				if(global_position.distance_to(shapeCast.get_collider(i).position) <= 59.0) and (shapeCast.get_collider(i).global_position.y <= $".".position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
-					print("JUMP!")
 			while shapeCast.get_collider(i) == Player:
 				Patrol = false
 				break
