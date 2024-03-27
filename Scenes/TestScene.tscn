@@ -129,7 +129,7 @@ collision_mask = 14
 script = ExtResource("6_82ys4")
 metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
-metadata/Track_Player = true
+metadata/Track_Player = false
 metadata/Jump_Range = 59.0
 
 [node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
