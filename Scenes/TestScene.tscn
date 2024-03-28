@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
-[ext_resource type="Texture2D" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
+[ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_xawkg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
-[ext_resource type="Script" path="res://GameObjects/Scripts/KnightController.gd" id="6_82ys4"]
-[ext_resource type="Texture2D" path="res://art/daddel_crab3.png" id="7_hiiv7"]
+[ext_resource type="Script" path="res://GameObjects/Scripts/EnemyController.gd" id="6_50kgo"]
+[ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
@@ -151,15 +151,16 @@ position = Vector2(0, -51)
 position = Vector2(5, -17.5)
 shape = SubResource("RectangleShape2D_dqhsm")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(-94, -53)
 collision_mask = 5
 script = ExtResource("1_kvma6")
 
-[node name="MenuControl" type="Node" parent="CharacterBody2D"]
+[node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
 
-[node name="Player" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="Player_Sprite" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
@@ -168,7 +169,7 @@ frame = 1
 speed_scale = 0.5
 offset = Vector2(50.862, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_fum7p")
 one_way_collision = true
@@ -217,51 +218,47 @@ shape = SubResource("RectangleShape2D_p3anb")
 [node name="Checkpoint" type="Marker2D" parent="."]
 position = Vector2(-1, -65)
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="DaddelCrab" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(76, -5)
 collision_layer = 2
 collision_mask = 14
-script = ExtResource("6_82ys4")
+script = ExtResource("6_50kgo")
 metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
 metadata/Track_Player = false
 metadata/Jump_Range = 59.0
 
-[node name="PlaceholderEnemy" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Enemy_Sprite" type="Sprite2D" parent="DaddelCrab"]
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("7_hiiv7")
 region_enabled = true
 region_rect = Rect2(158, 0, 289.768, 600)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DaddelCrab/Enemy_Sprite"]
 show_behind_parent = true
 position = Vector2(91, -3)
 occluder = SubResource("OccluderPolygon2D_1b3q4")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
 position = Vector2(-60, -80)
 shape = SubResource("ConvexPolygonShape2D_7xp6a")
 target_position = Vector2(135, -0.000617981)
 collision_mask = 7
 
-[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+[node name="RayCast2D" type="RayCast2D" parent="DaddelCrab/Enemy_Sprite"]
 position = Vector2(135, -70)
 target_position = Vector2(0.001, 900)
 collision_mask = 7
 
-[node name="Line2D" type="Line2D" parent="CharacterBody2D2/PlaceholderEnemy"]
+[node name="Line2D" type="Line2D" parent="DaddelCrab/Enemy_Sprite"]
 position = Vector2(-8.00019, 38.9996)
 points = PackedVector2Array(0, 0, -40, 0)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D2"]
-path_postprocessing = 1
-avoidance_enabled = true
-debug_enabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DaddelCrab"]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_dawp4")
 
@@ -294,6 +291,4 @@ offset_right = 167.0
 offset_bottom = 108.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
 
-[connection signal="body_exited" from="Area2D2" to="CharacterBody2D2" method="_on_area_2d_2_body_exited"]
-[connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D" method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="velocity_computed" from="CharacterBody2D2/NavigationAgent2D" to="CharacterBody2D2" method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
