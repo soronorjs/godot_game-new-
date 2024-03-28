@@ -192,8 +192,8 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -10)
-scale = Vector2(69, 16.5)
+position = Vector2(1, -39.375)
+scale = Vector2(69, 75.25)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
