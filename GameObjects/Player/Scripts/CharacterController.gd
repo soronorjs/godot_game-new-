@@ -23,6 +23,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	if direction:
+		Player_Sprite.play()
 		velocity.x = direction * SPEED
 		if direction == -1:
 			Player_Sprite.flip_h = true
@@ -30,6 +31,7 @@ func _physics_process(delta):
 			Player_Sprite.flip_h = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		Player_Sprite.play("Idle")
+		Player_Sprite.stop()
+		Player_Sprite.frame = 1
 
 	move_and_slide()

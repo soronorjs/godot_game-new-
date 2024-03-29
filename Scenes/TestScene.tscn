@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=32 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
+[ext_resource type="Texture2D" uid="uid://c487b8uf3mgdd" path="res://art/animations/Player_Walk.jpg" id="3_4tdfx"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/Camera2D.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
@@ -11,17 +12,80 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nbpj"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(0, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjxkw"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(46, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouos5"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(92, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tm3k"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(138, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sh7s"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(184, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iteum"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(230, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu2t7"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(276, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiiyj"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(322, 0, 46, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lndr"]
+atlas = ExtResource("3_4tdfx")
+region = Rect2(368, 0, 46, 67)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6t77s"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nbpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjxkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouos5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tm3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sh7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iteum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu2t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiiyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lndr")
+}],
 "loop": true,
-"name": &"Idle",
+"name": &"Walk",
 "speed": 60.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
 radius = 12.0
-height = 44.0
+height = 32.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -79,8 +143,10 @@ script = ExtResource("3_4w0vg")
 position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
-animation = &"Idle"
-speed_scale = 0.5
+animation = &"Walk"
+frame = 5
+frame_progress = 0.507602
+speed_scale = 0.15
 offset = Vector2(50.862, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
