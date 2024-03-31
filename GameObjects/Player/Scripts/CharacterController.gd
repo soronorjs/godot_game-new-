@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-const SPEED = 150.0
+const SPEED = 95.5
 const JUMP_VELOCITY = -400.0
 
 @onready var Player_Base: CharacterBody2D = get_node("%Player")
