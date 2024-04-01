@@ -27,8 +27,10 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		if direction == -1:
 			Player_Sprite.flip_h = true
+			$CollisionShape2D.position.x = 0
 		else:
 			Player_Sprite.flip_h = false
+			$CollisionShape2D.position.x = 4
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		Player_Sprite.stop()
