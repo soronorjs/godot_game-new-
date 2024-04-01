@@ -135,6 +135,7 @@ unique_name_in_owner = true
 position = Vector2(-93, -23)
 collision_mask = 5
 script = ExtResource("1_kvma6")
+metadata/Dashing = false
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
@@ -152,6 +153,11 @@ offset = Vector2(50.862, 0)
 position = Vector2(4, 3)
 shape = SubResource("CapsuleShape2D_fum7p")
 one_way_collision = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2(2, 15)
+target_position = Vector2(48, -35)
+collision_mask = 7
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
@@ -171,8 +177,8 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -10)
-scale = Vector2(69, 16.5)
+position = Vector2(1, -10.875)
+scale = Vector2(69, 18.25)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
