@@ -23,18 +23,18 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	if Input.is_action_just_pressed("Dash"):
-		if $Player_Sprite.flip_h == true:
+		if Player_Sprite.flip_h == true:
 			$RayCast2D.target_position.x = -50
 			if not $RayCast2D.is_colliding():
-				%Player.position.x += 50 * -1
+				Player_Base.position.x += 50 * -1
 			else:
-				%Player.position.x += global_position.distance_to($RayCast2D.get_collision_point())
+				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
 		else:
 			$RayCast2D.target_position.x = 50
 			if not $RayCast2D.is_colliding():
-				%Player.position.x += 50 * 1
+				Player_Base.position.x += 50 * 1
 			else:
-				%Player.position.x += global_position.distance_to($RayCast2D.get_collision_point())
+				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
 	
 	if direction:
 		Player_Sprite.play()
