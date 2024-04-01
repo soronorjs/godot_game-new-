@@ -1,17 +1,13 @@
 extends CharacterBody2D
 
-<<<<<<< HEAD
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-const SPEED = 95.5
-=======
 
-const SPEED = 150.0
->>>>>>> 93b984eca940017b89d3b740d50ef9fd9cd6a552
+const SPEED = 95.5
 const JUMP_VELOCITY = -400.0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-@onready var Dashing = $".".get_meta(&"Dashing")
+@onready var Player_Base = %Player
+@onready var Dashing = Player_Base.get_meta(&"Dashing")
+@onready var Player_Sprite = get_node("Player_Sprite")
 
 func _physics_process(delta):
 	
@@ -41,7 +37,6 @@ func _physics_process(delta):
 				%Player.position.x += global_position.distance_to($RayCast2D.get_collision_point())
 	
 	if direction:
-<<<<<<< HEAD
 		Player_Sprite.play()
 		velocity.x = direction * SPEED
 		if direction == -1:
@@ -54,16 +49,5 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		Player_Sprite.stop()
 		Player_Sprite.frame = 1
-=======
-		print($RayCast2D.is_colliding())
-		velocity.x = direction * SPEED
-		if direction == -1:
-			$Player_Sprite.flip_h = true
-		else:
-			$Player_Sprite.flip_h = false
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$Player_Sprite.play("Idle")
->>>>>>> 93b984eca940017b89d3b740d50ef9fd9cd6a552
 
 	move_and_slide()
