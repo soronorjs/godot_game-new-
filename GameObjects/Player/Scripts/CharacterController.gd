@@ -37,6 +37,8 @@ func _physics_process(delta):
 				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
 	
 	if direction:
+		Player_Sprite.animation = "Walk"
+		Player_Sprite.speed_scale = 0.13
 		Player_Sprite.play()
 		velocity.x = direction * SPEED
 		if direction == -1:
@@ -47,7 +49,8 @@ func _physics_process(delta):
 			$CollisionShape2D.position.x = 4
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		Player_Sprite.stop()
-		Player_Sprite.frame = 1
+		Player_Sprite.animation = "Idle"
+		Player_Sprite.speed_scale = 0.3
+		Player_Sprite.play()
 
 	move_and_slide()
