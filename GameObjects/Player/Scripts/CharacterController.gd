@@ -16,8 +16,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	while Input.is_action_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		break
 
 	if Input.is_action_just_released("ui_accept"):
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
