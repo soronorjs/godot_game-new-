@@ -282,6 +282,8 @@ position = Vector2(-93, -23)
 collision_mask = 5
 script = ExtResource("1_kvma6")
 metadata/Dashing = false
+metadata/Jump_Velocity = -400.0
+metadata/Speed = 95.5
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")

@@ -2,12 +2,11 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-const SPEED = 95.5
-const JUMP_VELOCITY = -400.0
-
 @onready var Player_Base = %Player
-@onready var Dashing = Player_Base.get_meta(&"Dashing")
 @onready var Player_Sprite = get_node("Player_Sprite")
+@onready var Dashing = Player_Base.get_meta(&"Dashing")
+@onready var Speed = Player_Base.get_meta(&"Speed")
+@onready var jumpVelocity = Player_Base.get_meta(&"Jump_Velocity")
 
 func _physics_process(delta):
 	
@@ -17,7 +16,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	while Input.is_action_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jumpVelocity
 		break
 
 	if Input.is_action_just_released("ui_accept"):
@@ -44,7 +43,7 @@ func _physics_process(delta):
 		Player_Sprite.animation = "Walk"
 		Player_Sprite.speed_scale = 0.13
 		Player_Sprite.play()
-		velocity.x = direction * SPEED
+		velocity.x = direction * Speed
 		if direction == -1:
 			Player_Sprite.flip_h = true
 			$CollisionShape2D.position.x = 0
@@ -52,7 +51,7 @@ func _physics_process(delta):
 			Player_Sprite.flip_h = false
 			$CollisionShape2D.position.x = 4
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, Speed)
 		Player_Sprite.animation = "Idle"
 		Player_Sprite.speed_scale = 0.33
 		Player_Sprite.play()
