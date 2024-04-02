@@ -19,6 +19,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+	if Input.is_action_just_released("ui_accept"):
+		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+
 	# Walking Controls
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -54,3 +57,7 @@ func _physics_process(delta):
 		Player_Sprite.play()
 
 	move_and_slide()
+	
+	
+func wait(seconds):
+	get_tree().create_timer(seconds)
