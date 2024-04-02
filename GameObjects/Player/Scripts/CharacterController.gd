@@ -50,7 +50,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		Player_Sprite.animation = "Idle"
-		Player_Sprite.speed_scale = 0.3
+		Player_Sprite.speed_scale = 0.33
 		Player_Sprite.play()
 
 	move_and_slide()
