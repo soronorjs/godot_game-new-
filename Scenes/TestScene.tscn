@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_bs7h6"]
-[ext_resource type="Texture2D" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
+[ext_resource type="Texture2D" uid="uid://dha7sss55u8l7" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/CameraController.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/EnemyController.gd" id="6_50kgo"]
@@ -257,7 +257,7 @@ cull_mode = 2
 polygon = PackedVector2Array(-0.507246, -0.499394, 0.492754, -0.499394, 0.492754, 0.530909, -0.507246, 0.530909)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3anb"]
-size = Vector2(1905, 171)
+size = Vector2(603, 171)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1b3q4"]
 cull_mode = 2
@@ -317,9 +317,13 @@ position = Vector2(2, 15)
 target_position = Vector2(48, -35)
 collision_mask = 7
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.44, 3.44)
+script = ExtResource("4_0wecj")
+
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(80.5, 7)
-scale = Vector2(1321, 16.5)
+position = Vector2(-1, 7)
+scale = Vector2(287, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
@@ -351,7 +355,7 @@ occluder = SubResource("OccluderPolygon2D_wtajc")
 script = ExtResource("5_jx7um")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(105.5, 140.5)
+position = Vector2(-7, 140.5)
 shape = SubResource("RectangleShape2D_p3anb")
 
 [node name="Checkpoint" type="Marker2D" parent="."]
@@ -424,22 +428,10 @@ texture_scale = 0.2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
-offset_left = -850.0
-offset_top = -667.0
-offset_right = 1053.0
-offset_bottom = 423.0
+offset_left = -177.0
+offset_top = -134.0
+offset_right = 159.0
+offset_bottom = 111.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3.44, 3.44)
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.3
-drag_top_margin = 0.4
-drag_right_margin = 0.3
-drag_bottom_margin = 0.01
-script = ExtResource("4_0wecj")
 
 [connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
