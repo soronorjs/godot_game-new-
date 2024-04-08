@@ -63,12 +63,7 @@ func _physics_process(delta):
 		elif cooldown:
 			wait(1)
 			cooldown = false
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> 65cf7f1e3af19b74eaf2bee5f65037edde82cef8
 	elif not Patrol:
 		Direction *= signf(global_position.direction_to(Player.position).y)
 		print(Direction)
@@ -82,11 +77,6 @@ func _physics_process(delta):
 		elif $".".velocity.x > 0:
 			$PlaceholderEnemy.flip_h = false
 			rayCast.position.x = 33
-<<<<<<< HEAD
-	
->>>>>>> main
-=======
->>>>>>> 65cf7f1e3af19b74eaf2bee5f65037edde82cef8
 
 	move_and_slide()
 	
