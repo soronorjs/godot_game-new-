@@ -397,7 +397,7 @@ default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="SpikeDetection" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
-position = Vector2(0, -150)
+position = Vector2(0, -125)
 scale = Vector2(12.5, 12.5)
 shape = SubResource("RectangleShape2D_4a6nf")
 target_position = Vector2(0, 0)
