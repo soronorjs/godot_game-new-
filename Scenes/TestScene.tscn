@@ -267,10 +267,10 @@ gradient = SubResource("Gradient_jbv6s")
 diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a6nf"]
-size = Vector2(19.06, 7.28)
+size = Vector2(25.175, 7.3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
-size = Vector2(25, 15)
+size = Vector2(25, 12)
 
 [node name="Node2D" type="Node2D"]
 
@@ -358,8 +358,8 @@ position = Vector2(-1, -65)
 [node name="DaddelCrab" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(76, -5)
-collision_layer = 2
-collision_mask = 14
+collision_layer = 3
+collision_mask = 15
 script = ExtResource("6_50kgo")
 metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
@@ -403,8 +403,7 @@ shape = SubResource("RectangleShape2D_4a6nf")
 target_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DaddelCrab"]
-visible = false
-position = Vector2(0.5, -6.5)
+position = Vector2(0.5, -5)
 shape = SubResource("RectangleShape2D_dawp4")
 
 [node name="Mortality" type="Node" parent="DaddelCrab"]
