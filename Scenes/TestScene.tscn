@@ -1,14 +1,16 @@
-[gd_scene load_steps=53 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=56 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_bs7h6"]
-[ext_resource type="Texture2D" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
+[ext_resource type="Texture2D" uid="uid://dha7sss55u8l7" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/CameraController.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
+[ext_resource type="Script" path="res://GameObjects/Player/Scripts/Mortality.gd" id="5_tcxkh"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/EnemyController.gd" id="6_50kgo"]
 [ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
+[ext_resource type="Script" path="res://GameObjects/Scripts/Mortality.gd" id="9_og2fs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
@@ -264,6 +266,9 @@ gradient = SubResource("Gradient_jbv6s")
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ow8i"]
 diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a6nf"]
+size = Vector2(19.06, 6.345)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
 size = Vector2(25, 15)
 
@@ -284,6 +289,7 @@ script = ExtResource("1_kvma6")
 metadata/Dashing = false
 metadata/Jump_Velocity = -400.0
 metadata/Speed = 95.5
+metadata/HP = 100.0
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
@@ -305,6 +311,9 @@ one_way_collision = true
 position = Vector2(2, 15)
 target_position = Vector2(48, -35)
 collision_mask = 7
+
+[node name="Mortality" type="Node" parent="Player"]
+script = ExtResource("5_tcxkh")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
@@ -369,6 +378,7 @@ position = Vector2(91, -3)
 occluder = SubResource("OccluderPolygon2D_1b3q4")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
+visible = false
 position = Vector2(-60, -80)
 shape = SubResource("ConvexPolygonShape2D_7xp6a")
 target_position = Vector2(135, -0.000617981)
@@ -386,9 +396,19 @@ width = 2.0
 default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
+[node name="SpikeDetection" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
+position = Vector2(0, -125)
+scale = Vector2(12.5, 12.5)
+shape = SubResource("RectangleShape2D_4a6nf")
+target_position = Vector2(0, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DaddelCrab"]
+visible = false
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_dawp4")
+
+[node name="Mortality" type="Node" parent="DaddelCrab"]
+script = ExtResource("9_og2fs")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
