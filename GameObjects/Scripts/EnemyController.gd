@@ -23,8 +23,6 @@ var Patrol = true
 
 func _physics_process(delta):
 	
-	print(shapeCast)
-	
 	# Walking Logic
 	if Patrol:
 		velocity.x = Direction * SPEED
