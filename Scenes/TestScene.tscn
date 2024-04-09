@@ -267,7 +267,7 @@ gradient = SubResource("Gradient_jbv6s")
 diffuse_texture = SubResource("GradientTexture1D_a6a2u")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a6nf"]
-size = Vector2(19.06, 7.27)
+size = Vector2(19.06, 7.28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
 size = Vector2(25, 15)
