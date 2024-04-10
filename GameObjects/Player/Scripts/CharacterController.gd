@@ -6,7 +6,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Player_Sprite = get_node("Player_Sprite")
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
 @onready var Speed = Player_Base.get_meta(&"Speed")
+@onready var sprintSpeed = Player_Base.get_meta(&"Sprint_Speed")
 @onready var jumpVelocity = Player_Base.get_meta(&"Jump_Velocity")
+
+var currentSpeed = Speed
 
 func _physics_process(delta):
 	
@@ -43,7 +46,10 @@ func _physics_process(delta):
 		Player_Sprite.animation = "Walk"
 		Player_Sprite.speed_scale = 0.13
 		Player_Sprite.play()
-		velocity.x = direction * Speed
+		if Input.is_action_pressed("Sprint"):
+			velocity.x = direction * sprintSpeed
+		else:
+			velocity.x = direction * Speed
 		if direction == -1:
 			Player_Sprite.flip_h = true
 			$CollisionShape2D.position.x = 0
