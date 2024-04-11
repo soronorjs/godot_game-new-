@@ -44,7 +44,7 @@ func _physics_process(delta):
 	
 	if direction:
 		Player_Sprite.animation = "Walk"
-		Player_Sprite.speed_scale = 0.13
+		Player_Sprite.speed_scale = 0.2
 		Player_Sprite.play()
 		if Input.is_action_pressed("Sprint"):
 			velocity.x = direction * sprintSpeed

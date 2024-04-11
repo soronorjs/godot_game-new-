@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=61 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -96,41 +96,53 @@ region = Rect2(900, 0, 50, 82)
 atlas = ExtResource("3_bs7h6")
 region = Rect2(950, 0, 50, 82)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8ety"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw4g2"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(0, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a43ne"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh0r6"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(64, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmis6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn88x"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(128, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dblv2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6uko"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(192, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6abjm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_78vms"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(256, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q66yf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx1d3"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(320, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vcdr0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8ace"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(384, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsvqe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlqoj"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(448, 0, 64, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_faqvd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lojs"]
 atlas = ExtResource("3_xoib2")
 region = Rect2(512, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3gpi"]
+atlas = ExtResource("3_xoib2")
+region = Rect2(576, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20rtt"]
+atlas = ExtResource("3_xoib2")
+region = Rect2(640, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v1lh"]
+atlas = ExtResource("3_xoib2")
+region = Rect2(704, 0, 64, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6t77s"]
 animations = [{
@@ -201,31 +213,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m8ety")
+"texture": SubResource("AtlasTexture_cw4g2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a43ne")
+"texture": SubResource("AtlasTexture_qh0r6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmis6")
+"texture": SubResource("AtlasTexture_fn88x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dblv2")
+"texture": SubResource("AtlasTexture_o6uko")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6abjm")
+"texture": SubResource("AtlasTexture_78vms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q66yf")
+"texture": SubResource("AtlasTexture_bx1d3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vcdr0")
+"texture": SubResource("AtlasTexture_t8ace")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jsvqe")
+"texture": SubResource("AtlasTexture_rlqoj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_faqvd")
+"texture": SubResource("AtlasTexture_3lojs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3gpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20rtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v1lh")
 }],
 "loop": true,
 "name": &"Walk",
@@ -304,7 +325,7 @@ script = ExtResource("3_4w0vg")
 position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
-animation = &"Idle"
+animation = &"Walk"
 speed_scale = 0.15
 offset = Vector2(50.862, 0)
 
