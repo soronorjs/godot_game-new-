@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ModLoaderStore="*res://addons/mod_loader/mod_loader_store.gd"
-ModLoader="*res://addons/mod_loader/mod_loader.gd"
+ModLoaderStore="*res://addons/mod_loader/mod_loader_store.gdc"
+ModLoader="*res://addons/mod_loader/mod_loader.gdc"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
