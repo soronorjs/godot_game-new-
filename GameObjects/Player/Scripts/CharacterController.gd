@@ -19,6 +19,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	while Input.is_action_pressed("ui_accept") and is_on_floor():
+		Player_Sprite.speed_scale = 0
 		velocity.y = jumpVelocity
 		break
 
@@ -43,9 +44,12 @@ func _physics_process(delta):
 				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
 	
 	if direction:
-		Player_Sprite.animation = "Walk"
-		Player_Sprite.speed_scale = 0.2
-		Player_Sprite.play()
+		if is_on_floor():
+			Player_Sprite.animation = "Walk"
+			Player_Sprite.speed_scale = 0.2
+			Player_Sprite.play()
+		else:
+			Player_Sprite.stop()
 		if Input.is_action_pressed("Sprint"):
 			velocity.x = direction * sprintSpeed
 		else:
@@ -58,9 +62,12 @@ func _physics_process(delta):
 			$CollisionShape2D.position.x = 4
 	else:
 		velocity.x = move_toward(velocity.x, 0, Speed)
-		Player_Sprite.animation = "Idle"
-		Player_Sprite.speed_scale = 0.33
-		Player_Sprite.play()
+		if is_on_floor():
+			Player_Sprite.animation = "Idle"
+			Player_Sprite.speed_scale = 0.33
+			Player_Sprite.play()
+		else:
+			Player_Sprite.stop()
 
 	move_and_slide()
 	
