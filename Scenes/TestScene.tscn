@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/Mortality.gd" id="9_og2fs"]
-[ext_resource type="Texture2D" uid="uid://d27wnr6xclf1j" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
+[ext_resource type="Texture2D" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)

@@ -6,5 +6,5 @@ extends Node
 func _physics_process(delta):
 	if spikeDetectCast.is_colliding():
 		for i in spikeDetectCast.get_collision_count():
-			if spikeDetectCast.get_collider(i) == %Player and not %Player.is_on_floor() or %Player.position.y > %DaddelCrab.position.y:
+			if spikeDetectCast.get_collider(i) == %Player and %Player.velocity.y > 0:
 				%Player.set_meta("HP", 0)
