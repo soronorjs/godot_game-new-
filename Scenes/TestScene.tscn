@@ -386,8 +386,8 @@ position = Vector2(-1, -65)
 [node name="DaddelCrab" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(76, -5)
-collision_layer = 3
-collision_mask = 15
+collision_layer = 2
+collision_mask = 14
 script = ExtResource("6_50kgo")
 metadata/Jump_Velocity = 0.0
 metadata/Speed = 30.0
