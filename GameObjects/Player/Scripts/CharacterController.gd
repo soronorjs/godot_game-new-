@@ -27,12 +27,12 @@ func _physics_process(delta):
 		Jump = true
 		Player_Sprite.animation = "Jump_Charge"
 		Player_Sprite.speed_scale = 0.2
-		Player_Sprite.play()
+		if not Player_Sprite.is_playing():
+			Player_Sprite.play()
 	
 	while Input.is_action_pressed("ui_accept") and is_on_floor():
 		floorPos = Player_Base.position.y
-		if not Jump:
-			velocity.y = jumpVelocity
+		velocity.y = jumpVelocity
 		break
 
 	if Input.is_action_just_released("ui_accept"):
@@ -89,9 +89,7 @@ func _physics_process(delta):
 func wait(seconds):
 	get_tree().create_timer(seconds)
 
-
-func _on_player_sprite_animation_looped():
-	print("Test")
+func _on_player_sprite_animation_finished():
+	print("Done!")
 	if Player_Sprite.animation == "Jump_Charge":
-		Player_Sprite.stop()
 		Jump = false
