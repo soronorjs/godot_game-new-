@@ -1,9 +1,10 @@
-[gd_scene load_steps=61 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=67 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
 [ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_bs7h6"]
 [ext_resource type="Texture2D" uid="uid://dha7sss55u8l7" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
+[ext_resource type="Texture2D" uid="uid://d0m5pp1muchks" path="res://art/animations/Player_Jump_Charge.png" id="4_0dk24"]
 [ext_resource type="Script" path="res://GameObjects/Camera/Scripts/CameraController.gd" id="4_0wecj"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/Mortality.gd" id="5_tcxkh"]
@@ -11,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/Mortality.gd" id="9_og2fs"]
-[ext_resource type="Texture2D" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
+[ext_resource type="Texture2D" uid="uid://d27wnr6xclf1j" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
@@ -95,6 +96,26 @@ region = Rect2(900, 0, 50, 82)
 [sub_resource type="AtlasTexture" id="AtlasTexture_78t78"]
 atlas = ExtResource("3_bs7h6")
 region = Rect2(950, 0, 50, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clqbw"]
+atlas = ExtResource("4_0dk24")
+region = Rect2(0, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojc2o"]
+atlas = ExtResource("4_0dk24")
+region = Rect2(48, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q2o2"]
+atlas = ExtResource("4_0dk24")
+region = Rect2(96, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0edhu"]
+atlas = ExtResource("4_0dk24")
+region = Rect2(144, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rai5n"]
+atlas = ExtResource("4_0dk24")
+region = Rect2(192, 0, 48, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cw4g2"]
 atlas = ExtResource("3_xoib2")
@@ -213,6 +234,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_clqbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojc2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q2o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0edhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rai5n")
+}],
+"loop": true,
+"name": &"Jump_Charge",
+"speed": 60.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cw4g2")
 }, {
 "duration": 1.0,
@@ -325,9 +366,9 @@ script = ExtResource("3_4w0vg")
 position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
-animation = &"Walk"
-frame = 8
-speed_scale = 0.15
+animation = &"Jump_Charge"
+frame_progress = 0.101558
+speed_scale = 0.2
 offset = Vector2(50.862, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -481,3 +522,4 @@ drag_bottom_margin = 0.01
 script = ExtResource("4_0wecj")
 
 [connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
+[connection signal="animation_finished" from="Player/Player_Sprite" to="Player" method="_on_player_sprite_animation_finished"]
