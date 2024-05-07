@@ -44,7 +44,6 @@ func _physics_process(delta):
 			if(shapeCast.get_collider(i).get_class() == "StaticBody2D"):
 				if(global_position.distance_to(shapeCast.get_collider(i).position) <= jumpRange) and (shapeCast.get_collider(i).global_position.y <= Enemy_Base.position.y) and (signf(global_position.direction_to(shapeCast.get_collider(i).position).x) == Direction):
 					_jump()
-					print("Jump!")
 			if trackPlayer:
 				while shapeCast.get_collider(i) == Player:
 					if rayCast.is_colliding():

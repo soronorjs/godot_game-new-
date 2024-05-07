@@ -5,7 +5,6 @@ extends Node
 
 func _physics_process(delta):
 	HP = Player.get_meta("HP")
-	print(HP)
 	if HP <= 0:
 		print("Ded")
 		Player.position = $"../../Checkpoint".position
