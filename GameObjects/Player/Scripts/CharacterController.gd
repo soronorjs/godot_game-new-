@@ -33,10 +33,18 @@ func _physics_process(delta):
 		Player_Sprite.speed_scale = 0.3
 		if not Player_Sprite.is_playing():
 			Player_Sprite.play()
+			
+	if Input.is_action_just_pressed("ui_accept"):
+		Jumps += 1
 	
-	while Input.is_action_pressed("ui_accept") and doubleJump and Jumps <= 2:
+	while Input.is_action_pressed("ui_accept") and doubleJump and Jumps < 2:
 		floorPos = Player_Base.position.y
-		velocity.y = jumpVelocity
+		while Player_Base.position.y > -70 * Jumps and Jumps != 0:
+			velocity.y = jumpVelocity
+			break
+		while Jumps == 0 and Player_Base.position.y > -70:
+			velocity.y = jumpVelocity
+			break
 		break
 		
 	while Input.is_action_pressed("ui_accept") and not doubleJump and is_on_floor():
@@ -45,11 +53,9 @@ func _physics_process(delta):
 		break
 
 	if Input.is_action_just_released("ui_accept"):
-		Jumps += 1
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
 		
-	if velocity.y > 0:
-		await is_on_floor()
+	if is_on_floor() and Jumps > 0:
 		Jumps = 0
 
 	# Walking Controls
