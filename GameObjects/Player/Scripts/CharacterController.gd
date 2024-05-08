@@ -60,7 +60,7 @@ func _physics_process(delta):
 	# Walking Controls
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
-	if Input.is_action_just_pressed("Dash"):
+	if Input.is_action_just_pressed("Dash") and Dashing:
 		if Player_Sprite.flip_h == true:
 			$RayCast2D.target_position.x = -50
 			if not $RayCast2D.is_colliding():
