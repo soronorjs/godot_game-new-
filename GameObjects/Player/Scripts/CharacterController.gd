@@ -8,13 +8,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Speed = Player_Base.get_meta(&"Speed")
 @onready var sprintSpeed = Player_Base.get_meta(&"Sprint_Speed")
 @onready var jumpVelocity = Player_Base.get_meta(&"Jump_Velocity")
+@onready var doubleJump = Player_Base.get_meta(&"Double_Jump")
 
 var currentSpeed = Speed
 var floorPos : float
-var Jump: bool
-var accumulatedVel : float
+var Jump : bool
+var Jumps = 0
 
 func _physics_process(delta):
+	
+	print(Jumps)
 	
 	# Gravity control
 	if not is_on_floor():
@@ -31,13 +34,23 @@ func _physics_process(delta):
 		if not Player_Sprite.is_playing():
 			Player_Sprite.play()
 	
-	while Input.is_action_pressed("ui_accept") and is_on_floor():
+	while Input.is_action_pressed("ui_accept") and doubleJump and Jumps <= 2:
+		floorPos = Player_Base.position.y
+		velocity.y = jumpVelocity
+		break
+		
+	while Input.is_action_pressed("ui_accept") and not doubleJump and is_on_floor():
 		floorPos = Player_Base.position.y
 		velocity.y = jumpVelocity
 		break
 
 	if Input.is_action_just_released("ui_accept"):
+		Jumps += 1
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+		
+	if velocity.y > 0:
+		await is_on_floor()
+		Jumps = 0
 
 	# Walking Controls
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -88,4 +101,3 @@ func _on_player_sprite_animation_finished():
 	print("Done!")
 	if Player_Sprite.animation == "Jump_Charge":
 		Jump = false
-		velocity.y = accumulatedVel
