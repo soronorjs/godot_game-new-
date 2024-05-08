@@ -28,23 +28,22 @@ func _physics_process(delta):
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		Jump = true
 		Player_Sprite.animation = "Jump_Charge"
 		Player_Sprite.speed_scale = 0.3
 		if not Player_Sprite.is_playing():
 			Player_Sprite.play()
-			
-	if Input.is_action_just_pressed("ui_accept"):
+	
+	if Input.is_action_just_pressed("ui_accept") and Jumps < 1 and doubleJump:
+		while Jumps != 0:
+			velocity.y = jumpVelocity
+			break
+		while Jumps == 0:
+			velocity.y = jumpVelocity
+			break
 		Jumps += 1
 	
-	while Input.is_action_pressed("ui_accept") and doubleJump and Jumps < 2:
-		floorPos = Player_Base.position.y
-		while Player_Base.position.y > -70 * Jumps and Jumps != 0:
-			velocity.y = jumpVelocity
-			break
-		while Jumps == 0 and Player_Base.position.y > -70:
-			velocity.y = jumpVelocity
-			break
+	while Input.is_action_pressed("ui_accept") and is_on_floor():
+		velocity.y = jumpVelocity
 		break
 		
 	while Input.is_action_pressed("ui_accept") and not doubleJump and is_on_floor():
