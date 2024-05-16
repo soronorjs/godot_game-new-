@@ -46,12 +46,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Dash") and Dashing and not is_on_wall():
 		if Player_Sprite.flip_h == true:
 			$RayCast2D.target_position.x = -50
-			if not is_point_inside_object($RayCast2D.position, $RayCast2D.get_collider()):
-				Player_Base.position.x = $RayCast2D.position.x
+			Player_Base.position.x = $RayCast2D.position.x
 		else:
 			$RayCast2D.target_position.x = 50
-			if not is_point_inside_object($RayCast2D.position, $RayCast2D.get_collider()):
-				Player_Base.position.x = $RayCast2D.position.x
+			Player_Base.position.x = $RayCast2D.position.x
 	
 	# Walking Logic
 	var direction = Input.get_axis("ui_left", "ui_right")
