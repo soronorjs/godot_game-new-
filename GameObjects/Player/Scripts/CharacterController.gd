@@ -66,10 +66,12 @@ func _physics_process(delta):
 			Player_Sprite.animation = "Walk"
 			Player_Sprite.speed_scale = 0.2
 			Player_Sprite.play()
+			
 		if Input.is_action_pressed("Sprint"):
 			velocity.x = direction * sprintSpeed
 		else:
 			velocity.x = direction * Speed
+			
 		if direction == -1:
 			Player_Sprite.flip_h = true
 			$CollisionShape2D.position.x = 0
