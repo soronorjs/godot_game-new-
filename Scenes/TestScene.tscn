@@ -486,6 +486,7 @@ texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="SpikeDetection" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
 visible = false
+visibility_layer = 7
 position = Vector2(0, -125)
 scale = Vector2(12.5, 12.5)
 shape = SubResource("RectangleShape2D_4a6nf")
