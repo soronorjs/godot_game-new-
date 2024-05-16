@@ -13,11 +13,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var currentSpeed = Speed
 var floorPos : float
 var Jump : bool
-var Jumps = 0
+var jumps_remaining = 0
 
 func _physics_process(delta):
-	
-	print(Jumps)
 	
 	# Gravity control
 	if not is_on_floor():
@@ -27,35 +25,25 @@ func _physics_process(delta):
 
 	# Handle jump.
 	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		Player_Sprite.animation = "Jump_Charge"
-		Player_Sprite.speed_scale = 0.3
-		if not Player_Sprite.is_playing():
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			Player_Sprite.animation = "Jump_Charge"
+			Player_Sprite.speed_scale = 0.3
+			Player_Sprite.stop()
 			Player_Sprite.play()
-	
-	if Input.is_action_just_pressed("ui_accept") and Jumps < 1 and doubleJump:
-		while Jumps != 0:
+		elif jumps_remaining < 1 and doubleJump:
 			velocity.y = jumpVelocity
-			break
-		while Jumps == 0:
-			velocity.y = jumpVelocity
-			break
-		Jumps += 1
+			jumps_remaining += 1
 	
 	while Input.is_action_pressed("ui_accept") and is_on_floor():
-		velocity.y = jumpVelocity
-		break
-		
-	while Input.is_action_pressed("ui_accept") and not doubleJump and is_on_floor():
-		floorPos = Player_Base.position.y
 		velocity.y = jumpVelocity
 		break
 
 	if Input.is_action_just_released("ui_accept"):
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
 		
-	if is_on_floor() and Jumps > 0:
-		Jumps = 0
+	if is_on_floor() and jumps_remaining > 0:
+		jumps_remaining = 0
 
 	# Walking Controls
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -97,12 +85,3 @@ func _physics_process(delta):
 			Player_Sprite.play()
 
 	move_and_slide()
-	
-	
-func wait(seconds):
-	get_tree().create_timer(seconds)
-
-func _on_player_sprite_animation_finished():
-	print("Done!")
-	if Player_Sprite.animation == "Jump_Charge":
-		Jump = false
