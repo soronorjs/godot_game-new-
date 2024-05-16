@@ -42,20 +42,15 @@ func _physics_process(delta):
 	if is_on_floor() and jumps_remaining > 0:
 		jumps_remaining = 0
 	
-	
 	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing:
+	if Input.is_action_just_pressed("Dash") and Dashing and not is_on_wall():
 		if Player_Sprite.flip_h == true:
 			$RayCast2D.target_position.x = -50
-			if not $RayCast2D.is_colliding():
-				Player_Base.position.x += 50 * -1
-			else:
+			if not is_point_inside_object($RayCast2D.position, $RayCast2D.get_collider()):
 				Player_Base.position.x = $RayCast2D.position.x
 		else:
 			$RayCast2D.target_position.x = 50
-			if not $RayCast2D.is_colliding():
-				Player_Base.position.x += 50 * 1
-			else:
+			if not is_point_inside_object($RayCast2D.position, $RayCast2D.get_collider()):
 				Player_Base.position.x = $RayCast2D.position.x
 	
 	# Walking Logic
@@ -86,3 +81,8 @@ func _physics_process(delta):
 			Player_Sprite.play()
 
 	move_and_slide()
+	
+func is_point_inside_object(point, object):
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_point(point, 32)
+	return result.size() > 0

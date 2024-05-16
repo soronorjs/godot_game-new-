@@ -379,8 +379,8 @@ shape = SubResource("CapsuleShape2D_fum7p")
 one_way_collision = true
 
 [node name="RayCast2D" type="RayCast2D" parent="Player"]
-position = Vector2(2, 15)
-target_position = Vector2(48, -35)
+position = Vector2(3, 18)
+target_position = Vector2(50, -31)
 collision_mask = 7
 
 [node name="Mortality" type="Node" parent="Player"]
@@ -400,8 +400,8 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -10.875)
-scale = Vector2(69, 18.25)
+position = Vector2(1, -21.875)
+scale = Vector2(69, 40.25)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
