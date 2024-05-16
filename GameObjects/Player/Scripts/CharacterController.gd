@@ -50,13 +50,13 @@ func _physics_process(delta):
 			if not $RayCast2D.is_colliding():
 				Player_Base.position.x += 50 * -1
 			else:
-				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
+				Player_Base.position.x = $RayCast2D.position.x
 		else:
 			$RayCast2D.target_position.x = 50
 			if not $RayCast2D.is_colliding():
 				Player_Base.position.x += 50 * 1
 			else:
-				Player_Base.position.x += global_position.distance_to($RayCast2D.get_collision_point())
+				Player_Base.position.x = $RayCast2D.position.x
 	
 	# Walking Logic
 	var direction = Input.get_axis("ui_left", "ui_right")
