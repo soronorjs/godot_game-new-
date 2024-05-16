@@ -416,6 +416,23 @@ shape = SubResource("RectangleShape2D_3em7x")
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+position = Vector2(2, -65)
+scale = Vector2(69, 18.25)
+mesh = SubResource("BoxMesh_jir4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D3"]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D3/StaticBody2D"]
+position = Vector2(-0.0034839, 0)
+shape = SubResource("RectangleShape2D_3em7x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MeshInstance2D3"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_wtajc")
+
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("5_jx7um")
 
