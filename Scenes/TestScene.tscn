@@ -350,7 +350,7 @@ shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-93, -23)
+position = Vector2(-80, -25)
 collision_mask = 5
 script = ExtResource("1_kvma6")
 metadata/Dashing = true
@@ -382,6 +382,7 @@ one_way_collision = true
 position = Vector2(2, 15)
 target_position = Vector2(48, -35)
 collision_mask = 7
+collide_with_areas = true
 
 [node name="Mortality" type="Node" parent="Player"]
 script = ExtResource("5_tcxkh")
@@ -400,8 +401,8 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -10.875)
-scale = Vector2(69, 18.25)
+position = Vector2(1, -19)
+scale = Vector2(59.16, 37.73)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_remaining = 0
 
-#Player Metadata
+# Player Metadata and Nodes
 @onready var Player_Base = %Player
 @onready var Player_Sprite = get_node("Player_Sprite")
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
@@ -44,19 +44,13 @@ func _physics_process(delta):
 	
 	
 	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing:
-		if Player_Sprite.flip_h == true:
-			$RayCast2D.target_position.x = -50
-			if not $RayCast2D.is_colliding():
+	while not is_on_wall():
+		if Input.is_action_just_pressed("Dash") and Dashing:
+			if Player_Sprite.flip_h == true:
 				Player_Base.position.x += 50 * -1
 			else:
-				Player_Base.position.x = $RayCast2D.position.x
-		else:
-			$RayCast2D.target_position.x = 50
-			if not $RayCast2D.is_colliding():
 				Player_Base.position.x += 50 * 1
-			else:
-				Player_Base.position.x = $RayCast2D.position.x
+		break
 	
 	# Walking Logic
 	var direction = Input.get_axis("ui_left", "ui_right")
