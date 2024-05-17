@@ -54,7 +54,6 @@ func _physics_process(delta):
 			velocity.y = 0
 			print(velocity.x)
 			await wait(0.2)
-			print("A")
 			Dash = false
 	
 	# Walking Logic
