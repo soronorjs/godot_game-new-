@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_remaining = 0
+var Dash : bool
 
 # Player Metadata and Nodes
 @onready var Player_Base = %Player
@@ -9,6 +10,7 @@ var jumps_remaining = 0
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
 @onready var Speed = Player_Base.get_meta(&"Speed")
 @onready var sprintSpeed = Player_Base.get_meta(&"Sprint_Speed")
+@onready var dashSpeed = Player_Base.get_meta(&"Dash_Speed")
 @onready var jumpVelocity = Player_Base.get_meta(&"Jump_Velocity")
 @onready var doubleJump = Player_Base.get_meta(&"Double_Jump")
 
@@ -42,20 +44,22 @@ func _physics_process(delta):
 	if is_on_floor() and jumps_remaining > 0:
 		jumps_remaining = 0
 	
-	
-	# Dashing Logic
-	while not is_on_wall():
-		if Input.is_action_just_pressed("Dash") and Dashing:
-			if Player_Sprite.flip_h == true:
-				Player_Base.position.x += 50 * -1
-			else:
-				Player_Base.position.x += 50 * 1
-		break
-	
-	# Walking Logic
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
+	# Dashing Logic
 	if direction:
+		if Input.is_action_just_pressed("Dash") and Dashing:
+			Dash = true
+			velocity.x = direction * dashSpeed
+			velocity.y = 0
+			print(velocity.x)
+			await wait(0.2)
+			print("A")
+			Dash = false
+	
+	# Walking Logic
+	
+	if direction and not Dash:
 		if is_on_floor():
 			Player_Sprite.animation = "Walk"
 			Player_Sprite.speed_scale = 0.2
@@ -73,10 +77,14 @@ func _physics_process(delta):
 			Player_Sprite.flip_h = false
 			$CollisionShape2D.position.x = 4
 	else:
-		velocity.x = move_toward(velocity.x, 0, Speed)
-		if is_on_floor():
-			Player_Sprite.animation = "Idle"
-			Player_Sprite.speed_scale = 0.33
-			Player_Sprite.play()
+		if not Dash:
+			velocity.x = move_toward(velocity.x, 0, Speed)
+			if is_on_floor():
+				Player_Sprite.animation = "Idle"
+				Player_Sprite.speed_scale = 0.33
+				Player_Sprite.play()
 
 	move_and_slide()
+	
+func wait(seconds):
+	await get_tree().create_timer(seconds).timeout

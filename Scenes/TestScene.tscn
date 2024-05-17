@@ -359,6 +359,7 @@ metadata/Speed = 95.5
 metadata/HP = 100.0
 metadata/Sprint_Speed = 142.0
 metadata/Double_Jump = true
+metadata/Dash_Speed = 1000.0
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
