@@ -50,10 +50,14 @@ func _physics_process(delta):
 	if direction:
 		if Input.is_action_just_pressed("Dash") and Dashing:
 			Dash = true
+			Player_Base.set_collision_layer_value(1, 0)
+			Player_Base.set_collision_mask_value(1, 0)
 			velocity.x = direction * dashSpeed
 			velocity.y = 0
 			print(velocity.x)
 			await wait(0.2)
+			Player_Base.set_collision_layer_value(1, 1)
+			Player_Base.set_collision_mask_value(1, 1)
 			Dash = false
 	
 	# Walking Logic
