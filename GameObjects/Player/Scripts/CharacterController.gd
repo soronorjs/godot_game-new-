@@ -3,6 +3,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_remaining = 0
 var Dash : bool
+var dash_cooldown : bool = false
 
 # Player Metadata and Nodes
 @onready var Player_Base = %Player
@@ -47,18 +48,29 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	# Dashing Logic
-	if direction:
-		if Input.is_action_just_pressed("Dash") and Dashing:
-			Dash = true
-			Player_Base.set_collision_layer_value(1, 0)
-			Player_Base.set_collision_mask_value(1, 0)
-			velocity.x = direction * dashSpeed
-			velocity.y = 0
-			print(velocity.x)
-			await wait(0.2)
-			Player_Base.set_collision_layer_value(1, 1)
-			Player_Base.set_collision_mask_value(1, 1)
-			Dash = false
+	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
+		var dash_direction
+		if direction:
+			dash_direction = direction * dashSpeed
+		else:
+			if Player_Sprite.flip_h:
+				dash_direction = dashSpeed * -1
+			else:
+				dash_direction = dashSpeed * 1
+		Dash = true
+		dash_cooldown = true
+		$Label.label_settings.font_color = Color.RED
+		Player_Base.set_collision_layer_value(1, 0)
+		Player_Base.set_collision_mask_value(1, 0)
+		velocity.x = dash_direction
+		print(velocity.x)
+		await wait(0.2)
+		Player_Base.set_collision_layer_value(1, 1)
+		Player_Base.set_collision_mask_value(1, 1)
+		Dash = false
+		await wait(1.5)
+		$Label.label_settings.font_color = Color.WHITE
+		dash_cooldown = false
 	
 	# Walking Logic
 	
