@@ -359,7 +359,7 @@ metadata/Speed = 95.5
 metadata/HP = 100.0
 metadata/Sprint_Speed = 142.0
 metadata/Double_Jump = true
-metadata/Dash_Speed = 1000.0
+metadata/Dash_Speed = 600.0
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
@@ -402,8 +402,8 @@ position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -19)
-scale = Vector2(59.16, 37.73)
+position = Vector2(1, -8.0675)
+scale = Vector2(59.16, 15.865)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
