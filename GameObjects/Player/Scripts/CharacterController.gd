@@ -16,6 +16,7 @@ var dash_cooldown : bool = false
 @onready var doubleJump = Player_Base.get_meta(&"Double_Jump")
 
 func _physics_process(delta):
+	disable_cooldown()
 	
 	# Gravity control
 	if not is_on_floor():
@@ -50,6 +51,7 @@ func _physics_process(delta):
 	# Dashing Logic
 	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
 		var dash_direction
+		
 		if direction:
 			dash_direction = direction * dashSpeed
 		else:
@@ -57,20 +59,25 @@ func _physics_process(delta):
 				dash_direction = dashSpeed * -1
 			else:
 				dash_direction = dashSpeed * 1
+				
 		Dash = true
-		dash_cooldown = true
-		$Label.label_settings.font_color = Color.RED
+		
 		Player_Base.set_collision_layer_value(1, 0)
 		Player_Base.set_collision_mask_value(1, 0)
+		
 		velocity.x = dash_direction
-		print(velocity.x)
+		
 		await wait(0.2)
 		Player_Base.set_collision_layer_value(1, 1)
 		Player_Base.set_collision_mask_value(1, 1)
+		
 		Dash = false
-		await wait(1.5)
-		$Label.label_settings.font_color = Color.WHITE
-		dash_cooldown = false
+		dash_cooldown = true
+		
+	if Dash:
+		$"../Label".label_settings.font_color = Color.RED
+	elif not dash_cooldown and not Dash:
+		$"../Label".label_settings.font_color = Color.WHITE
 	
 	# Walking Logic
 	
@@ -103,3 +110,8 @@ func _physics_process(delta):
 	
 func wait(seconds):
 	await get_tree().create_timer(seconds).timeout
+	
+func disable_cooldown():
+	if dash_cooldown:
+		await wait(1.5)
+		dash_cooldown = false
