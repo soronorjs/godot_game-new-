@@ -17,38 +17,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
 
-[sub_resource type="FontFile" id="FontFile_awogl"]
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/5/0/ascent = 0.0
-cache/0/5/0/descent = 0.0
-cache/0/5/0/underline_position = 0.0
-cache/0/5/0/underline_thickness = 0.0
-cache/0/5/0/scale = 1.0
-cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_lkdbq"]
-font = SubResource("FontFile_awogl")
-font_size = 5
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhxq4"]
 atlas = ExtResource("3_bs7h6")
 region = Rect2(0, 0, 50, 82)
@@ -330,6 +298,38 @@ animations = [{
 radius = 8.0
 height = 32.0
 
+[sub_resource type="FontFile" id="FontFile_awogl"]
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkdbq"]
+font = SubResource("FontFile_awogl")
+font_size = 5
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvv5c"]
@@ -382,15 +382,6 @@ position = Vector2(0, -51)
 position = Vector2(5, -17.5)
 shape = SubResource("RectangleShape2D_dqhsm")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -78.0
-offset_top = -45.0
-offset_right = -72.0
-offset_bottom = -31.0
-text = "A
-"
-label_settings = SubResource("LabelSettings_lkdbq")
-
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-80, -25)
@@ -430,6 +421,15 @@ collide_with_areas = true
 
 [node name="Mortality" type="Node" parent="Player"]
 script = ExtResource("5_tcxkh")
+
+[node name="Label" type="Label" parent="Player"]
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -6.0
+text = "A
+"
+label_settings = SubResource("LabelSettings_lkdbq")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
