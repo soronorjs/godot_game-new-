@@ -77,6 +77,10 @@ Sprint={
 2d_render/layer_2="Enemy"
 2d_render/layer_3="Environment"
 
+[physics]
+
+2d/default_gravity=588.0
+
 [rendering]
 
 viewport/hdr_2d=true
