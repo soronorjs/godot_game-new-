@@ -462,8 +462,8 @@ show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 
 [node name="Platform" type="MeshInstance2D" parent="."]
-position = Vector2(2, -65)
-scale = Vector2(69, 18.25)
+position = Vector2(2, -100.438)
+scale = Vector2(69, 89.125)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform"]

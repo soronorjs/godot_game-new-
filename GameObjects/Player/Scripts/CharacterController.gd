@@ -4,6 +4,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps_remaining = 0
 var Dash : bool
 var dash_cooldown : bool = false
+var wall_slide : bool = false
 
 # Player Metadata and Nodes
 @onready var Player_Base = %Player
@@ -40,7 +41,16 @@ func _physics_process(delta):
 		break
 
 	if Input.is_action_just_released("ui_accept"):
-		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+			velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+			
+	if is_on_wall_only():
+		if not Input.is_action_pressed("ui_accept"):
+			velocity.y = lerp(velocity.y, gravity*delta, 0.25)
+		jumps_remaining = 0
+		wall_slide = true
+	
+	if not is_on_wall_only():
+		wall_slide = false
 		
 	if is_on_floor() and jumps_remaining > 0:
 		jumps_remaining = 0
@@ -48,7 +58,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
+	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown and not is_on_wall():
 		var dash_direction
 		
 		if direction:
@@ -80,6 +90,14 @@ func _physics_process(delta):
 		$Label.label_settings.font_color = Color.WHITE
 	
 	# Walking Logic
+	
+	if Input.is_action_just_pressed("ui_accept") and wall_slide:
+		velocity.y = jumpVelocity
+		Player_Sprite.flip_h = not Player_Sprite.flip_h
+		if Player_Sprite.flip_h:
+			velocity.x = -95.5
+		else:
+			velocity.x = 95.5
 	
 	if direction and not Dash:
 		if is_on_floor():
