@@ -89,20 +89,20 @@ func _physics_process(delta):
 		wall_slide = true
 	
 	if Input.is_action_just_pressed("ui_accept") and wall_slide:
-		velocity.y = jumpVelocity
-		velocity.x = direction * Speed * 2
 		Player_Sprite.flip_h = not Player_Sprite.flip_h
 		if Player_Sprite.flip_h:
 			direction = -1
 		else:
 			direction = 1
+		velocity.y = jumpVelocity
+		velocity.x = direction * Speed * 2
 		
 	if Input.is_action_just_released("ui_accept") and wall_slide:
 		wall_slide = false
 	
 	# Walking Logic
 	
-	if direction and not Dash:
+	if direction and not Dash and not wall_slide:
 		if is_on_floor():
 			Player_Sprite.animation = "Walk"
 			Player_Sprite.speed_scale = 0.2
