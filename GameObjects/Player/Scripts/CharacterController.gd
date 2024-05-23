@@ -95,9 +95,9 @@ func _physics_process(delta):
 		else:
 			direction = 1
 		velocity.y = jumpVelocity
-		velocity.x = direction * Speed * 2
+		velocity.x = direction * Speed
 		
-	if Input.is_action_just_released("ui_accept") and wall_slide:
+	if Input.is_action_just_released("ui_accept") or is_on_floor() and wall_slide:
 		wall_slide = false
 	
 	# Walking Logic
