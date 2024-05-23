@@ -41,16 +41,7 @@ func _physics_process(delta):
 		break
 
 	if Input.is_action_just_released("ui_accept"):
-			velocity.y = lerp(velocity.y, gravity*delta, 0.5)
-			
-	if is_on_wall_only():
-		if not Input.is_action_pressed("ui_accept"):
-			velocity.y = lerp(velocity.y, gravity*delta, 0.25)
-		jumps_remaining = 0
-		wall_slide = true
-	
-	if not is_on_wall_only():
-		wall_slide = false
+		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
 		
 	if is_on_floor() and jumps_remaining > 0:
 		jumps_remaining = 0
@@ -89,15 +80,27 @@ func _physics_process(delta):
 	elif not dash_cooldown and not Dash:
 		$Label.label_settings.font_color = Color.WHITE
 	
-	# Walking Logic
+	# Wall Slide Logic
+	
+	if is_on_wall_only():
+		if not Input.is_action_pressed("ui_accept"):
+			velocity.y = lerp(velocity.y, gravity*delta, 0.25)
+		jumps_remaining = 0
+		wall_slide = true
 	
 	if Input.is_action_just_pressed("ui_accept") and wall_slide:
 		velocity.y = jumpVelocity
+		velocity.x = direction * Speed * 2
 		Player_Sprite.flip_h = not Player_Sprite.flip_h
 		if Player_Sprite.flip_h:
-			velocity.x = -95.5
+			direction = -1
 		else:
-			velocity.x = 95.5
+			direction = 1
+		
+	if Input.is_action_just_released("ui_accept") and wall_slide:
+		wall_slide = false
+	
+	# Walking Logic
 	
 	if direction and not Dash:
 		if is_on_floor():
@@ -117,7 +120,7 @@ func _physics_process(delta):
 			Player_Sprite.flip_h = false
 			$CollisionShape2D.position.x = 4
 	else:
-		if not Dash:
+		if not Dash and not wall_slide:
 			velocity.x = move_toward(velocity.x, 0, Speed)
 			if is_on_floor():
 				Player_Sprite.animation = "Idle"
