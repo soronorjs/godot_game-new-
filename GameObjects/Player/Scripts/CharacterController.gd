@@ -49,31 +49,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown and not is_on_wall():
-		var dash_direction
-		
-		if direction:
-			dash_direction = direction * dashSpeed
-		else:
-			if Player_Sprite.flip_h:
-				dash_direction = dashSpeed * -1
-			else:
-				dash_direction = dashSpeed * 1
-				
-		Dash = true
-		dash_cooldown = true
-		
-		Player_Base.set_collision_layer_value(1, 0)
-		Player_Base.set_collision_mask_value(1, 0)
-		
-		velocity.x = dash_direction
-		
-		await wait(0.2)
-		Player_Base.set_collision_layer_value(1, 1)
-		Player_Base.set_collision_mask_value(1, 1)
-		
-		Dash = false
-		disable_cooldown()
+	dash(direction)
 		
 	if Dash:
 		$Label.label_settings.font_color = Color.RED
@@ -88,14 +64,18 @@ func _physics_process(delta):
 		jumps_remaining = 0
 		wall_slide = true
 	
-	if Input.is_action_just_pressed("ui_accept") and wall_slide:
+	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Dash") and wall_slide:
 		Player_Sprite.flip_h = not Player_Sprite.flip_h
 		if Player_Sprite.flip_h:
 			direction = -1
 		else:
 			direction = 1
-		velocity.y = jumpVelocity
-		velocity.x = direction * Speed
+		if Input.is_action_pressed("ui_accept"):
+			velocity.y = jumpVelocity
+			velocity.x = direction * Speed
+		else:
+			dash(direction)
+			print(Dash)
 		
 	if Input.is_action_just_released("ui_accept") or is_on_floor() and wall_slide:
 		wall_slide = false
@@ -136,3 +116,31 @@ func disable_cooldown():
 	if dash_cooldown:
 		await wait(1.5)
 		dash_cooldown = false
+		
+func dash(direction):
+	# Dashing Logic
+	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown and not is_on_wall():
+		var dash_direction
+		
+		if direction:
+			dash_direction = direction * dashSpeed
+		else:
+			if Player_Sprite.flip_h:
+				dash_direction = dashSpeed * -1
+			else:
+				dash_direction = dashSpeed * 1
+				
+		Dash = true
+		dash_cooldown = true
+		
+		Player_Base.set_collision_layer_value(1, 0)
+		Player_Base.set_collision_mask_value(1, 0)
+		
+		velocity.x = dash_direction
+		
+		await wait(0.2)
+		Player_Base.set_collision_layer_value(1, 1)
+		Player_Base.set_collision_mask_value(1, 1)
+		
+		Dash = false
+		disable_cooldown()
