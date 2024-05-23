@@ -65,7 +65,6 @@ func _physics_process(delta):
 		wall_slide = true
 	
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Dash") and wall_slide:
-		Player_Sprite.flip_h = not Player_Sprite.flip_h
 		if Player_Sprite.flip_h:
 			direction = -1
 		else:
@@ -75,7 +74,6 @@ func _physics_process(delta):
 			velocity.x = direction * Speed
 		else:
 			dash(direction)
-			print(Dash)
 		
 	if Input.is_action_just_released("ui_accept") or is_on_floor() and wall_slide:
 		wall_slide = false
@@ -118,12 +116,16 @@ func disable_cooldown():
 		dash_cooldown = false
 		
 func dash(direction):
+	print(dash_cooldown)
 	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown and not is_on_wall():
+	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
 		var dash_direction
 		
 		if direction:
 			dash_direction = direction * dashSpeed
+		elif wall_slide and is_on_wall_only():
+			Player_Sprite.flip_h = not Player_Sprite.flip_h
+			dash_direction = direction * Speed
 		else:
 			if Player_Sprite.flip_h:
 				dash_direction = dashSpeed * -1
