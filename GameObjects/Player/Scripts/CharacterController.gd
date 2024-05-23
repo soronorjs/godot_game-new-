@@ -61,8 +61,10 @@ func _physics_process(delta):
 	if is_on_wall_only():
 		if not Input.is_action_pressed("ui_accept"):
 			velocity.y = lerp(velocity.y, gravity*delta, 0.25)
-		jumps_remaining = 0
 		wall_slide = true
+			
+	if is_on_wall() or is_on_floor():
+		jumps_remaining = 0
 	
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Dash") and wall_slide:
 		if Player_Sprite.flip_h:
