@@ -43,7 +43,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
 		
-	if is_on_floor() and jumps_remaining > 0:
+	if is_on_floor() or is_on_wall_only() and jumps_remaining > 0:
 		jumps_remaining = 0
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -59,26 +59,29 @@ func _physics_process(delta):
 	# Wall Slide Logic
 	
 	if is_on_wall_only():
-		if not Input.is_action_pressed("ui_accept"):
-			velocity.y = lerp(velocity.y, gravity*delta, 0.25)
+		while not Input.is_action_pressed("ui_accept"):
+			velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+			break
 		wall_slide = true
-			
-	if is_on_wall() or is_on_floor():
-		jumps_remaining = 0
 	
-	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("Dash") and wall_slide:
+	if Input.is_action_just_pressed("ui_accept") and wall_slide or Input.is_action_just_pressed("Dash") and wall_slide:
+		if Input.is_action_just_pressed("ui_accept"):
+			Player_Sprite.flip_h = not Player_Sprite.flip_h
 		if Player_Sprite.flip_h:
 			direction = -1
 		else:
 			direction = 1
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = jumpVelocity
 			velocity.x = direction * Speed
-		else:
+		elif Input.is_action_just_pressed("Dash"):
 			dash(direction)
 		
-	if Input.is_action_just_released("ui_accept") or is_on_floor() and wall_slide:
+	if Input.is_action_just_released("ui_accept") and wall_slide or is_on_floor() and wall_slide or Input.is_action_just_released("Dash") and wall_slide:
 		wall_slide = false
+		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+		velocity.x = move_toward(velocity.x, 0, Speed)
+			
 	
 	# Walking Logic
 	
@@ -118,16 +121,19 @@ func disable_cooldown():
 		dash_cooldown = false
 		
 func dash(direction):
-	print(dash_cooldown)
 	# Dashing Logic
 	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
 		var dash_direction
 		
-		if direction:
+		if direction and not wall_slide:
 			dash_direction = direction * dashSpeed
-		elif wall_slide and is_on_wall_only():
+		elif wall_slide:
 			Player_Sprite.flip_h = not Player_Sprite.flip_h
-			dash_direction = direction * Speed
+			if Player_Sprite.flip_h:
+				direction = -1
+			else:
+				direction = 1
+			dash_direction = direction * dashSpeed
 		else:
 			if Player_Sprite.flip_h:
 				dash_direction = dashSpeed * -1
