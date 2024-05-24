@@ -479,8 +479,8 @@ show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 
 [node name="Platform2" type="MeshInstance2D" parent="."]
-position = Vector2(-110, -208.219)
-scale = Vector2(69, 303.563)
+position = Vector2(-110, -294)
+scale = Vector2(69, 132)
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
@@ -492,6 +492,23 @@ position = Vector2(-0.0034839, 0)
 shape = SubResource("RectangleShape2D_3em7x")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Platform2"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_wtajc")
+
+[node name="Platform3" type="MeshInstance2D" parent="."]
+position = Vector2(-110, -123)
+scale = Vector2(69, 132)
+mesh = SubResource("BoxMesh_jir4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
+position = Vector2(-0.0034839, 0)
+shape = SubResource("RectangleShape2D_3em7x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platform3"]
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 

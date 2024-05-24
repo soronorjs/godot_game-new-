@@ -60,7 +60,7 @@ func _physics_process(delta):
 	
 	if is_on_wall_only():
 		while not Input.is_action_pressed("ui_accept"):
-			velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+			velocity.y = lerp(velocity.y, gravity*7*delta, 0.25)
 			break
 		wall_slide = true
 	
