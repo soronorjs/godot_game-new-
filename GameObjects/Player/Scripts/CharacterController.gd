@@ -63,6 +63,10 @@ func _physics_process(delta):
 			velocity.y = lerp(velocity.y, gravity*7*delta, 0.25)
 			break
 		wall_slide = true
+		
+	while is_on_wall_only():
+		dash_cooldown = false
+		break
 	
 	if Input.is_action_just_pressed("ui_accept") and wall_slide or Input.is_action_just_pressed("Dash") and wall_slide:
 		if Input.is_action_just_pressed("ui_accept"):

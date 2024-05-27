@@ -608,9 +608,8 @@ color = Color(0.658824, 0.396078, 0.278431, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
-limit_smoothed = true
 position_smoothing_enabled = true
-drag_horizontal_enabled = true
+position_smoothing_speed = 10.0
 drag_vertical_enabled = true
 drag_left_margin = 0.3
 drag_top_margin = 0.4
