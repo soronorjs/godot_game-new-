@@ -125,7 +125,6 @@ func disable_cooldown():
 func dash(direction):
 	# Dashing Logic
 	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
-		print("Dash!")
 		var dash_direction
 		
 		if direction and not wall_slide:
@@ -137,7 +136,6 @@ func dash(direction):
 			else:
 				direction = 1
 			dash_direction = direction * dashSpeed
-			print(dash_direction)
 		else:
 			if Player_Sprite.flip_h:
 				dash_direction = dashSpeed * -1
