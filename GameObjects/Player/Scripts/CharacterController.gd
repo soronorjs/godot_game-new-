@@ -84,21 +84,27 @@ func _physics_process(delta):
 	
 	# Walking Logic
 	
-	if direction and not Dash and not wall_slide:
+	if direction and not Dash:
 		if is_on_floor():
 			Player_Sprite.animation = "Walk"
 			Player_Sprite.speed_scale = 0.2
 			Player_Sprite.play()
+			
+		if wall_slide:
+			if Player_Sprite.flip_h == true:
+				direction = -1
+			else:
+				direction = 1
 			
 		if Input.is_action_pressed("Sprint"):
 			velocity.x = direction * sprintSpeed
 		else:
 			velocity.x = direction * Speed
 			
-		if direction == -1:
+		if direction == -1 and not wall_slide:
 			Player_Sprite.flip_h = true
 			$CollisionShape2D.position.x = 0
-		else:
+		elif direction == 1 and not wall_slide:
 			Player_Sprite.flip_h = false
 			$CollisionShape2D.position.x = 4
 	else:
