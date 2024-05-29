@@ -63,10 +63,7 @@ func _physics_process(delta):
 			velocity.y = lerp(velocity.y, gravity*7*delta, 0.25)
 			break
 		wall_slide = true
-		
-	while is_on_wall_only():
-		dash_cooldown = false
-		break
+		disable_cooldown()
 	
 	if Input.is_action_just_pressed("ui_accept") and wall_slide or Input.is_action_just_pressed("Dash") and wall_slide:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -78,8 +75,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = jumpVelocity
 			velocity.x = direction * Speed
-		elif Input.is_action_just_pressed("Dash"):
-			dash(direction)
 		
 	if Input.is_action_just_released("ui_accept") and wall_slide or is_on_floor() and wall_slide or Input.is_action_just_released("Dash") and wall_slide:
 		wall_slide = false
@@ -121,12 +116,16 @@ func wait(seconds):
 	
 func disable_cooldown():
 	if dash_cooldown:
-		await wait(1.5)
-		dash_cooldown = false
+		if not is_on_wall_only():
+			await wait(1.5)
+			dash_cooldown = false
+		else:
+			dash_cooldown = false
 		
 func dash(direction):
 	# Dashing Logic
 	if Input.is_action_just_pressed("Dash") and Dashing and not dash_cooldown:
+		print("Dash!")
 		var dash_direction
 		
 		if direction and not wall_slide:
@@ -138,6 +137,7 @@ func dash(direction):
 			else:
 				direction = 1
 			dash_direction = direction * dashSpeed
+			print(dash_direction)
 		else:
 			if Player_Sprite.flip_h:
 				dash_direction = dashSpeed * -1
