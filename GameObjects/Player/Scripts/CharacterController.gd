@@ -122,9 +122,8 @@ func wait(seconds):
 	
 func disable_cooldown():
 	if dash_cooldown:
-		if not is_on_wall_only():
-			await wait(1)
-			dash_cooldown = false
+		await wait(1)
+		dash_cooldown = false
 		
 func dash(direction):
 	# Dashing Logic
