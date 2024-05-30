@@ -41,7 +41,7 @@ func _physics_process(delta):
 		break
 
 	if Input.is_action_just_released("ui_accept"):
-		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
+		velocity.y = lerp(velocity.y, gravity*delta, 0.75)
 		
 	if is_on_floor() or is_on_wall_only() and jumps_remaining > 0:
 		jumps_remaining = 0
@@ -123,9 +123,7 @@ func wait(seconds):
 func disable_cooldown():
 	if dash_cooldown:
 		if not is_on_wall_only():
-			await wait(1.5)
-			dash_cooldown = false
-		else:
+			await wait(1)
 			dash_cooldown = false
 		
 func dash(direction):
