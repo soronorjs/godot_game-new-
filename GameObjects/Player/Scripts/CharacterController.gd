@@ -60,7 +60,13 @@ func _physics_process(delta):
 	
 	if is_on_wall_only():
 		while not Input.is_action_pressed("ui_accept"):
-			velocity.y = lerp(velocity.y, gravity*7*delta, 0.25)
+			var lerp
+			if not Input.is_action_pressed("ui_down"):
+				lerp = lerp(velocity.y, gravity*7*delta, 0.25)
+			elif Input.is_action_pressed("ui_down"):
+				print("a")
+				lerp = lerp(velocity.y, gravity*14*delta, 0.25)
+			velocity.y = lerp
 			break
 		wall_slide = true
 		disable_cooldown()
