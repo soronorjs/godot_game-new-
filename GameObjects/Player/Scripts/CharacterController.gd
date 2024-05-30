@@ -62,7 +62,7 @@ func _physics_process(delta):
 		while not Input.is_action_pressed("ui_accept"):
 			var lerp
 			if not Input.is_action_pressed("ui_down"):
-				lerp = lerp(velocity.y, gravity*7*delta, 0.25)
+				lerp = lerp(velocity.y, gravity*4*delta, 0.25)
 			elif Input.is_action_pressed("ui_down"):
 				print("a")
 				lerp = lerp(velocity.y, gravity*14*delta, 0.25)
