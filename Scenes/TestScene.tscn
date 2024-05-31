@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=70 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
 [ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
@@ -298,13 +298,57 @@ animations = [{
 radius = 8.0
 height = 32.0
 
+[sub_resource type="FontFile" id="FontFile_awogl"]
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/24/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkdbq"]
+font = SubResource("FontFile_awogl")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rvv5c"]
 size = Vector2(1.00348, 1.09091)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3em7x"]
-size = Vector2(1.00348, 0.969697)
+size = Vector2(1.00348, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wtajc"]
 cull_mode = 2
@@ -339,6 +383,8 @@ size = Vector2(25.175, 7.3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
 size = Vector2(25, 12)
 
+[sub_resource type="PrismMesh" id="PrismMesh_cuemv"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -350,15 +396,16 @@ shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-93, -23)
+position = Vector2(-80, -25)
 collision_mask = 5
 script = ExtResource("1_kvma6")
 metadata/Dashing = true
-metadata/Jump_Velocity = -400.0
+metadata/Jump_Velocity = -350.0
 metadata/Speed = 95.5
 metadata/HP = 100.0
 metadata/Sprint_Speed = 142.0
 metadata/Double_Jump = true
+metadata/Dash_Speed = 600.0
 
 [node name="MenuControl" type="Node" parent="Player"]
 script = ExtResource("3_4w0vg")
@@ -382,54 +429,103 @@ one_way_collision = true
 position = Vector2(3, 18)
 target_position = Vector2(50, -31)
 collision_mask = 7
+collide_with_areas = true
 
 [node name="Mortality" type="Node" parent="Player"]
 script = ExtResource("5_tcxkh")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+[node name="Label" type="Label" parent="Player"]
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 8.0
+offset_bottom = -6.0
+text = "YIPPIE!"
+label_settings = SubResource("LabelSettings_lkdbq")
+
+[node name="Ground" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
 scale = Vector2(1321, 16.5)
 mesh = SubResource("BoxMesh_jir4g")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
 collision_layer = 4
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
+<<<<<<< HEAD
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
 position = Vector2(1, -21.875)
 scale = Vector2(69, 40.25)
+=======
+[node name="Low_Obstacle" type="MeshInstance2D" parent="."]
+position = Vector2(1, -8.0675)
+scale = Vector2(59.16, 15.865)
 mesh = SubResource("BoxMesh_jir4g")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Low_Obstacle"]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Low_Obstacle/StaticBody2D"]
 position = Vector2(-0.0034839, 0)
 shape = SubResource("RectangleShape2D_3em7x")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="MeshInstance2D2"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Low_Obstacle"]
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
-position = Vector2(2, -65)
-scale = Vector2(69, 18.25)
+[node name="Platform" type="MeshInstance2D" parent="."]
+position = Vector2(2, -209.938)
+scale = Vector2(69, 308.125)
+>>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 mesh = SubResource("BoxMesh_jir4g")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
 collision_layer = 4
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
 position = Vector2(-0.0034839, 0)
 shape = SubResource("RectangleShape2D_3em7x")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="MeshInstance2D3"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platform"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_wtajc")
+
+[node name="Platform2" type="MeshInstance2D" parent="."]
+position = Vector2(-110, -294)
+scale = Vector2(69, 132)
+mesh = SubResource("BoxMesh_jir4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/StaticBody2D"]
+position = Vector2(-0.00348389, 0)
+shape = SubResource("RectangleShape2D_3em7x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platform2"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_wtajc")
+
+[node name="Platform3" type="MeshInstance2D" parent="."]
+position = Vector2(-106.25, -123)
+scale = Vector2(76.5, 132)
+mesh = SubResource("BoxMesh_jir4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
+position = Vector2(-0.0034839, 0)
+shape = SubResource("RectangleShape2D_3em7x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Platform3"]
 show_behind_parent = true
 occluder = SubResource("OccluderPolygon2D_wtajc")
 
@@ -485,7 +581,6 @@ default_color = Color(1, 0, 0, 1)
 texture = SubResource("CanvasTexture_1ow8i")
 
 [node name="SpikeDetection" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
-visible = false
 position = Vector2(0, -125)
 scale = Vector2(12.5, 12.5)
 shape = SubResource("RectangleShape2D_4a6nf")
@@ -512,7 +607,7 @@ max_distance = 28705.0
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(6, -77)
+position = Vector2(121, -108)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.0823529)
 shadow_filter = 2
@@ -530,15 +625,27 @@ color = Color(0.658824, 0.396078, 0.278431, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.44, 3.44)
-limit_smoothed = true
 position_smoothing_enabled = true
-drag_horizontal_enabled = true
+position_smoothing_speed = 10.0
 drag_vertical_enabled = true
 drag_left_margin = 0.3
 drag_top_margin = 0.4
 drag_right_margin = 0.3
 drag_bottom_margin = 0.01
 script = ExtResource("4_0wecj")
+
+[node name="Ramp" type="MeshInstance2D" parent="."]
+position = Vector2(265, -20)
+scale = Vector2(80.9287, -41.4287)
+mesh = SubResource("PrismMesh_cuemv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ramp"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ramp/StaticBody2D"]
+position = Vector2(-0.383053, -0.482757)
+polygon = PackedVector2Array(-0.111209, -0.0241378, 0.383053, 0.989651, 0.877315, 0)
 
 [connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
 [connection signal="animation_finished" from="Player/Player_Sprite" to="Player" method="_on_player_sprite_animation_finished"]
