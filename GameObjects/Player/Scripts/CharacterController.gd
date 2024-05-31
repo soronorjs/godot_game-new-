@@ -5,6 +5,7 @@ var jumps_remaining = 0
 var Dash : bool
 var dash_cooldown : bool = false
 var wall_slide : bool = false
+var no_jump : bool = false
 
 # Player Metadata and Nodes
 @onready var Player_Base = %Player
@@ -26,7 +27,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and jumps_remaining < 1:
 		if is_on_floor():
 			Player_Sprite.animation = "Jump_Charge"
 			Player_Sprite.speed_scale = 0.3
@@ -36,15 +37,18 @@ func _physics_process(delta):
 			velocity.y = jumpVelocity
 			jumps_remaining += 1
 	
-	while Input.is_action_pressed("ui_accept") and is_on_floor():
+	while Input.is_action_pressed("ui_accept") and is_on_floor() and jumps_remaining < 1:
 		velocity.y = jumpVelocity
 		break
 
-	if Input.is_action_just_released("ui_accept"):
+	if Input.is_action_just_released("ui_accept") and not no_jump:
 		velocity.y = lerp(velocity.y, gravity*delta, 0.75)
+		if jumps_remaining >= 1 and not no_jump:
+			no_jump = true
 		
 	if is_on_floor() or is_on_wall_only() and jumps_remaining > 0:
 		jumps_remaining = 0
+		no_jump = false
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -64,7 +68,6 @@ func _physics_process(delta):
 			if not Input.is_action_pressed("ui_down"):
 				lerp = lerp(velocity.y, gravity*4*delta, 0.25)
 			elif Input.is_action_pressed("ui_down"):
-				print("a")
 				lerp = lerp(velocity.y, gravity*14*delta, 0.25)
 			velocity.y = lerp
 			break

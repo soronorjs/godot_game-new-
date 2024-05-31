@@ -307,6 +307,7 @@ cache/0/10/0/scale = 1.0
 cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
 cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/24/0 = Vector2(0, 0)
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -315,6 +316,7 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
 cache/0/5/0/ascent = 0.0
 cache/0/5/0/descent = 0.0
 cache/0/5/0/underline_position = 0.0
@@ -323,10 +325,20 @@ cache/0/5/0/scale = 1.0
 cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
 cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/24/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lkdbq"]
 font = SubResource("FontFile_awogl")
-font_size = 5
+font_size = 24
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -427,8 +439,7 @@ offset_left = 2.0
 offset_top = -20.0
 offset_right = 8.0
 offset_bottom = -6.0
-text = "A
-"
+text = "YIPPIE!"
 label_settings = SubResource("LabelSettings_lkdbq")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
