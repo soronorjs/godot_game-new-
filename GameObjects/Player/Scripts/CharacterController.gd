@@ -50,17 +50,6 @@ func _physics_process(delta):
 		jumps_remaining = 0
 		no_jump = false
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-	# Dashing Logic
-	if Input.is_action_just_pressed("Dash") and Dashing and not is_on_wall():
-		if Player_Sprite.flip_h == true:
-			$RayCast2D.target_position.x = -50
-			Player_Base.position.x = $RayCast2D.position.x
-		else:
-			$RayCast2D.target_position.x = 50
-			Player_Base.position.x = $RayCast2D.position.x
-=======
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	# Dashing Logic
@@ -91,38 +80,6 @@ func _physics_process(delta):
 		if Player_Sprite.flip_h:
 			direction = -1
 		else:
-=======
-	var direction = Input.get_axis("ui_left", "ui_right")
-	
-	# Dashing Logic
-	dash(direction)
-		
-	if Dash:
-		$Label.label_settings.font_color = Color.RED
-	elif not dash_cooldown and not Dash:
-		$Label.label_settings.font_color = Color.WHITE
-	
-	# Wall Slide Logic
-	
-	if is_on_wall_only():
-		while not Input.is_action_pressed("ui_accept"):
-			var lerp
-			if not Input.is_action_pressed("ui_down"):
-				lerp = lerp(velocity.y, gravity*4*delta, 0.25)
-			elif Input.is_action_pressed("ui_down"):
-				lerp = lerp(velocity.y, gravity*14*delta, 0.25)
-			velocity.y = lerp
-			break
-		wall_slide = true
-		disable_cooldown()
-	
-	if Input.is_action_just_pressed("ui_accept") and wall_slide or Input.is_action_just_pressed("Dash") and wall_slide:
-		if Input.is_action_just_pressed("ui_accept"):
-			Player_Sprite.flip_h = not Player_Sprite.flip_h
-		if Player_Sprite.flip_h:
-			direction = -1
-		else:
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 			direction = 1
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = jumpVelocity
@@ -133,10 +90,6 @@ func _physics_process(delta):
 		velocity.y = lerp(velocity.y, gravity*delta, 0.5)
 		velocity.x = move_toward(velocity.x, 0, Speed)
 			
-<<<<<<< HEAD
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
-=======
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 	
 	# Walking Logic
 	
@@ -173,15 +126,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-func is_point_inside_object(point, object):
-	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_point(point, 32)
-	return result.size() > 0
-=======
-=======
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 func wait(seconds):
 	await get_tree().create_timer(seconds).timeout
 	
@@ -224,7 +168,3 @@ func dash(direction):
 		
 		Dash = false
 		disable_cooldown()
-<<<<<<< HEAD
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
-=======
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb

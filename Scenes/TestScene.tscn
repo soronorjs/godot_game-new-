@@ -426,8 +426,8 @@ shape = SubResource("CapsuleShape2D_fum7p")
 one_way_collision = true
 
 [node name="RayCast2D" type="RayCast2D" parent="Player"]
-position = Vector2(3, 18)
-target_position = Vector2(50, -31)
+position = Vector2(2, 15)
+target_position = Vector2(48, -35)
 collision_mask = 7
 collide_with_areas = true
 
@@ -455,14 +455,6 @@ collision_mask = 5
 position = Vector2(0.00174219, 0.0151514)
 shape = SubResource("RectangleShape2D_rvv5c")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(1, -21.875)
-scale = Vector2(69, 40.25)
-=======
-=======
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 [node name="Low_Obstacle" type="MeshInstance2D" parent="."]
 position = Vector2(1, -8.0675)
 scale = Vector2(59.16, 15.865)
@@ -483,10 +475,6 @@ occluder = SubResource("OccluderPolygon2D_wtajc")
 [node name="Platform" type="MeshInstance2D" parent="."]
 position = Vector2(2, -209.938)
 scale = Vector2(69, 308.125)
-<<<<<<< HEAD
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
-=======
->>>>>>> e346d73b59a0f6eb9109e8ec2c3f2c95eca8fdeb
 mesh = SubResource("BoxMesh_jir4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
