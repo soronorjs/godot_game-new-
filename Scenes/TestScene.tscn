@@ -369,7 +369,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_olvr8")
 }],
-"loop": true,
+"loop": false,
 "name": &"Jump",
 "speed": 60.0
 }, {
@@ -1950,7 +1950,7 @@ metadata/Jump_Velocity = -350.0
 metadata/Speed = 95.5
 metadata/HP = 100.0
 metadata/Sprint_Speed = 142.0
-metadata/Double_Jump = false
+metadata/Double_Jump = true
 metadata/Dash_Speed = 600.0
 
 [node name="MenuControl" type="Node" parent="Player"]
@@ -1961,6 +1961,7 @@ position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
 animation = &"Jump"
+frame = 8
 speed_scale = 0.3
 offset = Vector2(50.862, 0)
 

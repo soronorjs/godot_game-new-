@@ -22,17 +22,19 @@ func _physics_process(delta):
 	# Gravity control
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		Player_Sprite.animation = "Jump_Charge"
-		Player_Sprite.frame = 4
+		Player_Sprite.animation = "Jump"
+		if velocity.y == jumpVelocity:
+			Player_Sprite.frame = 8
 
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("ui_accept") and jumps_remaining < 1:
 		if is_on_floor():
-			Player_Sprite.animation = "Jump_Charge"
+			Player_Sprite.animation = "Jump"
 			Player_Sprite.speed_scale = 0.3
-			Player_Sprite.stop()
 			Player_Sprite.play()
+			if Player_Sprite.frame == 8:
+				Player_Sprite.stop()
 		elif jumps_remaining < 1 and doubleJump:
 			velocity.y = jumpVelocity
 			jumps_remaining += 1
