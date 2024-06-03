@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
 [ext_resource type="Script" path="res://GameObjects/Scripts/Mortality.gd" id="9_og2fs"]
 [ext_resource type="Texture2D" uid="uid://d27wnr6xclf1j" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
-[ext_resource type="Texture2D" uid="uid://he3knhq0ugkv" path="res://art/Cave_Blocks.png" id="14_g0u4b"]
+[ext_resource type="Texture2D" uid="uid://he3knhq0ugkv" path="res://art/Cave_Blocks.png" id="14_4l7e2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
@@ -386,8 +386,8 @@ size = Vector2(25, 12)
 
 [sub_resource type="PrismMesh" id="PrismMesh_cuemv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfo1e"]
-texture = ExtResource("14_g0u4b")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8scel"]
+texture = ExtResource("14_4l7e2")
 margins = Vector2i(7, 1)
 0:0/0 = 0
 1:0/0 = 0
@@ -1231,8 +1231,8 @@ margins = Vector2i(7, 1)
 27:28/0 = 0
 28:28/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_omp2a"]
-sources/0 = SubResource("TileSetAtlasSource_pfo1e")
+[sub_resource type="TileSet" id="TileSet_5dng5"]
+sources/0 = SubResource("TileSetAtlasSource_8scel")
 
 [node name="Node2D" type="Node2D"]
 
@@ -1492,7 +1492,7 @@ polygon = PackedVector2Array(-0.111209, -0.0241378, 0.383053, 0.989651, 0.877315
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_omp2a")
+tile_set = SubResource("TileSet_5dng5")
 format = 2
 
 [connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
