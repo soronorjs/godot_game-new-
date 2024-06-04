@@ -18,78 +18,96 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m3qy2")
 
 [node name="MainFrame" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="MainFrame"]
-layout_mode = 2
-offset_right = 1158.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -959.0
+offset_top = -546.0
+offset_right = 966.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("CanvasTexture_7mscs")
 
 [node name="Play" type="Button" parent="MainFrame/Background"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 257.0
-offset_top = 191.0
-offset_right = -242.0
-offset_bottom = -366.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.378
+anchor_right = 0.9
+anchor_bottom = 0.395
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_pwwc4")
 text = "Play"
 script = ExtResource("3_nv5pk")
 
 [node name="Settings" type="Button" parent="MainFrame/Background"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 257.0
-offset_top = 302.0
-offset_right = -242.0
-offset_bottom = -253.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.479
+anchor_right = 0.9
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_pwwc4")
 text = "Settings"
 script = ExtResource("4_ctg0d")
 
 [node name="Credits" type="Button" parent="MainFrame/Background"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 255.0
-offset_top = 419.0
-offset_right = -244.0
-offset_bottom = -138.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.576
+anchor_right = 0.9
+anchor_bottom = 0.617
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_pwwc4")
 text = "Credits"
 
 [node name="Exit" type="Button" parent="MainFrame/Background"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 255.0
-offset_top = 532.0
-offset_right = -244.0
-offset_bottom = -25.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.71
+anchor_right = 0.9
+anchor_bottom = 0.71
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_pwwc4")
 text = "Exit
 "
 script = ExtResource("4_5241x")
 
 [node name="Label" type="Label" parent="MainFrame/Background"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 37.0
-offset_right = 950.0
-offset_bottom = 162.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.225
+anchor_right = 0.5
+anchor_bottom = 0.245
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_pwwc4")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Game Title"

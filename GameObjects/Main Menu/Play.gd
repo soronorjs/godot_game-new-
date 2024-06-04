@@ -18,4 +18,5 @@ func set_bus_volume_db(volume_db):
 	
 func _physics_process(delta):
 	if AudioServer.get_bus_volume_db(0) == -20.0:
+		AudioServer.set_bus_volume_db(0, 0.0)
 		get_tree().change_scene_to_file("res://Scenes/TestScene.tscn")
