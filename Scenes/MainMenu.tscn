@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsdnvu7s3k1t3"]
+[gd_scene load_steps=10 format=3 uid="uid://dsdnvu7s3k1t3"]
 
 [ext_resource type="Script" path="res://GameObjects/Main Menu/LoadMenu.gd" id="1_m3qy2"]
 [ext_resource type="Texture2D" uid="uid://nssfsfoc4jrd" path="res://art/image.png" id="2_emsvq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="3_nv5pk"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="4_5241x"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Settings.gd" id="4_ctg0d"]
+[ext_resource type="AudioStream" uid="uid://den3lulkuytu5" path="res://music/Mr. Rich Brother.wav" id="7_fs58j"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
 diffuse_texture = ExtResource("2_emsvq")
@@ -94,3 +95,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Game Title"
 label_settings = SubResource("LabelSettings_mrdm4")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fs58j")
+autoplay = true
