@@ -32,7 +32,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			Player_Sprite.animation = "Jump"
 			Player_Sprite.speed_scale = 0.3
-			Player_Sprite.play()
+			#Player_Sprite.play()
 			if Player_Sprite.frame == 8:
 				Player_Sprite.stop()
 		elif jumps_remaining < 1 and doubleJump:
