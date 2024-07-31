@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmd5eyrr2t7x8"]
+[gd_scene load_steps=9 format=3 uid="uid://cyjn7rsbrxmvw"]
 
 [ext_resource type="Texture2D" uid="uid://nssfsfoc4jrd" path="res://art/image.png" id="1_huksj"]
 [ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/Themes/MenuButton.tres" id="2_ahtvi"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="3_fi1pl"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Settings.gd" id="4_u8k8e"]
 [ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="5_rioap"]
+[ext_resource type="AudioStream" uid="uid://den3lulkuytu5" path="res://music/Mr. Rich Brother.wav" id="6_3g3bx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
 diffuse_texture = ExtResource("1_huksj")
@@ -14,7 +15,7 @@ texture_filter = 2
 font_size = 101
 font_color = Color(0, 0, 0, 1)
 
-[node name="MainFrame" type="Control"]
+[node name="main_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,16 +99,6 @@ text = "Game Title"
 label_settings = SubResource("LabelSettings_mrdm4")
 horizontal_alignment = 1
 
-[node name="Fading" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 0
-follow_viewport_enabled = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3g3bx")
+autoplay = true

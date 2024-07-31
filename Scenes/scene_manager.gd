@@ -4,7 +4,7 @@ var file_paths = {}
 
 func _ready():
 	scan_directory("res://your_game_folder")
-	changeLevel("test_scene")
+	changeLevel("main_ui")
 
 func scan_directory(path):
 	var dir = DirAccess.open(path)
