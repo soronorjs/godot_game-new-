@@ -1,40 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsdnvu7s3k1t3"]
+[gd_scene load_steps=8 format=3 uid="uid://dv48icwi157rm"]
 
-[ext_resource type="Script" path="res://GameObjects/Main Menu/MainControl.gd" id="1_m3qy2"]
-[ext_resource type="Texture2D" uid="uid://nssfsfoc4jrd" path="res://art/image.png" id="2_emsvq"]
-[ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/Themes/MenuButton.tres" id="2_pwwc4"]
-[ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="3_nv5pk"]
-[ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="4_5241x"]
-[ext_resource type="Script" path="res://GameObjects/Main Menu/Settings.gd" id="4_ctg0d"]
-[ext_resource type="AudioStream" uid="uid://den3lulkuytu5" path="res://music/Mr. Rich Brother.wav" id="7_fs58j"]
+[ext_resource type="Texture2D" uid="uid://nssfsfoc4jrd" path="res://art/image.png" id="1_uf6e1"]
+[ext_resource type="Theme" uid="uid://clq37spvfbw45" path="res://GameObjects/Themes/MenuButton.tres" id="2_hrlqw"]
+[ext_resource type="Script" path="res://GameObjects/Main Menu/Play.gd" id="3_gktky"]
+[ext_resource type="Script" path="res://GameObjects/Main Menu/Settings.gd" id="4_8p4y5"]
+[ext_resource type="Script" path="res://GameObjects/Main Menu/Exit.gd" id="5_1fmyg"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7mscs"]
-diffuse_texture = ExtResource("2_emsvq")
+diffuse_texture = ExtResource("1_uf6e1")
 texture_filter = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_mrdm4"]
 font_size = 101
 font_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_m3qy2")
+[node name="MainMenu" type="CanvasLayer"]
+layer = 2
 
-[node name="MainFrame" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="TextureRect" parent="MainFrame"]
-layout_mode = 1
+[node name="Background" type="TextureRect" parent="."]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_7mscs")
 
-[node name="Play" type="Button" parent="MainFrame/Background"]
+[node name="Play" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -51,11 +34,11 @@ anchor_right = 0.9
 anchor_bottom = 0.395
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pwwc4")
+theme = ExtResource("2_hrlqw")
 text = "Play"
-script = ExtResource("3_nv5pk")
+script = ExtResource("3_gktky")
 
-[node name="Settings" type="Button" parent="MainFrame/Background"]
+[node name="Settings" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -64,11 +47,11 @@ anchor_right = 0.9
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pwwc4")
+theme = ExtResource("2_hrlqw")
 text = "Settings"
-script = ExtResource("4_ctg0d")
+script = ExtResource("4_8p4y5")
 
-[node name="Credits" type="Button" parent="MainFrame/Background"]
+[node name="Credits" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -77,10 +60,10 @@ anchor_right = 0.9
 anchor_bottom = 0.617
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pwwc4")
+theme = ExtResource("2_hrlqw")
 text = "Credits"
 
-[node name="Exit" type="Button" parent="MainFrame/Background"]
+[node name="Exit" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -89,12 +72,12 @@ anchor_right = 0.9
 anchor_bottom = 0.71
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pwwc4")
+theme = ExtResource("2_hrlqw")
 text = "Exit
 "
-script = ExtResource("4_5241x")
+script = ExtResource("5_1fmyg")
 
-[node name="Label" type="Label" parent="MainFrame/Background"]
+[node name="Label" type="Label" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -103,14 +86,13 @@ anchor_right = 0.5
 anchor_bottom = 0.245
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pwwc4")
+theme = ExtResource("2_hrlqw")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Game Title"
 label_settings = SubResource("LabelSettings_mrdm4")
 horizontal_alignment = 1
 
-[node name="Fading" type="ColorRect" parent="MainFrame"]
-layout_mode = 1
+[node name="Fading" type="ColorRect" parent="."]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -118,10 +100,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_fs58j")
-autoplay = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
