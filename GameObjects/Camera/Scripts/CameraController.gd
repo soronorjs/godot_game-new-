@@ -6,4 +6,4 @@ func _ready():
 	self.make_current()
 	
 func _process(delta):
-	$".".position = %Player.position
+	$".".position = $"../../Player_Sprite".position

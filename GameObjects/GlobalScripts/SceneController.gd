@@ -17,7 +17,7 @@ func load_scene(scene_path: String):
 		var scene_instance = scene.instantiate()
 		scene_holder.add_child(scene_instance)
 		
-		var scene_cam = scene_instance.get_node("Cameras/MainCam")
+		var scene_cam = scene_instance.get_node("Player/Cameras/MainCam")
 	
 		if scene_cam:
 			scene_cam.make_current()
