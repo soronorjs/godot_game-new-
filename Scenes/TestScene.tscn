@@ -1452,6 +1452,11 @@ shape = SubResource("RectangleShape2D_dqhsm")
 
 [node name="Player" parent="." instance=ExtResource("3_deoqs")]
 unique_name_in_owner = true
+position = Vector2(-3, -43)
+
+[node name="Player_Sprite" parent="Player" index="2"]
+frame = 18
+frame_progress = 1.0
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
@@ -1512,6 +1517,7 @@ position = Vector2(-1, -65)
 
 [node name="DaddelCrab" parent="." instance=ExtResource("4_muofw")]
 unique_name_in_owner = true
+position = Vector2(117, -11)
 
 [node name="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite" index="1"]
 shape = SubResource("ConvexPolygonShape2D_sbihb")

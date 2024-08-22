@@ -32,7 +32,7 @@ size = Vector2(25.175, 7.3)
 size = Vector2(25, 12)
 
 [node name="DaddelCrab" type="CharacterBody2D"]
-position = Vector2(76, -5)
+position = Vector2(0, -1)
 collision_layer = 2
 collision_mask = 14
 script = ExtResource("1_lkvfn")
