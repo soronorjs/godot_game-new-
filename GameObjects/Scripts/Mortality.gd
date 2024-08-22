@@ -6,5 +6,5 @@ extends Node
 func _physics_process(delta):
 	if spikeDetectCast.is_colliding():
 		for i in spikeDetectCast.get_collision_count():
-			if spikeDetectCast.get_collider(i) == %Player and %Player.velocity.y > 0:
-				%Player.set_meta("HP", 0)
+			if "Player" in spikeDetectCast.get_collider(i).name and spikeDetectCast.get_collider(i).velocity.y > 0:
+				spikeDetectCast.get_collider(i).set_meta("HP", 0)
