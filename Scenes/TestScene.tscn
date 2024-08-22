@@ -1517,7 +1517,16 @@ unique_name_in_owner = true
 shape = SubResource("ConvexPolygonShape2D_sbihb")
 
 [node name="SpikeDetection" parent="DaddelCrab/Enemy_Sprite" index="4"]
-visible = true
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab2" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(121, -6)
+
+[node name="ShapeCast2D" parent="DaddelCrab2/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab2/Enemy_Sprite" index="4"]
 shape = SubResource("RectangleShape2D_jxfhb")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -1572,3 +1581,4 @@ layer_0/tile_data = PackedInt32Array(-1507347, 0, 1, -1441811, 0, 2, -1507346, 1
 
 [editable path="Player"]
 [editable path="DaddelCrab"]
+[editable path="DaddelCrab2"]
