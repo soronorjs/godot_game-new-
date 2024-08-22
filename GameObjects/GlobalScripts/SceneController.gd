@@ -8,7 +8,9 @@ func _ready():
 
 func load_scene(scene_path: String):
 	if scene_holder.get_child_count() > 0:
-		scene_holder.get_child(0).queue_free()
+		for child in scene_holder.get_children():
+			scene_holder.remove_child(child)
+			child.queue_free()
 		
 	var scene = load(scene_path)
 	if scene:
