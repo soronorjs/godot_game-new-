@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 @onready var scene_holder = get_node("/root/SceneManager/SceneHolder")
 @onready var main_audio = get_node("/root/SceneManager/MainAudio")
@@ -17,9 +17,12 @@ func load_scene(scene_path: String):
 		var scene_instance = scene.instantiate()
 		scene_holder.add_child(scene_instance)
 		
-		var scene_cam = get_node(str("/root/SceneManager/SceneHolder/", scene_instance.name, "/Cameras/MainCam"))
+		var scene_cam = scene_instance.get_node("Cameras/MainCam")
 	
 		if scene_cam:
 			scene_cam.make_current()
+			print(get_viewport().get_camera_2d())
+		else:
+			push_error("Failed to recognize camera")
 	else:
 		print("Failed to load scene: ", scene_path)

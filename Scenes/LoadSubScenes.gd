@@ -1,10 +1,10 @@
 extends Node2D
 
-@onready var MainCam = $Cameras/MainCam
+#@onready var MainCam = $Cameras/MainCam
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	MainCam.make_current()
+#func _ready():
+	#MainCam.make_current()
 	
 	#var ui = preload("res://Scenes/game_ui.tscn")
 	#

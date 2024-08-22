@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://GameObjects/GlobalScripts/SceneController.gd" id="1_wvcf5"]
 [ext_resource type="AudioStream" uid="uid://den3lulkuytu5" path="res://music/Mr. Rich Brother.wav" id="2_dcwlt"]
 
-[node name="SceneController" type="CanvasLayer"]
+[node name="SceneController" type="Node2D"]
 script = ExtResource("1_wvcf5")
 
 [node name="MainAudio" type="AudioStreamPlayer" parent="."]
