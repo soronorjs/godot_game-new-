@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2dos3ys3r260"]
+
+[ext_resource type="Script" path="res://GameObjects/GlobalScripts/SceneController.gd" id="1_wvcf5"]
+[ext_resource type="AudioStream" uid="uid://den3lulkuytu5" path="res://music/Mr. Rich Brother.wav" id="2_dcwlt"]
+[ext_resource type="PackedScene" uid="uid://dv48icwi157rm" path="res://Scenes/MainMenu.tscn" id="3_lx5yl"]
+
+[node name="SceneController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvcf5")
+
+[node name="MainAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dcwlt")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="SceneHolder" type="Node" parent="."]
+
+[node name="MainFrame" parent="SceneHolder" instance=ExtResource("3_lx5yl")]

@@ -8,7 +8,7 @@ var wall_slide : bool = false
 var no_jump : bool = false
 
 # Player Metadata and Nodes
-@onready var Player_Base = %Player
+@onready var Player_Base = $"."
 @onready var Player_Sprite = get_node("Player_Sprite")
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
 @onready var Speed = Player_Base.get_meta(&"Speed")

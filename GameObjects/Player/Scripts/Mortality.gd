@@ -1,6 +1,6 @@
 extends Node
 
-@onready var Player = %Player
+@onready var Player = $".."
 @onready var HP = Player.get_meta("HP")
 
 func _physics_process(delta):

@@ -1,489 +1,15 @@
-[gd_scene load_steps=97 format=3 uid="uid://psu3mc3itic5"]
+[gd_scene load_steps=20 format=3 uid="uid://psu3mc3itic5"]
 
 [ext_resource type="Script" path="res://Scenes/LoadSubScenes.gd" id="1_40lpp"]
-[ext_resource type="Script" path="res://GameObjects/Player/Scripts/CharacterController.gd" id="1_kvma6"]
-[ext_resource type="Script" path="res://GameObjects/Player/Scripts/MenuControl.gd" id="3_4w0vg"]
-[ext_resource type="Texture2D" uid="uid://beknjsn01hnak" path="res://art/animations/Player_Idle.png" id="3_bs7h6"]
-[ext_resource type="Texture2D" uid="uid://dha7sss55u8l7" path="res://art/animations/Player_Walk.png" id="3_xoib2"]
-[ext_resource type="Texture2D" uid="uid://d0m5pp1muchks" path="res://art/animations/Player_Jump_Charge.png" id="4_0dk24"]
-[ext_resource type="Script" path="res://GameObjects/Camera/Scripts/CameraController.gd" id="4_0wecj"]
+[ext_resource type="PackedScene" uid="uid://dv42yxu6bww3k" path="res://Scenes/Creatures/player.tscn" id="3_deoqs"]
+[ext_resource type="PackedScene" uid="uid://dkkkwfmyfmghq" path="res://Scenes/Creatures/daddel_crab.tscn" id="4_muofw"]
 [ext_resource type="Script" path="res://GameObjects/LevelObjects/Scripts/Killzone.gd" id="5_jx7um"]
-[ext_resource type="Script" path="res://GameObjects/Player/Scripts/Mortality.gd" id="5_tcxkh"]
-[ext_resource type="Script" path="res://GameObjects/Scripts/EnemyController.gd" id="6_50kgo"]
-[ext_resource type="Texture2D" uid="uid://dwh7v683h2tlt" path="res://art/animations/Player_Jump.png" id="6_euibl"]
-[ext_resource type="Texture2D" uid="uid://c4cctugo41ww8" path="res://art/daddel_crab3.png" id="7_hiiv7"]
 [ext_resource type="Texture2D" uid="uid://m0q10bjax85n" path="res://art/light.png" id="9_hxmwk"]
-[ext_resource type="Script" path="res://GameObjects/Scripts/Mortality.gd" id="9_og2fs"]
-[ext_resource type="Texture2D" uid="uid://d27wnr6xclf1j" path="res://art/Normal Maps/DaddelCrab_Norm.png" id="9_ttwnr"]
 [ext_resource type="Texture2D" uid="uid://he3knhq0ugkv" path="res://art/Cave_Blocks.png" id="14_4l7e2"]
 [ext_resource type="Texture2D" uid="uid://1x5je4k1j5h6" path="res://art/Normal Maps/CaveBlocks_Norm.png" id="15_bg5yf"]
-[ext_resource type="PackedScene" uid="uid://ds2grs368bakc" path="res://Scenes/game_ui.tscn" id="18_jiqng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqhsm"]
 size = Vector2(226, 137)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhxq4"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(0, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxch4"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(50, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8vav"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(100, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxymw"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(150, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ef14"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(200, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyb3a"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(250, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rfrv"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(300, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fr2cy"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(350, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y1hda"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(400, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccdij"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(450, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6dv8f"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(500, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_us2bk"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(550, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvq7v"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(600, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f2j6d"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(650, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qby0i"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(700, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jaypj"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(750, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_anqjw"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(800, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4abf7"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(850, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hllq"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(900, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78t78"]
-atlas = ExtResource("3_bs7h6")
-region = Rect2(950, 0, 50, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_verhv"]
-atlas = ExtResource("6_euibl")
-region = Rect2(0, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqiow"]
-atlas = ExtResource("6_euibl")
-region = Rect2(80, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_761l5"]
-atlas = ExtResource("6_euibl")
-region = Rect2(160, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kkld8"]
-atlas = ExtResource("6_euibl")
-region = Rect2(240, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5v73p"]
-atlas = ExtResource("6_euibl")
-region = Rect2(320, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d15c0"]
-atlas = ExtResource("6_euibl")
-region = Rect2(400, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pl8x0"]
-atlas = ExtResource("6_euibl")
-region = Rect2(480, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_asgn6"]
-atlas = ExtResource("6_euibl")
-region = Rect2(560, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2nj4"]
-atlas = ExtResource("6_euibl")
-region = Rect2(640, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ei2s"]
-atlas = ExtResource("6_euibl")
-region = Rect2(720, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tul1q"]
-atlas = ExtResource("6_euibl")
-region = Rect2(800, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_djot1"]
-atlas = ExtResource("6_euibl")
-region = Rect2(880, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpcfa"]
-atlas = ExtResource("6_euibl")
-region = Rect2(960, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nnwe"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1040, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8o85l"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1120, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ftqyc"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1200, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqkiu"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1280, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y5grr"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1360, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olvr8"]
-atlas = ExtResource("6_euibl")
-region = Rect2(1440, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_clqbw"]
-atlas = ExtResource("4_0dk24")
-region = Rect2(0, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojc2o"]
-atlas = ExtResource("4_0dk24")
-region = Rect2(48, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3q2o2"]
-atlas = ExtResource("4_0dk24")
-region = Rect2(96, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0edhu"]
-atlas = ExtResource("4_0dk24")
-region = Rect2(144, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rai5n"]
-atlas = ExtResource("4_0dk24")
-region = Rect2(192, 0, 48, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cw4g2"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(0, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qh0r6"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(64, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fn88x"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(128, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6uko"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(192, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78vms"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(256, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bx1d3"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(320, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t8ace"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(384, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlqoj"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(448, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lojs"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(512, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3gpi"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(576, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_20rtt"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(640, 0, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6v1lh"]
-atlas = ExtResource("3_xoib2")
-region = Rect2(704, 0, 64, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6t77s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xhxq4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxch4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b8vav")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxymw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ef14")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fyb3a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2rfrv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fr2cy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y1hda")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ccdij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6dv8f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_us2bk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvq7v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f2j6d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qby0i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jaypj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_anqjw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4abf7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hllq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_78t78")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_verhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lqiow")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_761l5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kkld8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5v73p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d15c0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pl8x0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_asgn6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2nj4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ei2s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tul1q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_djot1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kpcfa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1nnwe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8o85l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ftqyc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cqkiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y5grr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olvr8")
-}],
-"loop": false,
-"name": &"Jump",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_clqbw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ojc2o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3q2o2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0edhu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rai5n")
-}],
-"loop": false,
-"name": &"Jump_Charge",
-"speed": 60.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cw4g2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qh0r6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fn88x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6uko")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_78vms")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bx1d3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t8ace")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rlqoj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3lojs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3gpi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20rtt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6v1lh")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 60.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum7p"]
-radius = 8.0
-height = 32.0
-
-[sub_resource type="FontFile" id="FontFile_awogl"]
-cache/0/10/0/ascent = 0.0
-cache/0/10/0/descent = 0.0
-cache/0/10/0/underline_position = 0.0
-cache/0/10/0/underline_thickness = 0.0
-cache/0/10/0/scale = 1.0
-cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/10/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/5/0/ascent = 0.0
-cache/0/5/0/descent = 0.0
-cache/0/5/0/underline_position = 0.0
-cache/0/5/0/underline_thickness = 0.0
-cache/0/5/0/scale = 1.0
-cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/5/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/24/0/ascent = 0.0
-cache/0/24/0/descent = 0.0
-cache/0/24/0/underline_position = 0.0
-cache/0/24/0/underline_thickness = 0.0
-cache/0/24/0/scale = 1.0
-cache/0/24/0/kerning_overrides/10/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/5/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_lkdbq"]
-font = SubResource("FontFile_awogl")
-font_size = 24
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jir4g"]
 
@@ -500,31 +26,11 @@ polygon = PackedVector2Array(-0.507246, -0.499394, 0.492754, -0.499394, 0.492754
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3anb"]
 size = Vector2(1905, 171)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_y612g"]
-diffuse_texture = ExtResource("7_hiiv7")
-normal_texture = ExtResource("9_ttwnr")
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1b3q4"]
-cull_mode = 1
-polygon = PackedVector2Array(-196, -41.9991, -191, -31.9991, -186, -16.9991, -171, -1.99922, -151, 3.00069, -121, 13.0006, -80.9999, 13.0004, -45.9999, 8.00022, -16, -1.99991, 3.99994, -12, 8.99985, -32, 13.9998, -47, 18.9998, -32.0001, 23.9999, -12.0001, 29, 7.99989, 34, -2.00013, 33.9999, -22.0001, 33.9999, -32.0001, 33.9998, -57.0001, 28.9997, -72.0001, 38.9998, -52.0001, 38.9999, -32.0002, 43.9999, -17.0002, 48.9999, -12.0002, 48.9999, -32.0002, 53.9998, -57.0002, 43.9997, -72.0002, 38.9996, -87.0002, 23.9996, -97.0001, 13.9996, -97, 13.9995, -107, 13.9995, -117, -1.00055, -122, -11.0005, -127, -11.0006, -137, -21.0006, -137, -26.0006, -137, -26.0006, -147, -41.0006, -147, -51.0006, -142, -51.0007, -157, -56.0007, -162, -61.0007, -157, -71.0006, -152, -76.0006, -152, -76.0007, -162, -81.0007, -162, -86.0007, -167, -91.0007, -162, -101.001, -157, -106.001, -146.999, -111.001, -141.999, -121.001, -146.999, -131.001, -156.999, -136.001, -161.999, -141.001, -156.999, -151.001, -141.999, -151.001, -136.999, -156.001, -136.999, -166.001, -141.999, -171.001, -136.999, -176.001, -131.999, -181.001, -131.999, -186.001, -131.999, -191.001, -126.999, -186, -116.999, -196, -111.999, -201, -91.9991, -211, -91.999, -221, -86.999, -226, -76.999, -231, -61.9989, -236, -46.9989, -231, -31.9989, -231, -16.999, -226, -11.999, -226, -26.999, -221, -41.999, -211, -61.999, -216, -71.999, -206, -71.9991, -206, -66.9991, -216, -51.999, -221, -31.999, -221, -16.999, -216, 3.00098, -211, 8.00096, -206, -6.99906, -206, -26.9991, -201, -36.9991, -196, -46.9991)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_7xp6a"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_sbihb"]
 points = PackedVector2Array(-3.29, 82.35, 138.955, -82.735, -167.82, -84.56)
 
-[sub_resource type="Gradient" id="Gradient_jbv6s"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a6a2u"]
-gradient = SubResource("Gradient_jbv6s")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_1ow8i"]
-diffuse_texture = SubResource("GradientTexture1D_a6a2u")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a6nf"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxfhb"]
 size = Vector2(25.175, 7.3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dawp4"]
-size = Vector2(25, 12)
 
 [sub_resource type="PrismMesh" id="PrismMesh_cuemv"]
 
@@ -1934,6 +1440,7 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_8scel")
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(855, 647)
 script = ExtResource("1_40lpp")
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -1943,52 +1450,8 @@ position = Vector2(0, -51)
 position = Vector2(5, -17.5)
 shape = SubResource("RectangleShape2D_dqhsm")
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_deoqs")]
 unique_name_in_owner = true
-position = Vector2(-80, -25)
-collision_mask = 5
-script = ExtResource("1_kvma6")
-metadata/Dashing = true
-metadata/Jump_Velocity = -350.0
-metadata/Speed = 95.5
-metadata/HP = 100.0
-metadata/Sprint_Speed = 142.0
-metadata/Double_Jump = true
-metadata/Dash_Speed = 600.0
-
-[node name="MenuControl" type="Node" parent="Player"]
-script = ExtResource("3_4w0vg")
-
-[node name="Player_Sprite" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(-24, 1)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_6t77s")
-animation = &"Jump"
-frame = 8
-speed_scale = 0.3
-offset = Vector2(50.862, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(3, 4)
-shape = SubResource("CapsuleShape2D_fum7p")
-one_way_collision = true
-
-[node name="RayCast2D" type="RayCast2D" parent="Player"]
-position = Vector2(2, 15)
-target_position = Vector2(48, -35)
-collision_mask = 7
-collide_with_areas = true
-
-[node name="Mortality" type="Node" parent="Player"]
-script = ExtResource("5_tcxkh")
-
-[node name="Label" type="Label" parent="Player"]
-offset_left = 2.0
-offset_top = -20.0
-offset_right = 8.0
-offset_bottom = -6.0
-text = "YIPPIE!"
-label_settings = SubResource("LabelSettings_lkdbq")
 
 [node name="Ground" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
@@ -2047,61 +1510,644 @@ shape = SubResource("RectangleShape2D_p3anb")
 [node name="Checkpoint" type="Marker2D" parent="."]
 position = Vector2(-1, -65)
 
-[node name="DaddelCrab" type="CharacterBody2D" parent="."]
+[node name="DaddelCrab" parent="." instance=ExtResource("4_muofw")]
 unique_name_in_owner = true
-position = Vector2(76, -5)
-collision_layer = 2
-collision_mask = 14
-script = ExtResource("6_50kgo")
-metadata/Speed = 30.0
-metadata/Track_Player = false
-metadata/Jump_Range = 59.0
-metadata/Jump_Velocity = 0.0
 
-[node name="Enemy_Sprite" type="Sprite2D" parent="DaddelCrab"]
-scale = Vector2(0.08, 0.08)
-texture = SubResource("CanvasTexture_y612g")
-region_enabled = true
-region_rect = Rect2(158, 0, 289.768, 600)
+[node name="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DaddelCrab/Enemy_Sprite"]
-show_behind_parent = true
-position = Vector2(91, -3)
-occluder = SubResource("OccluderPolygon2D_1b3q4")
+[node name="SpikeDetection" parent="DaddelCrab/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
-visible = false
-position = Vector2(-60, -80)
-shape = SubResource("ConvexPolygonShape2D_7xp6a")
-target_position = Vector2(135, -0.000617981)
-collision_mask = 7
+[node name="DaddelCrab2" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(121, -6)
 
-[node name="RayCast2D" type="RayCast2D" parent="DaddelCrab/Enemy_Sprite"]
-position = Vector2(135, -70)
-target_position = Vector2(0.001, 900)
-collision_mask = 7
+[node name="ShapeCast2D" parent="DaddelCrab2/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
 
-[node name="Line2D" type="Line2D" parent="DaddelCrab/Enemy_Sprite"]
-position = Vector2(-8.00019, 38.9996)
-points = PackedVector2Array(0, 0, -40, 0)
-width = 2.0
-default_color = Color(1, 0, 0, 1)
-texture = SubResource("CanvasTexture_1ow8i")
+[node name="SpikeDetection" parent="DaddelCrab2/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
 
-[node name="SpikeDetection" type="ShapeCast2D" parent="DaddelCrab/Enemy_Sprite"]
-visible = false
-position = Vector2(0, -125)
-scale = Vector2(12.5, 12.5)
-shape = SubResource("RectangleShape2D_4a6nf")
-target_position = Vector2(0, 0)
+[node name="DaddelCrab3" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(144, -6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DaddelCrab"]
-visible = false
-position = Vector2(0.5, -5)
-shape = SubResource("RectangleShape2D_dawp4")
+[node name="ShapeCast2D" parent="DaddelCrab3/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
 
-[node name="Mortality" type="Node" parent="DaddelCrab"]
-script = ExtResource("9_og2fs")
+[node name="SpikeDetection" parent="DaddelCrab3/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab4" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(165, -6)
+
+[node name="ShapeCast2D" parent="DaddelCrab4/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab4/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab5" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(189, -7)
+
+[node name="ShapeCast2D" parent="DaddelCrab5/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab5/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab6" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(211, -8)
+
+[node name="ShapeCast2D" parent="DaddelCrab6/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab6/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab7" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(99, -7)
+
+[node name="ShapeCast2D" parent="DaddelCrab7/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab7/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab8" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(51, -6)
+
+[node name="ShapeCast2D" parent="DaddelCrab8/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab8/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab9" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -16)
+
+[node name="ShapeCast2D" parent="DaddelCrab9/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab9/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab10" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -17)
+
+[node name="ShapeCast2D" parent="DaddelCrab10/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab10/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab11" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -17)
+
+[node name="ShapeCast2D" parent="DaddelCrab11/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab11/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab12" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -17)
+
+[node name="ShapeCast2D" parent="DaddelCrab12/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab12/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab13" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -18)
+
+[node name="ShapeCast2D" parent="DaddelCrab13/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab13/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab14" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -19)
+
+[node name="ShapeCast2D" parent="DaddelCrab14/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab14/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab15" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -18)
+
+[node name="ShapeCast2D" parent="DaddelCrab15/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab15/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab16" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -17)
+
+[node name="ShapeCast2D" parent="DaddelCrab16/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab16/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab17" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -29)
+
+[node name="ShapeCast2D" parent="DaddelCrab17/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab17/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab18" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -30)
+
+[node name="ShapeCast2D" parent="DaddelCrab18/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab18/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab19" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -30)
+
+[node name="ShapeCast2D" parent="DaddelCrab19/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab19/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab20" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -30)
+
+[node name="ShapeCast2D" parent="DaddelCrab20/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab20/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab21" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -31)
+
+[node name="ShapeCast2D" parent="DaddelCrab21/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab21/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab22" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -32)
+
+[node name="ShapeCast2D" parent="DaddelCrab22/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab22/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab23" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -31)
+
+[node name="ShapeCast2D" parent="DaddelCrab23/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab23/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab24" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -30)
+
+[node name="ShapeCast2D" parent="DaddelCrab24/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab24/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab25" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -42)
+
+[node name="ShapeCast2D" parent="DaddelCrab25/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab25/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab26" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -43)
+
+[node name="ShapeCast2D" parent="DaddelCrab26/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab26/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab27" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -43)
+
+[node name="ShapeCast2D" parent="DaddelCrab27/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab27/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab28" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -43)
+
+[node name="ShapeCast2D" parent="DaddelCrab28/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab28/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab29" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -44)
+
+[node name="ShapeCast2D" parent="DaddelCrab29/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab29/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab30" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -45)
+
+[node name="ShapeCast2D" parent="DaddelCrab30/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab30/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab31" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -44)
+
+[node name="ShapeCast2D" parent="DaddelCrab31/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab31/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab32" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -43)
+
+[node name="ShapeCast2D" parent="DaddelCrab32/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab32/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab33" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -56)
+
+[node name="ShapeCast2D" parent="DaddelCrab33/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab33/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab34" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -57)
+
+[node name="ShapeCast2D" parent="DaddelCrab34/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab34/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab35" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -57)
+
+[node name="ShapeCast2D" parent="DaddelCrab35/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab35/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab36" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -57)
+
+[node name="ShapeCast2D" parent="DaddelCrab36/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab36/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab37" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -58)
+
+[node name="ShapeCast2D" parent="DaddelCrab37/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab37/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab38" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -59)
+
+[node name="ShapeCast2D" parent="DaddelCrab38/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab38/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab39" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -58)
+
+[node name="ShapeCast2D" parent="DaddelCrab39/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab39/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab40" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -57)
+
+[node name="ShapeCast2D" parent="DaddelCrab40/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab40/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab41" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -69)
+
+[node name="ShapeCast2D" parent="DaddelCrab41/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab41/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab42" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -70)
+
+[node name="ShapeCast2D" parent="DaddelCrab42/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab42/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab43" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -70)
+
+[node name="ShapeCast2D" parent="DaddelCrab43/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab43/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab44" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -70)
+
+[node name="ShapeCast2D" parent="DaddelCrab44/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab44/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab45" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -71)
+
+[node name="ShapeCast2D" parent="DaddelCrab45/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab45/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab46" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -72)
+
+[node name="ShapeCast2D" parent="DaddelCrab46/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab46/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab47" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -71)
+
+[node name="ShapeCast2D" parent="DaddelCrab47/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab47/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab48" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -70)
+
+[node name="ShapeCast2D" parent="DaddelCrab48/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab48/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab49" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(75, -84)
+
+[node name="ShapeCast2D" parent="DaddelCrab49/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab49/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab50" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(120, -85)
+
+[node name="ShapeCast2D" parent="DaddelCrab50/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab50/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab51" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(143, -85)
+
+[node name="ShapeCast2D" parent="DaddelCrab51/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab51/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab52" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(164, -85)
+
+[node name="ShapeCast2D" parent="DaddelCrab52/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab52/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab53" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(188, -86)
+
+[node name="ShapeCast2D" parent="DaddelCrab53/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab53/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab54" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(210, -87)
+
+[node name="ShapeCast2D" parent="DaddelCrab54/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab54/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab55" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(98, -86)
+
+[node name="ShapeCast2D" parent="DaddelCrab55/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab55/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab56" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(50, -85)
+
+[node name="ShapeCast2D" parent="DaddelCrab56/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab56/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab57" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(74, -97)
+
+[node name="ShapeCast2D" parent="DaddelCrab57/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab57/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab58" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(119, -98)
+
+[node name="ShapeCast2D" parent="DaddelCrab58/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab58/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab59" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(142, -98)
+
+[node name="ShapeCast2D" parent="DaddelCrab59/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab59/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab60" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(163, -98)
+
+[node name="ShapeCast2D" parent="DaddelCrab60/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab60/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab61" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(187, -99)
+
+[node name="ShapeCast2D" parent="DaddelCrab61/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab61/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab62" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(209, -100)
+
+[node name="ShapeCast2D" parent="DaddelCrab62/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab62/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab63" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(97, -99)
+
+[node name="ShapeCast2D" parent="DaddelCrab63/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab63/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
+
+[node name="DaddelCrab64" parent="." instance=ExtResource("4_muofw")]
+unique_name_in_owner = true
+position = Vector2(49, -98)
+
+[node name="ShapeCast2D" parent="DaddelCrab64/Enemy_Sprite" index="1"]
+shape = SubResource("ConvexPolygonShape2D_sbihb")
+
+[node name="SpikeDetection" parent="DaddelCrab64/Enemy_Sprite" index="4"]
+shape = SubResource("RectangleShape2D_jxfhb")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, -439)
@@ -2132,17 +2178,6 @@ offset_right = 1053.0
 offset_bottom = 423.0
 color = Color(0.658824, 0.396078, 0.278431, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3.44, 3.44)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_vertical_enabled = true
-drag_left_margin = 0.3
-drag_top_margin = 0.4
-drag_right_margin = 0.3
-drag_bottom_margin = 0.01
-script = ExtResource("4_0wecj")
-
 [node name="Ramp" type="MeshInstance2D" parent="."]
 position = Vector2(265, -20)
 scale = Vector2(80.9287, -41.4287)
@@ -2164,13 +2199,68 @@ tile_set = SubResource("TileSet_5dng5")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1507347, 0, 1, -1441811, 0, 2, -1507346, 1114112, 16, -1441810, 1114112, 17, -1507345, 1114112, 16, -1441809, 1114112, 17, -1507344, 1179648, 16, -1441808, 1179648, 17, -1507343, 1245184, 16, -1441807, 1245184, 17, -1507342, 1310720, 16, -1441806, 1310720, 17, -1507341, 1376256, 16, -1441805, 1376256, 17, -1507340, 1441792, 16, -1441804, 1441792, 17, -1507339, 1114112, 16, -1441803, 1114112, 17, -1507338, 1507328, 16, -1441802, 1507328, 17, -1507337, 1572864, 16, -1441801, 1572864, 17, -1376275, 983040, 18, -1310739, 983040, 19, -1245203, 983040, 20, -1179667, 983040, 21, -1114131, 983040, 22, -1048595, 983040, 23, -1376274, 1048576, 18, -1114130, 1048576, 22, -1048594, 1048576, 23, -983059, 983040, 18, -917523, 983040, 19, -851987, 983040, 20, -786451, 983040, 21, -720915, 983040, 22, -655379, 983040, 23, -983058, 1048576, 18, -917522, 1048576, 19, -851986, 1048576, 20, -786450, 1048576, 21, -720914, 1048576, 22, -655378, 1048576, 23, -589843, 983040, 18, -589842, 1048576, 18, -1376265, 983040, 268435474, -1376266, 1048576, 268435474, -1310729, 983040, 268435475, -1310730, 1048576, 268435475, -1245193, 983040, 268435476, -1245194, 1048576, 268435476, -1179657, 983040, 268435477, -1179658, 1048576, 268435477, -1114121, 983040, 268435478, -1114122, 1048576, 268435478, -1048585, 983040, 268435479, -1048586, 1048576, 268435479, -983049, 983040, 268435474, -983050, 1048576, 268435474, -917513, 983040, 268435475, -917514, 1048576, 268435475, -851977, 983040, 268435476, -851978, 1048576, 268435476, -786441, 983040, 268435477, -786442, 1048576, 268435477, -720905, 983040, 268435478, -720906, 1048576, 268435478, -655369, 983040, 268435479, -655370, 1048576, 268435479, -589833, 983040, 268435474, -589834, 1048576, 268435474, -524307, 983040, 24, -458771, 983040, 25, -524306, 1048576, 24, -458770, 1048576, 25, -524298, 1769472, 24, -458762, 1769472, 25, -524297, 1835008, 24, -458761, 1835008, 25, -524305, 1114112, 24, -458769, 1114112, 25, -524304, 1179648, 24, -458768, 1179648, 25, -524303, 1245184, 24, -458767, 1245184, 25, -524302, 1310720, 24, -458766, 1310720, 25, -524301, 1376256, 24, -458765, 1376256, 25, -524300, 1441792, 24, -458764, 1441792, 25, -524299, 1507328, 24, -458763, 1507328, 25, -1376273, 1114112, 18, -1376272, 1179648, 18, -1310736, 1179648, 19, -1376267, 1114112, 268435474, -1376268, 1179648, 268435474, -1310732, 1179648, 268435475, -1376271, 1245184, 18, -1310735, 1245184, 19, -1376270, 1310720, 18, -1310734, 1310720, 19, -1376269, 1245184, 18, -1310733, 1245184, 19, -1245200, 1179648, 20, -1179664, 1179648, 21, -1114129, 1114112, 20, -1048593, 1114112, 21, -1114128, 1179648, 20, -1048592, 1179648, 21, -983057, 1114112, 20, -917521, 1114112, 21, -983056, 1179648, 20, -917520, 1179648, 21, -851985, 1114112, 20, -786449, 1114112, 21, -851984, 1179648, 20, -786448, 1179648, 21, -720913, 1114112, 20, -720912, 1179648, 20, -1245196, 1179648, 268435476, -1179659, 1114112, 268435477, -1179660, 1179648, 268435477, -1114123, 1114112, 268435476, -1114124, 1179648, 268435476, -1048587, 1114112, 268435477, -1048588, 1179648, 268435477, -983051, 1114112, 268435476, -983052, 1179648, 268435476, -917515, 1114112, 268435477, -917516, 1179648, 268435477, -851979, 1114112, 268435476, -851980, 1179648, 268435476, -786443, 1114112, 268435477, -786444, 1179648, 268435477, -720907, 1114112, 268435476, -720908, 1179648, 268435476, -655377, 1114112, 22, -589841, 1114112, 23, -655376, 1179648, 22, -589840, 1179648, 23, -655371, 1114112, 268435478, -655372, 1179648, 268435478, -589835, 1114112, 268435479, -589836, 1179648, 268435479, -655375, 1245184, 22, -589839, 1245184, 23, -655374, 1310720, 22, -589838, 1310720, 23, -655373, 1376256, 22, -589837, 1376256, 23, -1245199, 1245184, 19, -1179663, 1245184, 20, -1245198, 1310720, 19, -1179662, 1310720, 20, -1114127, 1245184, 19, -1048591, 1245184, 20, -1114126, 1310720, 19, -1048590, 1310720, 20, -983055, 1245184, 19, -917519, 1245184, 20, -983054, 1310720, 19, -917518, 1310720, 20, -851983, 1245184, 19, -786447, 1245184, 20, -851982, 1310720, 19, -786446, 1310720, 20, -720911, 1245184, 19, -720910, 1310720, 19, -1245197, 1245184, 19, -1179661, 1245184, 20, -1114125, 1245184, 19, -1048589, 1245184, 20, -983053, 1245184, 19, -917517, 1245184, 20, -851981, 1245184, 19, -786445, 1245184, 20, -720909, 1245184, 19, -1310738, 1048576, 19, -1245202, 1048576, 20, -1179666, 1048576, 21, -1310737, 1114112, 19, -1245201, 1114112, 20, -1179665, 1114112, 21, -1310731, 1114112, 268435475, -1245195, 1114112, 268435476, -2949139, 983040, 17, -2883603, 983040, 18, -2818067, 983040, 19, -2752531, 983040, 20, -2686995, 983040, 21, -2621459, 983040, 22, -2555923, 983040, 23, -2490387, 983040, 18, -2424851, 983040, 19, -2359315, 983040, 20, -2293779, 983040, 21, -2228243, 983040, 22, -2162707, 983040, 23, -2097171, 983040, 18, -2031635, 983040, 19, -1966099, 983040, 20, -1900563, 983040, 25, -2949138, 1048576, 17, -2883602, 1048576, 18, -2818066, 1048576, 19, -2752530, 1048576, 20, -2686994, 1048576, 21, -2621458, 1048576, 22, -2555922, 1048576, 23, -2490386, 1048576, 18, -2424850, 1048576, 19, -2359314, 1048576, 20, -2293778, 1048576, 21, -2228242, 1048576, 22, -2162706, 1048576, 23, -2097170, 1048576, 18, -2031634, 1048576, 19, -1966098, 1048576, 20, -1900562, 1048576, 25, -2949137, 1114112, 17, -2883601, 1114112, 18, -2818065, 1114112, 19, -2752529, 1114112, 20, -2686993, 1114112, 21, -2621457, 1114112, 20, -2555921, 1114112, 21, -2490385, 1114112, 20, -2424849, 1114112, 21, -2359313, 1114112, 20, -2293777, 1114112, 21, -2228241, 1114112, 20, -2162705, 1114112, 21, -2097169, 1114112, 20, -2031633, 1114112, 23, -1966097, 1114112, 24, -1900561, 1114112, 25, -2949136, 1179648, 17, -2883600, 1179648, 18, -2818064, 1179648, 19, -2752528, 1179648, 20, -2686992, 1179648, 21, -2621456, 1179648, 20, -2555920, 1179648, 21, -2490384, 1179648, 20, -2424848, 1179648, 21, -2359312, 1179648, 20, -2293776, 1179648, 21, -2228240, 1179648, 20, -2162704, 1179648, 21, -2097168, 1179648, 20, -2031632, 1179648, 23, -1966096, 1179648, 24, -1900560, 1179648, 25, -2949135, 1245184, 17, -2883599, 1310720, 268435474, -2818063, 1310720, 268435475, -2752527, 1245184, 20, -2686991, 1245184, 21, -2621455, 1245184, 20, -2555919, 1245184, 21, -2490383, 1245184, 20, -2424847, 1245184, 21, -2359311, 1245184, 20, -2293775, 1245184, 21, -2228239, 1245184, 20, -2162703, 1245184, 21, -2097167, 1245184, 22, -2031631, 1245184, 23, -1966095, 1245184, 24, -1900559, 1245184, 25, -2949134, 1310720, 17, -2883598, 1245184, 268435474, -2818062, 1245184, 268435475, -2752526, 1310720, 20, -2686990, 1310720, 21, -2621454, 1310720, 20, -2555918, 1310720, 21, -2490382, 1310720, 20, -2424846, 1310720, 21, -2359310, 1310720, 20, -2293774, 1310720, 21, -2228238, 1310720, 20, -2162702, 1310720, 21, -2097166, 1310720, 22, -2031630, 1310720, 23, -1966094, 1310720, 24, -1900558, 1310720, 25, -2949133, 1376256, 17, -2883597, 1376256, 18, -2818061, 1376256, 19, -2752525, 1179648, 268435476, -2686989, 1179648, 268435477, -2621453, 1179648, 268435476, -2555917, 1179648, 268435477, -2490381, 1179648, 268435476, -2424845, 1179648, 268435477, -2359309, 1179648, 268435476, -2293773, 1179648, 268435477, -2228237, 1179648, 268435476, -2162701, 1179648, 268435476, -2097165, 1376256, 536870931, -2031629, 1376256, 536870930, -1966093, 1376256, 24, -1900557, 1376256, 25, -2949132, 1441792, 17, -2883596, 1441792, 18, -2818060, 1441792, 19, -2752524, 1114112, 268435476, -2686988, 1114112, 268435477, -2621452, 1114112, 268435476, -2555916, 1114112, 268435477, -2490380, 1114112, 268435476, -2424844, 1114112, 268435477, -2359308, 1114112, 268435476, -2293772, 1114112, 268435477, -2228236, 1114112, 268435476, -2162700, 1114112, 268435476, -2097164, 1441792, 536870931, -2031628, 1441792, 536870930, -1966092, 1441792, 24, -1900556, 1441792, 25, -2949131, 1507328, 17, -2883595, 1769472, 22, -2818059, 1769472, 23, -2752523, 1769472, 22, -2686987, 1769472, 23, -2621451, 1769472, 22, -2555915, 1769472, 23, -2490379, 1769472, 22, -2424843, 1769472, 23, -2359307, 1769472, 22, -2293771, 1769472, 23, -2228235, 1769472, 22, -2162699, 1769472, 23, -2097163, 1769472, 22, -2031627, 1769472, 23, -1966091, 1769472, 22, -1900555, 1769472, 25, -2949130, 1572864, 17, -2883594, 1835008, 22, -2818058, 1835008, 23, -2752522, 1835008, 22, -2686986, 1835008, 23, -2621450, 1835008, 22, -2555914, 1835008, 23, -2490378, 1835008, 22, -2424842, 1835008, 23, -2359306, 1835008, 22, -2293770, 1835008, 23, -2228234, 1835008, 22, -2162698, 1835008, 23, -2097162, 1835008, 22, -2031626, 1835008, 23, -1966090, 1835008, 22, -1900554, 1835008, 25, -3014675, 983040, 16, -3014674, 1048576, 16, -3014673, 1114112, 16, -3014672, 1179648, 16, -3014671, 1245184, 16, -3014670, 1310720, 16, -3014669, 1376256, 16, -3014668, 1441792, 16, -3014667, 1507328, 16, -3014666, 1572864, 16)
 
-[node name="Control" parent="." instance=ExtResource("18_jiqng")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
-
-[connection signal="body_exited" from="Area2D2" to="DaddelCrab" method="_on_area_2d_2_body_exited"]
-[connection signal="animation_finished" from="Player/Player_Sprite" to="Player" method="_on_player_sprite_animation_finished"]
+[editable path="Player"]
+[editable path="DaddelCrab"]
+[editable path="DaddelCrab2"]
+[editable path="DaddelCrab3"]
+[editable path="DaddelCrab4"]
+[editable path="DaddelCrab5"]
+[editable path="DaddelCrab6"]
+[editable path="DaddelCrab7"]
+[editable path="DaddelCrab8"]
+[editable path="DaddelCrab9"]
+[editable path="DaddelCrab10"]
+[editable path="DaddelCrab11"]
+[editable path="DaddelCrab12"]
+[editable path="DaddelCrab13"]
+[editable path="DaddelCrab14"]
+[editable path="DaddelCrab15"]
+[editable path="DaddelCrab16"]
+[editable path="DaddelCrab17"]
+[editable path="DaddelCrab18"]
+[editable path="DaddelCrab19"]
+[editable path="DaddelCrab20"]
+[editable path="DaddelCrab21"]
+[editable path="DaddelCrab22"]
+[editable path="DaddelCrab23"]
+[editable path="DaddelCrab24"]
+[editable path="DaddelCrab25"]
+[editable path="DaddelCrab26"]
+[editable path="DaddelCrab27"]
+[editable path="DaddelCrab28"]
+[editable path="DaddelCrab29"]
+[editable path="DaddelCrab30"]
+[editable path="DaddelCrab31"]
+[editable path="DaddelCrab32"]
+[editable path="DaddelCrab33"]
+[editable path="DaddelCrab34"]
+[editable path="DaddelCrab35"]
+[editable path="DaddelCrab36"]
+[editable path="DaddelCrab37"]
+[editable path="DaddelCrab38"]
+[editable path="DaddelCrab39"]
+[editable path="DaddelCrab40"]
+[editable path="DaddelCrab41"]
+[editable path="DaddelCrab42"]
+[editable path="DaddelCrab43"]
+[editable path="DaddelCrab44"]
+[editable path="DaddelCrab45"]
+[editable path="DaddelCrab46"]
+[editable path="DaddelCrab47"]
+[editable path="DaddelCrab48"]
+[editable path="DaddelCrab49"]
+[editable path="DaddelCrab50"]
+[editable path="DaddelCrab51"]
+[editable path="DaddelCrab52"]
+[editable path="DaddelCrab53"]
+[editable path="DaddelCrab54"]
+[editable path="DaddelCrab55"]
+[editable path="DaddelCrab56"]
+[editable path="DaddelCrab57"]
+[editable path="DaddelCrab58"]
+[editable path="DaddelCrab59"]
+[editable path="DaddelCrab60"]
+[editable path="DaddelCrab61"]
+[editable path="DaddelCrab62"]
+[editable path="DaddelCrab63"]
+[editable path="DaddelCrab64"]
