@@ -48,15 +48,17 @@ autoplay = true
 layer = 3
 
 [node name="SceneTransition" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = -1
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ln4fv")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

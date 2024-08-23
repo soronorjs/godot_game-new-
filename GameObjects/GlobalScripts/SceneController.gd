@@ -5,11 +5,11 @@ extends Node2D
 @onready var main_animation = SceneManager.get_node("AnimationPlayer")
 
 func _ready():
-	await load_scene("res://Scenes/MainMenu.tscn")
-	main_animation.play("TransitionScreen")
+	SceneManager.get_node("CanvasLayer/SceneTransition").visible = true
+	load_scene("res://Scenes/MainMenu.tscn")
 
 func load_scene(scene_path: String):
-	main_animation.play_backwards("TransitionScreen")
+	main_animation.play("TransitionScreen")
 	
 	if scene_holder.get_child_count() > 0:
 		for child in scene_holder.get_children():
@@ -20,6 +20,7 @@ func load_scene(scene_path: String):
 	if scene:
 		var scene_instance = scene.instantiate()
 		scene_holder.add_child(scene_instance)
+		call_deferred("scene_loaded", scene_instance)
 		
 		var scene_cam = scene_instance.get_node("Player/Cameras/MainCam")
 	
@@ -28,8 +29,14 @@ func load_scene(scene_path: String):
 			print(get_viewport().get_camera_2d())
 		else:
 			push_error("Failed to recognize camera")
-		
-		if not main_animation.is_playing():
-			main_animation.play("TransitionScreen")
 	else:
 		print("Failed to load scene: ", scene_path)
+		
+func scene_loaded():
+	print("Works!")
+	main_animation.play("TransitionScreen")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if SceneManager.get_node("CanvasLayer/SceneTransition").color == Color.BLACK:
+		main_animation.play("TransitionScreen")
