@@ -9,7 +9,8 @@ func _ready():
 	load_scene("res://Scenes/MainMenu.tscn")
 
 func load_scene(scene_path: String):
-	main_animation.play_backwards("TransitionScreen")
+	if not SceneManager.get_node("CanvasLayer/SceneTransition").color == Color.BLACK:
+		main_animation.play_backwards("TransitionScreen")
 	
 	while main_animation.is_playing() and main_animation.current_animation == "TransitionScreen" and main_animation.get_playing_speed() == -1.0:
 		await get_tree().process_frame
