@@ -7,9 +7,15 @@ var dash_cooldown : bool = false
 var wall_slide : bool = false
 var no_jump : bool = false
 
-# Player Metadata and Nodes
+# Player Nodes
 @onready var Player_Base = $"."
 @onready var Player_Sprite = get_node("Player_Sprite")
+@onready var Animation_Player = Player_Sprite.get_node("AnimationPlayer")
+@onready var Animation_Trees = Animation_Player.get_node("AnimationTrees")
+@onready var State_Tree = Animation_Trees.get_node("StateMachine")
+@onready var State_Machine = State_Tree.get("parameters/playback")
+
+# Player Metadata
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
 @onready var Speed = Player_Base.get_meta(&"Speed")
 @onready var sprintSpeed = Player_Base.get_meta(&"Sprint_Speed")
@@ -22,9 +28,8 @@ func _physics_process(delta):
 	# Gravity control
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		Player_Sprite.animation = "Jump"
 		if velocity.y < 0:
-			Player_Sprite.frame = 8
+			State_Machine.travel("Jump_Up")
 		elif velocity.y > 0:
 			Player_Sprite.speed_scale = 0.3
 			play_animation_seg(9, 14)
@@ -41,6 +46,7 @@ func _physics_process(delta):
 	
 	while Input.is_action_pressed("ui_accept") and is_on_floor() and jumps_remaining < 1:
 		velocity.y = jumpVelocity
+		#State_Machine.travel("Jump_Start")
 		break
 
 	if Input.is_action_just_released("ui_accept") and not no_jump:
