@@ -12,10 +12,11 @@ func _ready():
 
 func _button_pressed():
 	SceneController.load_scene("res://Scenes/TestScene.tscn")
+	SceneController.tweenSound.tween_method(Callable(SceneController, "set_bus_volume_db"), AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")), -80.0, 3)
+	SceneController.tweenSound.play()
 	
 func _physics_process(delta):
 	if AudioServer.get_bus_volume_db(0) == -80.0:
-		AudioServer.set_bus_volume_db(0, 0.0)
-		#AudioPlayer.playing = false
+		AudioPlayer.playing = false
 		AudioPlayer.stop()
 		

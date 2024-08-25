@@ -41,7 +41,6 @@ script = ExtResource("1_wvcf5")
 
 [node name="MainAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dcwlt")
-volume_db = -80.0
 mix_target = 1
 
 [node name="SceneHolder" type="Node" parent="."]
@@ -59,8 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
