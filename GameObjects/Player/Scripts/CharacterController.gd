@@ -31,14 +31,13 @@ func _physics_process(delta):
 		if velocity.y < 0:
 			State_Machine.travel("Jump_Up")
 		elif velocity.y > 0:
-			Player_Sprite.speed_scale = 0.3
-			play_animation_seg(9, 14)
+			State_Machine.travel("Jump_Down")
 
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("ui_accept") and jumps_remaining < 1:
 		if is_on_floor():
-			Player_Sprite.animation = "Jump"
+			#Player_Sprite.animation = "Jump"
 			Player_Sprite.speed_scale = 0.3
 		elif jumps_remaining < 1 and doubleJump:
 			velocity.y = jumpVelocity
@@ -46,7 +45,9 @@ func _physics_process(delta):
 	
 	while Input.is_action_pressed("ui_accept") and is_on_floor() and jumps_remaining < 1:
 		velocity.y = jumpVelocity
-		#State_Machine.travel("Jump_Start")
+		State_Machine.travel("Jump_Start")
+		print(State_Machine.is_playing())
+		print(State_Machine.get_current_node())
 		break
 
 	if Input.is_action_just_released("ui_accept") and not no_jump:
@@ -57,6 +58,7 @@ func _physics_process(delta):
 	if is_on_floor() or is_on_wall_only() and jumps_remaining > 0:
 		jumps_remaining = 0
 		no_jump = false
+		State_Machine.travel("Jump_Land")
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
@@ -103,9 +105,9 @@ func _physics_process(delta):
 	
 	if direction and not Dash:
 		if is_on_floor():
-			Player_Sprite.animation = "Walk"
+			#Player_Sprite.animation = "Walk"
 			Player_Sprite.speed_scale = 0.2
-			Player_Sprite.play()
+			#Player_Sprite.play()
 			
 		if wall_slide:
 			if Player_Sprite.flip_h == true:
@@ -128,9 +130,10 @@ func _physics_process(delta):
 		if not Dash and not wall_slide:
 			velocity.x = move_toward(velocity.x, 0, Speed)
 			if is_on_floor():
-				Player_Sprite.animation = "Idle"
-				Player_Sprite.speed_scale = 0.33
-				Player_Sprite.play()
+				pass
+				#Player_Sprite.animation = "Idle"
+				#Player_Sprite.speed_scale = 0.33
+				#Player_Sprite.play()
 
 	move_and_slide()
 	
@@ -176,13 +179,4 @@ func dash(direction):
 		
 		Dash = false
 		disable_cooldown()
-		
-func play_animation_seg(start_frame: int, end_frame: int):
-	Player_Sprite.frame = start_frame
-	Player_Sprite.play()
-	
-	while Player_Sprite.frame < end_frame:
-		await Player_Sprite.frame_changed
-		
-	Player_Sprite.stop()
 	
