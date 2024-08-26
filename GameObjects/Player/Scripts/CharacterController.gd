@@ -10,6 +10,7 @@ var no_jump : bool = false
 # Player Nodes
 @onready var Player_Base = $"."
 @onready var Player_Sprite = get_node("Player_Sprite")
+@onready var ray_cast = get_node("RayCast2D")
 @onready var Animation_Player = Player_Sprite.get_node("AnimationPlayer")
 @onready var Animation_Trees = Animation_Player.get_node("AnimationTrees")
 @onready var State_Tree = Animation_Trees.get_node("StateMachine")
@@ -30,7 +31,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		if velocity.y < 0:
 			State_Machine.travel("Jump_Up")
-		elif velocity.y > 0:
+		elif velocity.y > 0 and not ray_cast.is_colliding():
+			State_Machine.travel("Jump_Fall")
+		elif velocity.y > 0 and ray_cast.is_colliding():
 			State_Machine.travel("Jump_Down")
 
 	# Handle jump.
