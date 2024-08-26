@@ -1454,6 +1454,17 @@ shape = SubResource("RectangleShape2D_dqhsm")
 unique_name_in_owner = true
 position = Vector2(-3, -43)
 
+[node name="Player_Sprite" parent="Player" index="2"]
+frame = 0
+
+[node name="StateMachine" parent="Player/Player_Sprite/AnimationPlayer/AnimationTrees" index="0"]
+parameters/Jump_Cycle_Mid/blend_position = Vector2(0, 0)
+parameters/Jump_End/blend_position = 0
+"parameters/Jump_Start 2/blend_position" = 0
+
+[node name="RayCast2D" parent="Player" index="4"]
+target_position = Vector2(0, 150)
+
 [node name="Ground" type="MeshInstance2D" parent="."]
 position = Vector2(80.5, 7)
 scale = Vector2(1321, 16.5)

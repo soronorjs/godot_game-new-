@@ -14,7 +14,8 @@ var no_jump : bool = false
 @onready var Animation_Player = Player_Sprite.get_node("AnimationPlayer")
 @onready var Animation_Trees = Animation_Player.get_node("AnimationTrees")
 @onready var State_Tree = Animation_Trees.get_node("StateMachine")
-@onready var State_Machine = State_Tree.get("parameters/playback")
+@onready var Playback = State_Tree.get("parameters/playback")
+@onready var Jump_Playback = State_Tree.get("parameters/Jump/playback")
 
 # Player Metadata
 @onready var Dashing = Player_Base.get_meta(&"Dashing")
@@ -28,13 +29,14 @@ func _physics_process(delta):
 	
 	# Gravity control
 	if not is_on_floor():
+		Playback.travel("Jump")
 		velocity.y += gravity * delta
 		if velocity.y < 0:
-			State_Machine.travel("Jump_Up")
+			Jump_Playback.travel("Jump_Up")
 		elif velocity.y > 0 and not ray_cast.is_colliding():
-			State_Machine.travel("Jump_Fall")
+			Jump_Playback.travel("Jump_Fall")
 		elif velocity.y > 0 and ray_cast.is_colliding():
-			State_Machine.travel("Jump_Down")
+			Jump_Playback.travel("Jump_Down")
 
 	# Handle jump.
 	
@@ -48,9 +50,9 @@ func _physics_process(delta):
 	
 	while Input.is_action_pressed("ui_accept") and is_on_floor() and jumps_remaining < 1:
 		velocity.y = jumpVelocity
-		State_Machine.travel("Jump_Start")
-		print(State_Machine.is_playing())
-		print(State_Machine.get_current_node())
+		Jump_Playback.travel("Jump_Start")
+		print(Jump_Playback.is_playing())
+		print(Jump_Playback.get_current_node())
 		break
 
 	if Input.is_action_just_released("ui_accept") and not no_jump:
@@ -61,7 +63,7 @@ func _physics_process(delta):
 	if is_on_floor() or is_on_wall_only() and jumps_remaining > 0:
 		jumps_remaining = 0
 		no_jump = false
-		State_Machine.travel("Jump_Land")
+		Jump_Playback.travel("Jump_Land")
 	
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
