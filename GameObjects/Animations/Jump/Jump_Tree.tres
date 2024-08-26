@@ -1,54 +1,25 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=23 format=3 uid="uid://chgic512xjnv4"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=16 format=3 uid="uid://chgic512xjnv4"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m3bxs"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6bwnv"]
 animation = &"Jump/Jump_Up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ldte1"]
-animation = &"Jump/Jump_Fall"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iicjb"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2txwu"]
 animation = &"Jump/Jump_Down"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ryu4d"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_m3bxs")
-blend_point_0/pos = Vector2(-0.1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_ldte1")
-blend_point_1/pos = Vector2(0, 0.5)
-blend_point_2/node = SubResource("AnimationNodeAnimation_iicjb")
-blend_point_2/pos = Vector2(0.1, 0)
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_72gxv"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6bwnv")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_2txwu")
+blend_point_1/pos = 0.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qjapx"]
 animation = &"Jump/Jump_Down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tia6o"]
-animation = &"Jump/Jump_Down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s4qsa"]
-animation = &"Jump/Jump_Land"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_bs2k6"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_tia6o")
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource("AnimationNodeAnimation_s4qsa")
-blend_point_1/pos = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8b386"]
 animation = &"Jump/Jump_Fall"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1kxt"]
 animation = &"Jump/Jump_Land"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrgy1"]
-animation = &"Jump/Jump_Start"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_87yla"]
-animation = &"Jump/Jump_Up"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nll3w"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jrgy1")
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource("AnimationNodeAnimation_87yla")
-blend_point_1/pos = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6htpy"]
 animation = &"Jump/Jump_Start"
@@ -72,21 +43,17 @@ animation = &"Jump/Jump_Up"
 
 [resource]
 state_machine_type = 1
+states/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_72gxv")
+states/BlendSpace1D/position = Vector2(706.715, 4.72133)
 states/End/position = Vector2(942, 100)
-states/Jump_Cycle_Mid/node = SubResource("AnimationNodeBlendSpace2D_ryu4d")
-states/Jump_Cycle_Mid/position = Vector2(930.715, -10.2787)
 states/Jump_Down/node = SubResource("AnimationNodeAnimation_qjapx")
 states/Jump_Down/position = Vector2(633.715, 100)
-states/Jump_End/node = SubResource("AnimationNodeBlendSpace1D_bs2k6")
-states/Jump_End/position = Vector2(1047.71, 3.72133)
 states/Jump_Fall/node = SubResource("AnimationNodeAnimation_8b386")
 states/Jump_Fall/position = Vector2(535.715, -52)
 states/Jump_Land/node = SubResource("AnimationNodeAnimation_f1kxt")
 states/Jump_Land/position = Vector2(818, 100)
 states/Jump_Start/node = SubResource("AnimationNodeAnimation_6htpy")
 states/Jump_Start/position = Vector2(341, 100)
-"states/Jump_Start 2/node" = SubResource("AnimationNodeBlendSpace1D_nll3w")
-"states/Jump_Start 2/position" = Vector2(777.715, -35.2787)
 states/Jump_Up/node = SubResource("AnimationNodeAnimation_qekdu")
 states/Jump_Up/position = Vector2(480.715, 100)
 states/Start/position = Vector2(204, 100)
