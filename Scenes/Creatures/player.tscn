@@ -519,7 +519,6 @@ position = Vector2(-24, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_6t77s")
 animation = &"Jump"
-frame = 11
 speed_scale = 0.3
 offset = Vector2(50.862, 0)
 
@@ -534,7 +533,7 @@ libraries = {
 root_node = NodePath("../../..")
 tree_root = SubResource("AnimationNodeStateMachine_hv6eo")
 anim_player = NodePath("../..")
-parameters/Jump/BlendSpace1D/blend_position = -0.351621
+parameters/Jump/BlendSpace1D/blend_position = -0.0157939
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
