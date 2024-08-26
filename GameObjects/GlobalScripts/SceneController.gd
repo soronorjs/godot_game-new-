@@ -18,8 +18,10 @@ func load_scene(scene_path: String):
 		main_animation.play_backwards("TransitionScreen")
 	
 	if scene_path == "res://Scenes.MainMenu.tscn":
+		var volume = main_audio.volume_db
+		tweenSound.stop()
 		main_audio.play(0.0)
-		tweenSound.tween_method(Callable(self, "set_bus_volume_db"), main_volume_db, 0.0, 3)
+		tweenSound.tween_method(Callable(self, "set_bus_volume_db"), volume, 0.0, 3)
 		tweenSound.play()
 	else:
 		tweenSound.stop()
@@ -54,5 +56,4 @@ func scene_loaded(scene):
 	main_animation.play("TransitionScreen")
 	
 func set_bus_volume_db(volume_db):
-	var bus_idx = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(bus_idx, volume_db)
+	main_audio.volume_db = volume_db
